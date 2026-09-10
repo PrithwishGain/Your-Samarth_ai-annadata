@@ -1,5 +1,7 @@
-# Environment variables / API keys
-backend/.env
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
 
 # Python virtual environment
 backend/venv/
