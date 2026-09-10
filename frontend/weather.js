@@ -1,6 +1,6 @@
 // Weather module - handles geolocation and weather data fetching
 
-const BACKEND_URL = 'http://127.0.0.1:8000';
+const WEATHER_BACKEND_URL = 'http://127.0.0.1:8000';
 
 console.log('Weather.js loaded!');
 
@@ -38,7 +38,7 @@ async function initWeather() {
 
 async function fetchWeatherData(latitude, longitude) {
     try {
-        const url = `${BACKEND_URL}/weather?latitude=${latitude}&longitude=${longitude}`;
+        const url = `${WEATHER_BACKEND_URL}/weather?latitude=${latitude}&longitude=${longitude}`;
         console.log(`Fetching weather from: ${url}`);
         
         const response = await fetch(url);
