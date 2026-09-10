@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather API Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test-box { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        button { padding: 10px; cursor: pointer; }
+        pre { background: #f0f0f0; padding: 10px; overflow-x: auto; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Weather API Debug Test</h1>
+    
+    <div class="test-box">
+        <h2>1. Test Backend Connection</h2>
+        <button onclick="testHealth()">Test Health Endpoint</button>
+        <div id="healthResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>2. Test Weather Endpoint</h2>
+        <button onclick="testWeather()">Fetch Weather (Kolkata)</button>
+        <div id="weatherResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>3. Browser Geolocation</h2>
+        <button onclick="testGeolocation()">Get Device Location</button>
+        <div id="geoResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>4. Full Weather Test</h2>
+        <button onclick="fullWeatherTest()">Run Full Test</button>
+        <div id="fullResult"></div>
+    </div>
+
+    <script>
+        const BACKEND_URL = 'http://127.0.0.1:8000';
+
+        async function testHealth() {
+            const div = document.getElementById('healthResult');
+            div.innerHTML = '<p>Testing...</p>';
+            try {
+                const response = await fetch(`${BACKEND_URL}/health`);
+                const data = await response.json();
+                div.innerHTML = `<p class="success">✓ Backend is running!</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                div.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testWeather() {
+            const div = document.getElementById('weatherResult');
+            div.innerHTML = '<p>Fetching...</p>';
+            try {
+                const url = `${BACKEND_URL}/weather?latitude=22.5726&longitude=88.3639`;
+                console.log('Fetching:', url);
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.error) {
+                    div.innerHTML = `<p class="error">✗ API Error: ${data.message}</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    div.innerHTML = `<p class="success">✓ Weather data received!</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                div.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+                console.error('Full error:', error);
+            }
+        }
+
+        function testGeolocation() {
+            const div = document.getElementById('geoResult');
+            if (!navigator.geolocation) {
+                div.innerHTML = '<p class="error">✗ Geolocation not supported</p>';
+                return;
+            }
+            
+            div.innerHTML = '<p>Requesting location...</p>';
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    div.innerHTML = `<p class="success">✓ Location obtained!</p><pre>Latitude: ${latitude}\nLongitude: ${longitude}</pre>`;
+                },
+                (error) => {
+                    div.innerHTML = `<p class="error">✗ Geolocation error: ${error.message}</p>`;
+                }
+            );
+        }
+
+        async function fullWeatherTest() {
+            const div = document.getElementById('fullResult');
+            div.innerHTML = '<p>Running full test...</p>';
+            
+            try {
+                // Step 1: Check backend
+                div.innerHTML += '<p>1. Checking backend...</p>';
+                const healthResp = await fetch(`${BACKEND_URL}/health`);
+                if (!healthResp.ok) throw new Error('Backend not responding');
+                div.innerHTML += '<p class="success">✓ Backend OK</p>';
+
+                // Step 2: Get location
+                div.innerHTML += '<p>2. Getting location...</p>';
+                const position = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject, {timeout: 5000});
+                });
+                const { latitude, longitude } = position.coords;
+                div.innerHTML += `<p class="success">✓ Location: ${latitude}, ${longitude}</p>`;
+
+                // Step 3: Fetch weather
+                div.innerHTML += '<p>3. Fetching weather...</p>';
+                const weatherResp = await fetch(`${BACKEND_URL}/weather?latitude=${latitude}&longitude=${longitude}`);
+                const weatherData = await weatherResp.json();
+                
+                if (weatherData.error) {
+                    div.innerHTML += `<p class="error">✗ Weather API error: ${weatherData.message}</p>`;
+                } else {
+                    div.innerHTML += `<p class="success">✓ Weather data received!</p><pre>${JSON.stringify(weatherData, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                div.innerHTML += `<p class="error">✗ Error: ${error.message}</p>`;
+                console.error('Full error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

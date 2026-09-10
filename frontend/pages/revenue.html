@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Revenue Model | Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .revenue-page{
+      min-height:100vh;
+      background:var(--cream);
+      color:var(--forest-deep);
+    }
+
+    .revenue-header{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      border-bottom:1px solid rgba(31,75,63,0.10);
+      background:rgba(250,247,237,0.95);
+      backdrop-filter:blur(12px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .revenue-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--forest-deep);
+    }
+
+    .revenue-logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--forest-deep);
+      color:#f2c75c;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .revenue-logo-text{
+      font-family:Georgia,serif;
+      font-size:21px;
+      font-weight:700;
+    }
+
+    .revenue-logo-text span{
+      color:#d49b32;
+    }
+
+    .revenue-back{
+      text-decoration:none;
+      color:var(--forest-deep);
+      font-size:14px;
+      font-weight:600;
+      padding:9px 16px;
+      border:1px solid rgba(31,75,63,0.15);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .revenue-back:hover{
+      background:rgba(31,75,63,0.07);
+      transform:translateY(-1px);
+    }
+
+    .revenue-main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:65px 20px 70px;
+    }
+
+    .revenue-title{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 48px;
+    }
+
+    .revenue-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:rgba(212,155,50,0.12);
+      border:1px solid rgba(212,155,50,0.22);
+      color:#93651b;
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      margin-bottom:18px;
+    }
+
+    .revenue-title h1{
+      font-family:Georgia,serif;
+      font-size:clamp(38px,5vw,58px);
+      line-height:1.05;
+      margin:0 0 16px;
+    }
+
+    .revenue-title h1 em{
+      color:#528264;
+      font-style:italic;
+    }
+
+    .revenue-title p{
+      max-width:680px;
+      margin:0 auto;
+      color:#66716c;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .revenue-model{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .revenue-card{
+      background:#fffdf6;
+      border:1px solid rgba(31,75,63,0.11);
+      border-radius:22px;
+      padding:27px;
+      box-shadow:0 12px 32px rgba(31,75,63,0.065);
+      transition:.2s ease;
+    }
+
+    .revenue-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 17px 38px rgba(31,75,63,0.10);
+    }
+
+    .revenue-card.featured{
+      border:2px solid rgba(212,155,50,0.45);
+    }
+
+    .revenue-card-top{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .revenue-icon{
+      width:50px;
+      height:50px;
+      border-radius:14px;
+      background:rgba(31,75,63,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:23px;
+      flex:none;
+    }
+
+    .revenue-card h2{
+      font-family:Georgia,serif;
+      font-size:24px;
+      margin:0 0 4px;
+    }
+
+    .revenue-type{
+      color:#8a6a2a;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+
+    .revenue-card p{
+      color:#64706a;
+      font-size:14px;
+      line-height:1.65;
+      margin:0 0 17px;
+    }
+
+    .revenue-example{
+      padding:14px 15px;
+      border-radius:12px;
+      background:rgba(31,75,63,0.045);
+      font-size:12px;
+      line-height:1.55;
+      color:#596760;
+    }
+
+    .revenue-example strong{
+      display:block;
+      color:var(--forest-deep);
+      margin-bottom:4px;
+    }
+
+    .sustainability{
+      margin-top:45px;
+      padding:32px;
+      background:var(--forest-deep);
+      border-radius:24px;
+      color:white;
+      text-align:center;
+      box-shadow:0 18px 42px rgba(31,75,63,0.15);
+    }
+
+    .sustainability h2{
+      font-family:Georgia,serif;
+      font-size:29px;
+      margin:0 0 10px;
+    }
+
+    .sustainability p{
+      max-width:700px;
+      margin:0 auto 25px;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+      line-height:1.65;
+    }
+
+    .sustainability-points{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .sustainability-point{
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.07);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .revenue-footer{
+      text-align:center;
+      padding:25px 20px 35px;
+      color:#7a837f;
+      font-size:12px;
+    }
+
+    @media(max-width:700px){
+
+      .revenue-header{
+        padding:0 20px;
+      }
+
+      .revenue-logo-text{
+        font-size:18px;
+      }
+
+      .revenue-main{
+        padding:45px 16px 50px;
+      }
+
+      .revenue-title p{
+        font-size:14px;
+      }
+
+      .revenue-model{
+        grid-template-columns:1fr;
+      }
+
+      .revenue-card{
+        padding:23px;
+      }
+
+      .sustainability{
+        padding:25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="revenue-page">
+
+    <!-- HEADER -->
+    <header class="revenue-header">
+
+      <a href="../samarthAI.html" class="revenue-logo">
+
+        <div class="revenue-logo-mark">
+          ♧
+        </div>
+
+        <div class="revenue-logo-text">
+          Samarth <span>AI</span>
+        </div>
+
+      </a>
+
+      <a href="../samarthAI.html" class="revenue-back">
+        ← Back to Samarth
+      </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="revenue-main">
+
+      <section class="revenue-title">
+
+        <div class="revenue-badge">
+          💼 Business Model
+        </div>
+
+        <h1>
+          Making Samarth <em>sustainable.</em>
+        </h1>
+
+        <p>
+          Samarth is designed to keep essential assistance accessible
+          while creating multiple sustainable revenue streams through
+          premium services, partnerships and institutional adoption.
+        </p>
+
+      </section>
+
+
+      <!-- REVENUE STREAMS -->
+      <section class="revenue-model">
+
+
+        <!-- PREMIUM -->
+        <article class="revenue-card featured">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              ⭐
+            </div>
+
+            <div>
+              <h2>Premium Subscriptions</h2>
+              <span class="revenue-type">
+                B2C
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            Users who need deeper analysis, personalized planning
+            and higher AI usage can access advanced capabilities
+            through a future subscription plan.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            Recurring subscription revenue from users who choose
+            advanced Samarth capabilities.
+          </div>
+
+        </article>
+
+
+        <!-- PARTNERSHIPS -->
+        <article class="revenue-card">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              🤝
+            </div>
+
+            <div>
+              <h2>Partnership Revenue</h2>
+              <span class="revenue-type">
+                B2B & B2C
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            Samarth can connect users with relevant agricultural,
+            financial and service partners when appropriate.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            Potential referral, lead-generation or distribution
+            arrangements with eligible partners.
+          </div>
+
+        </article>
+
+
+        <!-- INSTITUTIONAL -->
+        <article class="revenue-card">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              🏛️
+            </div>
+
+            <div>
+              <h2>Institutional Licensing</h2>
+              <span class="revenue-type">
+                B2B
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            Government departments, NGOs, FPOs and other organizations
+            can deploy Samarth for their communities and programs.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            Annual platform licensing, deployment and organization
+            specific knowledge-base services.
+          </div>
+
+        </article>
+
+
+        <!-- ENTERPRISE -->
+        <article class="revenue-card">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              🏢
+            </div>
+
+            <div>
+              <h2>Enterprise & API</h2>
+              <span class="revenue-type">
+                Enterprise
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            Organizations can integrate Samarth's voice and AI
+            capabilities into their own applications or service
+            platforms.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            API usage, enterprise plans, custom integrations and
+            technical support.
+          </div>
+
+        </article>
+
+
+        <!-- IMPLEMENTATION -->
+        <article class="revenue-card">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              🛠️
+            </div>
+
+            <div>
+              <h2>Implementation & Support</h2>
+              <span class="revenue-type">
+                Services
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            Organizations adopting Samarth may require onboarding,
+            customization, knowledge-base setup, training and
+            ongoing technical support.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            One-time implementation fees and recurring support
+            or maintenance contracts.
+          </div>
+
+        </article>
+
+
+        <!-- FUTURE MARKETPLACE -->
+        <article class="revenue-card">
+
+          <div class="revenue-card-top">
+
+            <div class="revenue-icon">
+              🌱
+            </div>
+
+            <div>
+              <h2>Service Marketplace</h2>
+              <span class="revenue-type">
+                Future
+              </span>
+            </div>
+
+          </div>
+
+          <p>
+            In the future, Samarth could help users discover trusted
+            local services, products and business opportunities
+            through a carefully governed marketplace.
+          </p>
+
+          <div class="revenue-example">
+            <strong>Revenue opportunity</strong>
+            Potential transaction, listing or qualified-lead fees,
+            subject to appropriate safeguards and partnerships.
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- SUSTAINABILITY -->
+      <section class="sustainability">
+
+        <h2>
+          A diversified revenue model
+        </h2>
+
+        <p>
+          Instead of depending on a single source of income,
+          Samarth can combine consumer, partnership and
+          institutional models to build long-term sustainability.
+        </p>
+
+        <div class="sustainability-points">
+
+          <span class="sustainability-point">
+            Accessible Free Tier
+          </span>
+
+          <span class="sustainability-point">
+            Premium Services
+          </span>
+
+          <span class="sustainability-point">
+            B2B Partnerships
+          </span>
+
+          <span class="sustainability-point">
+            Institutional Licensing
+          </span>
+
+          <span class="sustainability-point">
+            Enterprise APIs
+          </span>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="revenue-footer">
+      © 2026 Samarth AI · आपका साथी, हर कदम पर
+    </footer>
+
+  </div>
+
+</body>
+</html>

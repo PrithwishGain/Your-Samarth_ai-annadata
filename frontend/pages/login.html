@@ -1,0 +1,1369 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Login — Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+
+    /* ================================
+       GENERAL
+    ================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #FBF6EE;
+      color: #113B2B;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    /* ================================
+       PAGE
+    ================================= */
+
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    .login-header {
+    width: calc(100% - 160px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 1.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .login-header .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: #153731;
+    }
+
+    .login-header .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1F4B3F;
+      color: #EFC873;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .login-header .brand-mark svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .login-header .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .login-header .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #153731;
+    }
+
+    .login-header .brand-name em {
+      color: #D9A441;
+      font-style: normal;
+    }
+
+    .login-header .brand-tagline {
+      font-family: "Noto Sans Devanagari", "Mangal", Arial, sans-serif;
+      font-size: 11px;
+      color: #4A5148;
+      letter-spacing: .02em;
+    }
+
+    .back-link {
+      color: #113B2B;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .login-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .login-card {
+      width: min(460px, 100%);
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 2.2rem;
+      box-shadow: 0 12px 35px rgba(16, 24, 32, 0.10);
+    }
+
+
+    /* ================================
+       INTRO
+    ================================= */
+
+    .login-intro {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #E7F1EB;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .login-intro h1 {
+      margin: 0 0 0.6rem;
+      font-size: 2rem;
+      color: #113B2B;
+    }
+
+    .login-intro p {
+      margin: 0;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+
+    /* ================================
+       FORM
+    ================================= */
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-weight: 700;
+      color: #113B2B;
+    }
+
+    .phone-wrapper {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .country-code {
+      width: 75px;
+      padding: 0.85rem 0.5rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 9px;
+      background: #F9FAFB;
+      font-size: 1rem;
+      color: #113B2B;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .phone-input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.85rem 0.9rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 9px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .phone-input:focus {
+      border-color: #113B2B;
+      box-shadow: 0 0 0 3px rgba(17, 59, 43, 0.08);
+    }
+
+
+    /* ================================
+       BUTTON
+    ================================= */
+
+    .primary-button {
+      width: 100%;
+      border: none;
+      border-radius: 9px;
+      padding: 0.9rem 1rem;
+      background: #113B2B;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .primary-button:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .primary-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+
+    /* ================================
+       DIVIDER
+    ================================= */
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+      color: #9CA3AF;
+      font-size: 0.85rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #E5E7EB;
+      flex: 1;
+    }
+
+
+    /* ================================
+       GOOGLE BUTTON
+    ================================= */
+
+    .google-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 9px;
+      background: #ffffff;
+      color: #1F2937;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .google-button:hover {
+      background: #F9FAFB;
+    }
+
+    .google-icon {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+
+    /* ================================
+       TERMS
+    ================================= */
+
+    .terms {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #9CA3AF;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .terms a {
+      color: #113B2B;
+      text-decoration: none;
+    }
+
+
+    /* ================================
+       OTP SCREEN
+    ================================= */
+
+    .otp-screen {
+      display: none;
+    }
+
+    .otp-screen.active {
+      display: block;
+    }
+
+    .login-screen.hidden {
+      display: none;
+    }
+
+    .otp-message {
+      text-align: center;
+      color: #6B7280;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .otp-phone {
+      color: #113B2B;
+      font-weight: 700;
+    }
+
+    .otp-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .otp-input {
+      width: 48px;
+      height: 52px;
+      border: 1px solid #D1D5DB;
+      border-radius: 9px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .otp-input:focus {
+      border-color: #113B2B;
+      box-shadow: 0 0 0 3px rgba(17, 59, 43, 0.08);
+    }
+
+    .resend {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6B7280;
+    }
+
+    .resend button {
+      border: none;
+      background: transparent;
+      color: #113B2B;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .change-number {
+      display: block;
+      margin: 1rem auto 0;
+      border: none;
+      background: transparent;
+      color: #6B7280;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 480px) {
+
+      .login-card {
+        padding: 1.5rem;
+      }
+
+      .login-intro h1 {
+        font-size: 1.7rem;
+      }
+
+      .otp-inputs {
+        gap: 0.4rem;
+      }
+
+      .otp-input {
+        width: 42px;
+        height: 48px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="login-page">
+
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="login-header">
+
+      <a href="../index.html" class="brand" aria-label="Samarth AI home">
+  <span class="brand-mark" aria-hidden="true">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M20 5C13 10 9 17 9 24c0 6.6 5 10 11 10s11-3.4 11-10c0-7-4-14-11-19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M20 34V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 22c-3-3-5-3-8-2M20 26c3-3 5-3 8-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </span>
+  <span class="brand-text">
+    <span class="brand-name">Samarth <em>AI</em></span>
+    <span class="brand-tagline">आपका साथी, हर कदम पर</span>
+  </span>
+</a>
+
+
+      <a
+        href="../index.html"
+        class="back-link"
+      >
+        ← Back
+      </a>
+
+    </header>
+
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="login-main">
+
+      <div class="login-card">
+
+
+        <!-- ============================
+             PHONE LOGIN SCREEN
+        ============================= -->
+
+        <div
+          id="loginScreen"
+          class="login-screen"
+        >
+
+          <div class="login-intro">
+
+            <div class="login-icon">
+              📱
+            </div>
+
+            <h1>
+              Welcome to Samarth
+            </h1>
+
+            <p>
+              Sign in to get personalized guidance
+              for your entrepreneurial journey.
+            </p>
+
+          </div>
+
+
+          <form id="phoneForm">
+
+            <div class="form-group">
+
+              <label
+                for="phone"
+                class="form-label"
+              >
+                Mobile number
+              </label>
+
+
+              <div class="phone-wrapper">
+
+                <div class="country-code">
+                  +91
+                </div>
+
+                <input
+                  id="phone"
+                  class="phone-input"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  maxlength="10"
+                  placeholder="Enter 10-digit number"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="primary-button"
+            >
+              Send OTP →
+            </button>
+
+          </form>
+
+
+          <div class="divider">
+            OR
+          </div>
+
+
+          <button
+            type="button"
+            id="googleButton"
+            class="google-button"
+          >
+
+            <span class="google-icon">
+              G
+            </span>
+
+            Continue with Google
+
+          </button>
+
+
+          <div class="terms">
+
+            By continuing, you agree to Samarth's
+            <a href="#">
+              Terms
+            </a>
+            and
+            <a href="#">
+              Privacy Policy
+            </a>.
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ============================
+             OTP SCREEN
+        ============================= -->
+
+        <div
+          id="otpScreen"
+          class="otp-screen"
+        >
+
+          <div class="login-intro">
+
+            <div class="login-icon">
+              🔐
+            </div>
+
+            <h1>
+              Verify your number
+            </h1>
+
+          </div>
+
+
+          <p class="otp-message">
+
+            We sent a verification code to
+
+            <br>
+
+            <span
+              id="displayPhone"
+              class="otp-phone"
+            >
+              +91 XXXXX XXXXX
+            </span>
+
+          </p>
+
+
+          <div
+            class="otp-inputs"
+            id="otpInputs"
+          >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+            >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+            >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+            >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+            >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+            >
+
+            <input
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+            >
+
+          </div>
+
+
+          <button
+            type="button"
+            id="verifyButton"
+            class="primary-button"
+          >
+            Verify OTP →
+          </button>
+
+
+          <div class="resend">
+
+            Didn't receive the code?
+
+            <button
+              type="button"
+              id="resendButton"
+            >
+              Resend OTP
+            </button>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="changeNumberButton"
+            class="change-number"
+          >
+            ← Change mobile number
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+  <script>
+
+  /* =================================
+     ELEMENTS
+  ================================= */
+
+  const phoneForm =
+    document.getElementById("phoneForm");
+
+  const phoneInput =
+    document.getElementById("phone");
+
+  const loginScreen =
+    document.getElementById("loginScreen");
+
+  const otpScreen =
+    document.getElementById("otpScreen");
+
+  const displayPhone =
+    document.getElementById("displayPhone");
+
+  const otpInputs =
+    document.querySelectorAll(".otp-input");
+
+  const verifyButton =
+    document.getElementById("verifyButton");
+
+  const resendButton =
+    document.getElementById("resendButton");
+
+  const changeNumberButton =
+    document.getElementById("changeNumberButton");
+
+  const googleButton =
+    document.getElementById("googleButton");
+
+
+  /* =================================
+     VARIABLES
+  ================================= */
+
+  let currentPhone = "";
+
+
+  /* =================================
+     SEND OTP
+  ================================= */
+
+  phoneForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+      const phone =
+        phoneInput.value.trim();
+
+
+      /* Validate Indian mobile number */
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+
+        alert(
+          "Please enter a valid 10-digit mobile number."
+        );
+
+        phoneInput.focus();
+
+        return;
+      }
+
+
+      /* Convert to international format */
+
+      currentPhone = "+91" + phone;
+
+
+      /* Disable button while sending */
+
+      const submitButton =
+        phoneForm.querySelector("button[type='submit']");
+
+      const originalButtonText =
+        submitButton.textContent;
+
+      submitButton.disabled = true;
+
+      submitButton.textContent =
+        "Sending OTP...";
+
+
+      try {
+
+        /*
+          Send OTP through Supabase.
+        */
+
+        const { error } =
+          await supabaseClient.auth.signInWithOtp({
+            phone: currentPhone
+          });
+
+
+        if (error) {
+
+          console.error(
+            "Supabase OTP error:",
+            error
+          );
+
+          alert(
+            "Unable to send OTP.\n\n" +
+            error.message
+          );
+
+          return;
+        }
+
+
+        /*
+          OTP was successfully requested.
+        */
+
+        displayPhone.textContent =
+          "+91 " +
+          phone.substring(0, 5) +
+          " " +
+          phone.substring(5);
+
+
+        loginScreen.classList.add("hidden");
+
+        otpScreen.classList.add("active");
+
+
+        /* Clear old OTP */
+
+        otpInputs.forEach(
+          function(input) {
+            input.value = "";
+          }
+        );
+
+
+        /* Focus first OTP box */
+
+        if (otpInputs.length > 0) {
+          otpInputs[0].focus();
+        }
+
+
+        alert(
+          "OTP sent successfully to your mobile number."
+        );
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Unexpected OTP error:",
+          error
+        );
+
+        alert(
+          "Something went wrong while sending the OTP."
+        );
+
+      }
+
+      finally {
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          originalButtonText;
+
+      }
+
+    }
+  );
+
+
+  /* =================================
+     OTP INPUT BEHAVIOUR
+  ================================= */
+
+  otpInputs.forEach(
+    function(input, index) {
+
+      input.addEventListener(
+        "input",
+        function() {
+
+          /* Allow only numbers */
+
+          input.value =
+            input.value.replace(/\D/g, "");
+
+
+          /*
+            Automatically move to
+            the next OTP box.
+          */
+
+          if (
+            input.value &&
+            index < otpInputs.length - 1
+          ) {
+
+            otpInputs[index + 1].focus();
+
+          }
+
+        }
+      );
+
+
+      input.addEventListener(
+        "keydown",
+        function(event) {
+
+          /*
+            Move backwards when
+            backspace is pressed.
+          */
+
+          if (
+            event.key === "Backspace" &&
+            !input.value &&
+            index > 0
+          ) {
+
+            otpInputs[index - 1].focus();
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+/* =================================
+   VERIFY OTP WITH SUPABASE
+================================= */
+
+verifyButton.addEventListener(
+    "click",
+    async function() {
+
+        let otp = "";
+
+        otpInputs.forEach(
+            function(input) {
+                otp += input.value;
+            }
+        );
+
+
+        /* -------------------------------
+           Validate OTP
+        -------------------------------- */
+
+        if (otp.length !== 6) {
+
+            alert(
+                "Please enter the complete 6-digit OTP."
+            );
+
+            return;
+        }
+
+
+        /* -------------------------------
+           Get phone number
+        -------------------------------- */
+
+        const phone =
+            phoneInput.value.trim();
+
+
+        const fullPhone =
+            "+91" + phone;
+
+
+        verifyButton.disabled = true;
+
+        verifyButton.textContent =
+            "Verifying...";
+
+
+        try {
+
+            /* -------------------------------
+               Verify OTP
+            -------------------------------- */
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.verifyOtp({
+
+                phone: fullPhone,
+
+                token: otp,
+
+                type: "sms"
+
+            });
+
+
+            if (error) {
+
+                console.error(
+                    "OTP verification error:",
+                    error
+                );
+
+                alert(
+                    "Invalid or expired OTP.\n\n" +
+                    error.message
+                );
+
+                verifyButton.disabled = false;
+
+                verifyButton.textContent =
+                    "Verify OTP";
+
+                return;
+            }
+
+
+            /* -------------------------------
+               Successful authentication
+            -------------------------------- */
+
+            console.log(
+                "Login successful:",
+                data
+            );
+
+
+            /* -------------------------------
+               Check whether profile exists
+            -------------------------------- */
+
+            const {
+                data: profile,
+                error: profileError
+            } = await supabaseClient
+                .from("profiles")
+                .select("id")
+                .eq("id", data.user.id)
+                .maybeSingle();
+
+
+            if (profileError) {
+
+                console.error(
+                    "Profile check error:",
+                    profileError
+                );
+
+                alert(
+                    "Login successful, but we could not check your profile.\n\n" +
+                    profileError.message
+                );
+
+                verifyButton.disabled = false;
+
+                verifyButton.textContent =
+                    "Verify OTP";
+
+                return;
+            }
+
+
+            /* -------------------------------
+               Existing profile
+            -------------------------------- */
+
+            if (profile) {
+
+                window.location.href =
+                    "../samarthAI.html";
+
+                return;
+            }
+
+
+            /* -------------------------------
+               New user
+            -------------------------------- */
+
+            window.location.href =
+                "profile-setup.html";
+
+        }
+        catch (error) {
+
+            console.error(
+                "Unexpected verification error:",
+                error
+            );
+
+            alert(
+                "Something went wrong while verifying the OTP."
+            );
+
+            verifyButton.disabled = false;
+
+            verifyButton.textContent =
+                "Verify OTP";
+
+        }
+
+    }
+);
+
+
+  /* =================================
+     RESEND OTP
+  ================================= */
+
+  resendButton.addEventListener(
+    "click",
+    async function() {
+
+      if (!currentPhone) {
+
+        alert(
+          "Please enter your mobile number again."
+        );
+
+        return;
+      }
+
+
+      const originalButtonText =
+        resendButton.textContent;
+
+      resendButton.disabled = true;
+
+      resendButton.textContent =
+        "Sending...";
+
+
+      try {
+
+        const { error } =
+          await supabaseClient.auth.signInWithOtp({
+            phone: currentPhone
+          });
+
+
+        if (error) {
+
+          console.error(
+            "Resend OTP error:",
+            error
+          );
+
+          alert(
+            "Unable to resend OTP.\n\n" +
+            error.message
+          );
+
+          return;
+        }
+
+
+        /* Clear old OTP */
+
+        otpInputs.forEach(
+          function(input) {
+            input.value = "";
+          }
+        );
+
+
+        otpInputs[0].focus();
+
+
+        alert(
+          "A new OTP has been sent."
+        );
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Unexpected resend error:",
+          error
+        );
+
+        alert(
+          "Something went wrong while resending the OTP."
+        );
+
+      }
+
+      finally {
+
+        resendButton.disabled = false;
+
+        resendButton.textContent =
+          originalButtonText;
+
+      }
+
+    }
+  );
+
+
+  /* =================================
+     CHANGE MOBILE NUMBER
+  ================================= */
+
+  changeNumberButton.addEventListener(
+    "click",
+    function() {
+
+      otpScreen.classList.remove("active");
+
+      loginScreen.classList.remove("hidden");
+
+
+      /* Clear OTP */
+
+      otpInputs.forEach(
+        function(input) {
+          input.value = "";
+        }
+      );
+
+
+      currentPhone = "";
+
+
+      phoneInput.focus();
+
+    }
+  );
+
+
+  /* =================================
+   CHECK GOOGLE SESSION
+================================= */
+
+async function checkGoogleSession() {
+    try {
+        const {
+            data: { session },
+            error
+        } = await supabaseClient.auth.getSession();
+
+        if (error) {
+            console.error("Session check error:", error);
+            return;
+        }
+
+        // No logged-in user
+        if (!session) {
+            console.log("No active session.");
+            return;
+        }
+
+        // Google authentication successful
+        const user = session.user;
+
+        console.log("Google authentication successful!");
+        console.log("Logged-in user:", user);
+
+        // Check whether this user already has a profile
+        const {
+            data: profile,
+            error: profileError
+        } = await supabaseClient
+            .from("profiles")
+            .select("id")
+            .eq("id", user.id)
+            .maybeSingle();
+
+        if (profileError) {
+            console.error("Profile check error:", profileError);
+            alert(
+                "Google login successful, but we could not check your profile.\n\n" +
+                profileError.message
+            );
+            return;
+        }
+
+        // Existing user
+        if (profile) {
+            console.log("Existing profile found.");
+            window.location.href = "../samarthAI.html";
+            return;
+        }
+
+        // New user
+        console.log("No profile found. Opening profile setup.");
+        window.location.href = "profile-setup.html";
+
+    } catch (error) {
+        console.error("Unexpected session error:", error);
+    }
+}
+
+  /* =================================
+     GOOGLE LOGIN
+  ================================= */
+
+  googleButton.addEventListener("click", async function () {
+    try {
+        const { error } = await supabaseClient.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: window.location.origin + "/frontend/pages/login.html"
+            }
+        });
+
+        if (error) {
+            console.error("Google login error:", error);
+            alert("Unable to sign in with Google.\n\n" + error.message);
+        }
+    } catch (error) {
+        console.error("Unexpected Google login error:", error);
+        alert("Something went wrong while signing in with Google.");
+    }
+});
+
+/* =================================
+   CHECK GOOGLE SESSION
+================================= */
+
+checkGoogleSession();
+
+</script>
+
+
+</body>
+
+</html>

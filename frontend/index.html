@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Annyadata connects farmers, agricultural inputs, rice mills and global markets through a connected agricultural value chain.">
+  <title>Annyadata — Connecting Agricultural Value</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hind:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <!-- NAVIGATION -->
+    <header class="navbar" id="top">
+      <a href="#home" class="brand" aria-label="Annyadata home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M24 42V9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M23.8 15C18.5 14.8 14.5 11.9 13.5 7.5C18.8 7.3 23.1 10.1 23.8 15Z" fill="currentColor"/>
+            <path d="M24.2 22C29.5 21.8 33.5 18.9 34.5 14.5C29.2 14.3 24.9 17.1 24.2 22Z" fill="currentColor"/>
+            <path d="M23.8 29C18.5 28.8 14.5 25.9 13.5 21.5C18.8 21.3 23.1 24.1 23.8 29Z" fill="currentColor"/>
+            <path d="M24.2 36C29.5 35.8 33.5 32.9 34.5 28.5C29.2 28.3 24.9 31.1 24.2 36Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-name">ANNYADATA</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#farmers">For Farmers</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="portal-access">
+          <button class="portal-button" id="portalButton" type="button" aria-expanded="false" aria-controls="portalMenu">
+            Portal Access <span>↗</span>
+          </button>
+
+          <div class="portal-menu" id="portalMenu" hidden>
+            <div class="portal-menu-label">SELECT YOUR PORTAL</div>
+            <a href="samarthAI.html" class="portal-menu-item">
+              <span class="portal-menu-icon">F</span>
+              <span><strong>Farmer Portal</strong><small>Samarth AI & field support</small></span>
+              <span>→</span>
+            </a>
+            <button class="portal-menu-item disabled" type="button">
+              <span class="portal-menu-icon">+</span>
+              <span><strong>Input Portal</strong><small>Coming next</small></span>
+              <span>—</span>
+            </button>
+            <button class="portal-menu-item disabled" type="button">
+              <span class="portal-menu-icon">M</span>
+              <span><strong>Mill Portal</strong><small>Coming next</small></span>
+              <span>—</span>
+            </button>
+            <button class="portal-menu-item disabled" type="button">
+              <span class="portal-menu-icon">↗</span>
+              <span><strong>Exporter Portal</strong><small>Coming next</small></span>
+              <span>—</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-copy">
+        
+
+        <h1>
+          From the hands<br>
+          that <em>grow</em> it,<br>
+          to the world that<br>
+          <em>values</em> it.
+        </h1>
+
+        <p>
+          Annyadata is building a connected agricultural ecosystem that brings
+          farmers, rice mills and global markets closer together — powered by
+          technology and built around value.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#portals" class="primary-button">Get Started <span>→</span></a>
+          <a href="#how-it-works" class="secondary-button">See how it works</a>
+        </div>
+        <div class="hero-value-note"><span></span> ONE CONNECTED JOURNEY · FIELD TO GLOBAL MARKET</div>
+      </div>
+
+      <div class="hero-chain-visual" aria-label="Annyadata agricultural value chain">
+        <div class="hero-chain-orbit orbit-a"></div>
+        <div class="hero-chain-orbit orbit-b"></div>
+        
+
+        <div class="chain-flow-display">
+          <div class="chain-track-viewport">
+            <div class="chain-track">
+              <span class="track-word" data-index="0">FARMER</span>
+              <span class="track-arrow">→</span>
+              <span class="track-word" data-index="1">PADDY</span>
+              <span class="track-arrow">→</span>
+              <span class="track-word" data-index="2">MILL</span>
+              <span class="track-arrow">→</span>
+              <span class="track-word" data-index="3">RICE</span>
+              <span class="track-arrow">→</span>
+              <span class="track-word" data-index="4">WORLD</span>
+            </div>
+          </div>
+
+          <div class="chain-flow-caption">
+            <span class="active-caption">Field</span>
+          </div>
+
+          
+        </div>
+      </div>
+
+      
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro-strip" id="about">
+      <p>
+        <strong>ANNYADATA</strong> connects the agricultural value chain from
+        the field to the global market — creating stronger relationships,
+        better opportunities and greater value along the way.
+      </p>
+    </section>
+
+    <!-- OPPORTUNITY -->
+    <section class="section opportunity-section" id="how-it-works">
+      <div class="section-header">
+        <div class="section-kicker"><span></span> THE OPPORTUNITY</div>
+        <h2>The journey from<br><em>field to world</em> is fragmented.</h2>
+        <p>
+          Paddy moves through several hands before it reaches the global market.
+          Annyadata is building a more connected way to move value through the
+          agricultural ecosystem.
+        </p>
+      </div>
+
+      <article class="supply-model traditional-model">
+        <div class="model-heading">
+          <span>01</span>
+          <div><small>TRADITIONAL MODEL</small><h3>A fragmented journey</h3></div>
+        </div>
+
+        <div class="model-flow">
+          <div class="flow-node"><b>01</b><strong>Farmer</strong><small>Grows paddy</small></div>
+          <i>→</i>
+          <div class="flow-node intermediary"><b>02</b><strong>Middleman</strong><small>Paddy trade</small></div>
+          <i>→</i>
+          <div class="flow-node"><b>03</b><strong>Rice Mill</strong><small>Processes paddy</small></div>
+          <i>→</i>
+          <div class="flow-node intermediary"><b>04</b><strong>Middleman</strong><small>Rice trade</small></div>
+          <i>→</i>
+          <div class="flow-node"><b>05</b><strong>Exporter</strong><small>Global trade</small></div>
+        </div>
+
+        <div class="model-note">
+          <span>THE CHALLENGE</span>
+          <p>
+            Multiple intermediary relationships can make the journey less
+            transparent and can distribute value across several layers before
+            the product reaches its final market.
+          </p>
+        </div>
+      </article>
+
+      <article class="supply-model annadata-model">
+        <div class="model-heading">
+          <span>02</span>
+          <div><small>ANNYADATA MODEL</small><h3>A connected value chain</h3></div>
+        </div>
+
+        <div class="model-flow">
+          <div class="flow-node highlighted"><b>01</b><strong>Farmer</strong><small>AI + field support</small></div>
+          <i class="accent">→</i>
+          <div class="flow-node annadata-node"><b>02</b><strong>Annyadata</strong><small>Direct procurement</small></div>
+          <i class="accent">→</i>
+          <div class="flow-node"><b>03</b><strong>Rice Mill</strong><small>Processing partner</small></div>
+          <i class="accent">→</i>
+          <div class="flow-node annadata-node"><b>04</b><strong>Annyadata</strong><small>Direct export</small></div>
+          <i class="accent">→</i>
+          <div class="flow-node highlighted"><b>05</b><strong>Global Market</strong><small>International buyers</small></div>
+        </div>
+
+        <div class="model-note positive">
+          <span>THE ANNYADATA APPROACH</span>
+          <p>
+            Technology, direct relationships and coordinated operations bring
+            the key stages of the rice value chain closer together.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ECOSYSTEM -->
+    <section class="section ecosystem-section" id="ecosystem">
+      <div class="ecosystem-intro">
+        <div class="section-kicker"><span></span> THE ANNYADATA ECOSYSTEM</div>
+        <h2>Four participants.<br><em>One connected ecosystem.</em></h2>
+        <p>
+          Annyadata brings together the people, businesses and technology that
+          move rice from cultivation to international markets.
+        </p>
+      </div>
+
+      <div class="ecosystem-map">
+        <article class="ecosystem-card farmer-card">
+          <div class="card-top"><span>01</span><small>FIELD</small></div>
+          <div class="card-symbol">F</div>
+          <h3>Farmer</h3>
+          <p>Technology and human field support for better crop quality, followed by direct procurement from the farm.</p>
+          <a href="samarthAI.html">Farmer Portal <span>↗</span></a>
+        </article>
+
+        <article class="ecosystem-card input-card">
+          <div class="card-top"><span>02</span><small>INPUTS</small></div>
+          <div class="card-symbol">+</div>
+          <h3>Agricultural Inputs</h3>
+          <p>Fertilizers, pesticides and other agricultural products connected directly to the farmer ecosystem.</p>
+          <button type="button" class="coming-soon-link">Input Portal <span>↗</span></button>
+        </article>
+
+        <article class="ecosystem-card mill-card">
+          <div class="card-top"><span>03</span><small>PROCESSING</small></div>
+          <div class="card-symbol">M</div>
+          <h3>Rice Mill</h3>
+          <p>Processing partners receive paddy through a structured, reliable procurement relationship with Annyadata.</p>
+          <button type="button" class="coming-soon-link">Mill Portal <span>↗</span></button>
+        </article>
+
+        <article class="ecosystem-card export-card">
+          <div class="card-top"><span>04</span><small>GLOBAL</small></div>
+          <div class="card-symbol">↗</div>
+          <h3>Global Market</h3>
+          <p>Annyadata takes processed rice closer to international buyers through its own export operations.</p>
+          <button type="button" class="coming-soon-link">Export Portal <span>↗</span></button>
+        </article>
+
+        <div class="ecosystem-center">
+          <div class="center-ring">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 42V9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M23.8 15C18.5 14.8 14.5 11.9 13.5 7.5C18.8 7.3 23.1 10.1 23.8 15Z" fill="currentColor"/>
+              <path d="M24.2 22C29.5 21.8 33.5 18.9 34.5 14.5C29.2 14.3 24.9 17.1 24.2 22Z" fill="currentColor"/>
+              <path d="M23.8 29C18.5 28.8 14.5 25.9 13.5 21.5C18.8 21.3 23.1 24.1 23.8 29Z" fill="currentColor"/>
+              <path d="M24.2 36C29.5 35.8 33.5 32.9 34.5 28.5C29.2 28.3 24.9 31.1 24.2 36Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <strong>ANNYADATA</strong>
+          <small>CONNECTING VALUE</small>
+        </div>
+      </div>
+
+      <div class="ecosystem-footer">
+        <span>ONE PLATFORM · DISTINCT PORTALS</span>
+        <p>
+          Each participant operates through an independent portal with
+          role-specific access, while Annyadata coordinates the larger value chain.
+        </p>
+      </div>
+    </section>
+
+    <!-- FARMER -->
+    <section class="section farmer-section" id="farmers">
+      <div class="farmer-value-header">
+        <div class="section-kicker"><span></span> FOR THE FARMER</div>
+        <h2>A better relationship<br><em>starts at the field.</em></h2>
+        <p>
+          Annyadata begins with the farmer. We combine direct procurement,
+          quality-focused cultivation support and technology to create a
+          relationship built around long-term value.
+        </p>
+      </div>
+
+      <div class="farmer-value-layout">
+        <div class="farmer-statement">
+          <span class="statement-number">01</span>
+          <div>
+            <small>OUR APPROACH</small>
+            <h3>We don't replace<br>the farmer's<br><em>experience.</em></h3>
+            <p>
+              Paddy cultivation has been passed from generation to generation.
+              Annyadata's role is not to replace that knowledge, but to
+              strengthen it with better information, technology and market access.
+            </p>
+          </div>
+        </div>
+
+        <div class="farmer-benefits">
+          <article><b>01</b><div><h4>Direct Procurement</h4><p>Build a direct commercial relationship with Annyadata instead of depending entirely on fragmented procurement channels.</p></div><span>↗</span></article>
+          <article><b>02</b><div><h4>Purchase Commitment</h4><p>Subject to agreed terms and quality standards, Annyadata can provide a more predictable route for eligible paddy produced through the network.</p></div><span>↗</span></article>
+          <article><b>03</b><div><h4>Quality Premium</h4><p>Farmers who consistently achieve higher-quality paddy can participate in quality-based pricing and premium opportunities.</p></div><span>↗</span></article>
+          <article><b>04</b><div><h4>Value Sharing</h4><p>As Annyadata creates additional value further along the supply chain, a part of that value can be carried back through the ecosystem to strengthen farmer participation.</p></div><span>↗</span></article>
+        </div>
+      </div>
+
+      <div class="farmer-support">
+        <div class="support-heading">
+          <small>BEYOND PROCUREMENT</small>
+          <h3>Technology that stays<br><em>close to the field.</em></h3>
+        </div>
+
+        <div class="support-grid">
+          <article><span>AI</span><h4>AI Assistance</h4><p>A voice-first agricultural assistant available whenever the farmer needs information or guidance.</p></article>
+          <article><span>FM</span><h4>Field Monitoring</h4><p>Farm and crop observations help track cultivation progress and identify areas that may need attention.</p></article>
+          <article><span>HV</span><h4>Human Verification</h4><p>Field volunteers can visit participating farms to physically observe conditions and verify progress.</p></article>
+          <article><span>QA</span><h4>Quality Focus</h4><p>Cultivation information, field observations and quality checks work together toward better-grade paddy.</p></article>
+        </div>
+      </div>
+
+      <div class="farmer-closing">
+        <small>THE LONG-TERM IDEA</small>
+        <p>When the farmer produces better, the supply chain becomes stronger. When the supply chain creates more value, that value should help keep the farmer engaged.</p>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section journey-section" id="journey">
+      <div class="journey-header">
+        <div class="section-kicker"><span></span> THE FARMER JOURNEY</div>
+        <h2>From the first conversation<br><em>to the final harvest.</em></h2>
+        <p>
+          Annyadata stays with the farmer throughout the cultivation cycle —
+          combining technology, field presence and a direct route to the market.
+        </p>
+      </div>
+
+      <div class="journey-timeline">
+        <article><div class="journey-marker">01</div><div><small>BEGIN</small><h3>Join Annyadata</h3><p>The relationship begins with the farmer. We understand the farm, cultivation cycle and the farmer's needs before building a long-term working relationship.</p></div><aside>01<br><small>RELATIONSHIP</small></aside></article>
+        <article><div class="journey-marker">02</div><div><small>UNDERSTAND</small><h3>Build the farm profile</h3><p>Farm information, crop details and cultivation data create a working picture of the field and help Annyadata understand the season ahead.</p></div><aside>02<br><small>FARM DATA</small></aside></article>
+        <article><div class="journey-marker">03</div><div><small>SUPPORT</small><h3>Grow with AI</h3><p>The farmer can speak with Annyadata's AI assistant whenever support is needed. Voice-first interaction makes agricultural information accessible directly from the field.</p></div><aside>03<br><small>AI ASSISTANCE</small></aside></article>
+        <article><div class="journey-marker">04</div><div><small>VERIFY</small><h3>Field visits</h3><p>Human field volunteers visit participating farms to observe real conditions, verify progress and maintain a direct connection between Annyadata and the farmer.</p></div><aside>04<br><small>FIELD TEAM</small></aside></article>
+        <article><div class="journey-marker">05</div><div><small>QUALITY</small><h3>Prepare for harvest</h3><p>Cultivation information, field observations and quality checks come together as the crop approaches harvest. The focus is on producing consistent, marketable paddy.</p></div><aside>05<br><small>CROP QUALITY</small></aside></article>
+        <article class="final"><div class="journey-marker">06</div><div><small>MARKET</small><h3>Direct procurement</h3><p>At harvest, eligible paddy can move directly from the farmer into the Annyadata procurement network under agreed commercial and quality terms.</p></div><aside>06<br><small>DIRECT MARKET</small></aside></article>
+      </div>
+
+      <div class="journey-closing">
+        <small>THE DIFFERENCE</small>
+        <div><h3>Not just a buyer<br><em>at harvest.</em></h3><p>Annyadata's relationship with the farmer begins before the crop reaches the market and continues through the entire cultivation journey.</p></div>
+      </div>
+    </section>
+
+    <!-- SAMARTH -->
+    <section class="section samarth-section" id="technology">
+      <div class="samarth-header">
+        <div class="section-kicker"><span></span> THE INTELLIGENCE BEHIND ANNYADATA</div>
+        <h2>Agricultural intelligence,<br><em>within reach.</em></h2>
+        <p>
+          Samarth is Annyadata's voice-first AI assistant, designed to stay
+          alongside the farmer throughout the cultivation cycle. Simple
+          questions can become useful, timely guidance.
+        </p>
+      </div>
+
+      <div class="samarth-showcase">
+        <div class="samarth-side">
+          <article><span>01</span><div><h3>Voice first</h3><p>Farmers can speak naturally instead of navigating complicated digital interfaces.</p></div></article>
+          <article><span>02</span><div><h3>Always available</h3><p>Agricultural questions can be asked whenever the farmer needs assistance.</p></div></article>
+        </div>
+
+        <div class="samarth-interface">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="samarth-core">
+            <div class="samarth-logo">SA</div>
+            <strong>SAMARTH AI</strong>
+            <small>LISTENING</small>
+            <div class="voice-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="samarth-side">
+          <article><span>03</span><div><h3>Understands context</h3><p>Farm information and cultivation context can help make responses more relevant to the farmer.</p></div></article>
+          <article><span>04</span><div><h3>Built for the field</h3><p>The experience is designed around practical agricultural use rather than complex technical interfaces.</p></div></article>
+        </div>
+      </div>
+
+      <div class="conversation">
+        <small>A SIMPLE CONVERSATION</small>
+        <div class="conversation-row">
+          <div><span>FARMER</span><p>“আমার ধানের পাতাগুলো একটু হলুদ হয়ে যাচ্ছে। কী করা উচিত?”</p></div>
+          <b>↓</b>
+          <div><span>SAMARTH AI</span><p>“চলুন প্রথমে কয়েকটি বিষয় দেখে নিই। পাতার হলুদ হওয়া জমির জল, পুষ্টি বা অন্য কোনো সমস্যার কারণে হতে পারে...”</p></div>
+        </div>
+      </div>
+
+      <div class="capabilities">
+        <div><small>WHAT SAMARTH CAN SUPPORT</small><h3>Intelligence that<br><em>works around the farmer.</em></h3></div>
+        <div class="capability-list">
+          <span><b>01</b> Crop guidance</span><span><b>02</b> Farm observations</span><span><b>03</b> Cultivation support</span>
+          <span><b>04</b> Quality-focused guidance</span><span><b>05</b> Voice interaction</span><span><b>06</b> Farmer information</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET -->
+    <section class="section market-section" id="market">
+      <div class="market-intro">
+        <div class="section-kicker"><span></span> BEYOND THE FARM</div>
+        <h2>From paddy<br>to <em>global value.</em></h2>
+        <p>
+          Annyadata connects the field to processing and takes processed rice
+          closer to international markets through direct commercial relationships.
+        </p>
+      </div>
+
+      <div class="market-chain">
+        <div class="market-step"><b>01</b><span>F</span><h3>Farmer</h3><p>Quality-focused paddy production supported by technology and field teams.</p></div>
+        <i>→</i>
+        <div class="market-step active"><b>02</b><span>A</span><h3>Annyadata</h3><p>Direct procurement from participating farmers under agreed quality standards.</p></div>
+        <i>→</i>
+        <div class="market-step"><b>03</b><span>M</span><h3>Rice Mill</h3><p>Processing partners transform paddy into market-ready rice.</p></div>
+        <i>→</i>
+        <div class="market-step active"><b>04</b><span>A</span><h3>Annyadata</h3><p>Procurement, quality coordination and direct export operations.</p></div>
+        <i>→</i>
+        <div class="market-step global"><b>05</b><span>G</span><h3>Global Market</h3><p>Processed rice reaches international buyers through direct export.</p></div>
+      </div>
+
+      <div class="market-cards">
+        <article class="market-card">
+          <small>01 · PROCESSING PARTNER</small><div class="market-symbol">M</div>
+          <h3>A stronger relationship<br>with the <em>mill.</em></h3>
+          <p>Annyadata brings mills into a structured procurement network where paddy supply, quality expectations and commercial relationships can be coordinated more efficiently.</p>
+          <div class="market-benefits">
+            <div><b>01</b><strong>Structured supply</strong><p>More predictable paddy procurement.</p></div>
+            <div><b>02</b><strong>Quality specifications</strong><p>Clear expectations for processing quality.</p></div>
+            <div><b>03</b><strong>Digital coordination</strong><p>Centralized commercial and operational information.</p></div>
+            <div><b>04</b><strong>Long-term relationship</strong><p>A recurring procurement partnership rather than isolated transactions.</p></div>
+          </div>
+        </article>
+
+        <article class="market-card">
+          <small>02 · GLOBAL MARKET</small><div class="market-symbol">↗</div>
+          <h3>Taking Indian rice<br><em>closer to the world.</em></h3>
+          <p>Once the rice is processed, Annyadata becomes the commercial bridge to international markets — coordinating quality, documentation and export relationships.</p>
+          <div class="market-benefits">
+            <div><b>01</b><strong>Quality verification</strong><p>Processed rice is evaluated against agreed requirements.</p></div>
+            <div><b>02</b><strong>Market access</strong><p>Connect processed rice with international buyers.</p></div>
+            <div><b>03</b><strong>Direct export</strong><p>Reduce unnecessary commercial layers between mill and buyer.</p></div>
+            <div><b>04</b><strong>Value creation</strong><p>More value can be created further along the chain.</p></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="value-sharing">
+        <small>THE LONG-TERM MODEL</small>
+        <div><h3>When the chain<br>creates more value,<br><em>the ecosystem should feel it.</em></h3>
+        <p>Annyadata's model is built around creating value across the journey — from better-quality paddy and reliable processing to stronger access to global markets.</p>
+        <p>A sustainable portion of that value can support the relationships that make the ecosystem stronger: participating farmers and processing partners.</p></div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="portals">
+      <div class="section-kicker"><span></span> READY TO CONNECT?</div>
+      <div class="final-cta-content">
+        <h2>One ecosystem.<br><em>Four ways to participate.</em></h2>
+        <p>Whether you grow, supply, process, or buy — Annyadata connects you to the right place in the agricultural value chain.</p>
+      </div>
+
+      <div class="portal-grid">
+        <a href="samarthAI.html" class="portal-card active">
+          <b>01</b><span>F</span><div><small>FIELD</small><h3>Farmer Portal</h3><p>Access Samarth AI, cultivation guidance and direct procurement opportunities.</p></div><strong>↗</strong>
+        </a>
+        <button class="portal-card" type="button" data-coming-soon>
+          <b>02</b><span>+</span><div><small>INPUTS</small><h3>Input Partner</h3><p>Connect agricultural inputs and services directly with participating farmers.</p></div><strong>↗</strong>
+        </button>
+        <button class="portal-card" type="button" data-coming-soon>
+          <b>03</b><span>M</span><div><small>PROCESSING</small><h3>Rice Mill Portal</h3><p>Build structured procurement relationships and coordinate processing requirements.</p></div><strong>↗</strong>
+        </button>
+        <button class="portal-card" type="button" data-coming-soon>
+          <b>04</b><span>↗</span><div><small>GLOBAL</small><h3>Global Market</h3><p>Connect with processed Indian rice through direct commercial relationships.</p></div><strong>↗</strong>
+        </button>
+      </div>
+
+      <div class="final-statement">
+        <small>THE ANNYADATA VISION</small>
+        <h3>Technology for the field.<br>Relationships for the ecosystem.<br><em>Markets beyond it.</em></h3>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="footer-logo">A</div>
+        <div><strong>ANNYADATA</strong><small>CONNECTING VALUE</small></div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#technology">Samarth AI</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#portals">Portals</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Annyadata</span>
+        <span>Built for the agricultural ecosystem.</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">This portal is coming next.</div>
+  <script src="landing.js"></script>
+</body>
+</html>

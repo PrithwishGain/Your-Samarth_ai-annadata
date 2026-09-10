@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complete Your Profile — Samarth AI</title>
+
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        /* =========================================
+           PROFILE SETUP PAGE
+        ========================================= */
+
+        .profile-page {
+            min-height: 100vh;
+            background: #f8f4ec;
+            color: #0d3b2e;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .profile-header {
+    width: calc(100% - 160px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 26px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+        .profile-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0d4b3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f2c94c;
+            font-size: 22px;
+        }
+
+        .profile-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .profile-logo-name {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 25px;
+            font-weight: 700;
+            color: #103c30;
+        }
+
+        .profile-logo-name span {
+            color: #d6a63c;
+        }
+
+        .profile-logo-tagline {
+            font-size: 12px;
+            color: #65746d;
+            margin-top: 4px;
+        }
+
+        .back-button {
+            border: none;
+            background: transparent;
+            color: #0d3b2e;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .back-button:hover {
+            opacity: 0.75;
+        }
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .profile-main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 28px 20px 70px;
+            box-sizing: border-box;
+        }
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .profile-card {
+            width: 100%;
+            max-width: 620px;
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 42px 46px 45px;
+            box-sizing: border-box;
+            box-shadow: 0 12px 35px rgba(13, 59, 46, 0.08);
+        }
+
+        .profile-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            background: #e8f1ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 31px;
+        }
+
+        .profile-title {
+            text-align: center;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 34px;
+            color: #0d3b2e;
+            margin: 0 0 10px;
+        }
+
+        .profile-subtitle {
+            text-align: center;
+            color: #64736c;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 auto 32px;
+            max-width: 500px;
+        }
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .profile-form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: #173d32;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #c45a45;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            height: 50px;
+            padding: 0 15px;
+            border: 1px solid #d5ddd8;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #183c32;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: #9aa5a0;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            border-color: #0d4b3a;
+            box-shadow: 0 0 0 3px rgba(13, 75, 58, 0.08);
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        /* =========================================
+           TWO COLUMN FORM
+        ========================================= */
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        /* =========================================
+           BUSINESS STATUS
+        ========================================= */
+
+        .status-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .status-option {
+            position: relative;
+        }
+
+        .status-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .status-option label {
+            min-height: 48px;
+            padding: 10px;
+            border: 1px solid #d5ddd8;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 13px;
+            color: #36564b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .status-option label:hover {
+            border-color: #0d4b3a;
+        }
+
+        .status-option input:checked + label {
+            background: #e8f1ec;
+            border-color: #0d4b3a;
+            color: #0d4b3a;
+            font-weight: 700;
+        }
+
+        /* =========================================
+           CONTINUE BUTTON
+        ========================================= */
+
+        .continue-button {
+            width: 100%;
+            height: 52px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #0d4b3a;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease,
+                        transform 0.1s ease;
+        }
+
+        .continue-button:hover {
+            background: #093d30;
+        }
+
+        .continue-button:active {
+            transform: scale(0.99);
+        }
+
+        .continue-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .form-message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px 15px;
+            border-radius: 9px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #fff0ed;
+            color: #9b3d2e;
+            border: 1px solid #f0c7c0;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #eaf6ef;
+            color: #21633f;
+            border: 1px solid #c5e3d0;
+        }
+
+        /* =========================================
+           FOOTER NOTE
+        ========================================= */
+
+        .profile-note {
+            text-align: center;
+            margin-top: 23px;
+            color: #87928d;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 650px) {
+
+            .profile-header {
+                padding: 20px;
+            }
+
+            .profile-logo-name {
+                font-size: 22px;
+            }
+
+            .profile-logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 19px;
+            }
+
+            .profile-card {
+                padding: 32px 22px 35px;
+                border-radius: 18px;
+            }
+
+            .profile-title {
+                font-size: 29px;
+            }
+
+            .profile-subtitle {
+                font-size: 15px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .status-options {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="profile-page">
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="profile-header">
+
+        <div class="profile-logo">
+
+            <div class="profile-logo-icon">
+                ♧
+            </div>
+
+            <div class="profile-logo-text">
+
+                <div class="profile-logo-name">
+                    Samarth <span>AI</span>
+                </div>
+
+                <div class="profile-logo-tagline">
+                    आपका साथी, हर कदम पर
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="back-button"
+            id="backButton"
+        >
+            ← Back
+        </button>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="profile-main">
+
+        <section class="profile-card">
+
+            <div class="profile-icon">
+                📋
+            </div>
+
+
+            <h1 class="profile-title">
+                Tell Us About Yourself
+            </h1>
+
+
+            <p class="profile-subtitle">
+                Help Samarth understand your needs so we can
+                provide more relevant business guidance,
+                government schemes and financial support.
+            </p>
+
+
+            <!-- =====================================
+                 PROFILE FORM
+            ====================================== -->
+
+            <form
+                class="profile-form"
+                id="profileForm"
+            >
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="fullName"
+                    >
+                        Full name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        class="form-input"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- VILLAGE + DISTRICT -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                            for="village"
+                        >
+                            Village / Town
+                        </label>
+
+                        <input
+                            type="text"
+                            id="village"
+                            class="form-input"
+                            placeholder="Enter village or town"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                            for="district"
+                        >
+                            District
+                        </label>
+
+                        <input
+                            type="text"
+                            id="district"
+                            class="form-input"
+                            placeholder="Enter district"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATE -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="state"
+                    >
+                        State
+                    </label>
+
+                    <select
+                        id="state"
+                        class="form-select"
+                    >
+
+                        <option value="">
+                            Select your state
+                        </option>
+
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- OCCUPATION -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="occupation"
+                    >
+                        What do you currently do?
+                    </label>
+
+                    <select
+                        id="occupation"
+                        class="form-select"
+                    >
+
+                        <option value="">
+                            Select your occupation
+                        </option>
+
+                        <option value="farmer">
+                            Farmer
+                        </option>
+
+                        <option value="student">
+                            Student
+                        </option>
+
+                        <option value="shopkeeper">
+                            Shopkeeper
+                        </option>
+
+                        <option value="artisan">
+                            Artisan / Craftsperson
+                        </option>
+
+                        <option value="self_employed">
+                            Self-employed
+                        </option>
+
+                        <option value="worker">
+                            Worker
+                        </option>
+
+                        <option value="homemaker">
+                            Homemaker
+                        </option>
+
+                        <option value="service">
+                            Private / Government Service
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUSINESS STATUS -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        What best describes your business situation?
+                    </label>
+
+
+                    <div class="status-options">
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="businessStarting"
+                                name="businessStatus"
+                                value="planning_to_start"
+                            >
+
+                            <label for="businessStarting">
+                                Planning to start
+                            </label>
+
+                        </div>
+
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="businessRunning"
+                                name="businessStatus"
+                                value="running"
+                            >
+
+                            <label for="businessRunning">
+                                Already running
+                            </label>
+
+                        </div>
+
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="businessLooking"
+                                name="businessStatus"
+                                value="looking_for_support"
+                            >
+
+                            <label for="businessLooking">
+                                Looking for support
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUSINESS TYPE -->
+
+                <div
+                    class="form-group"
+                    id="businessTypeGroup"
+                >
+
+                    <label
+                        class="form-label"
+                        for="businessType"
+                    >
+                        What type of business are you interested in?
+                    </label>
+
+                    <select
+                        id="businessType"
+                        class="form-select"
+                    >
+
+                        <option value="">
+                            Select business type
+                        </option>
+
+                        <option value="agriculture">
+                            Agriculture / Farming
+                        </option>
+
+                        <option value="food">
+                            Food / Restaurant / Sweet Shop
+                        </option>
+
+                        <option value="retail">
+                            Retail / Shop
+                        </option>
+
+                        <option value="manufacturing">
+                            Manufacturing
+                        </option>
+
+                        <option value="handicraft">
+                            Handicraft / Artisan
+                        </option>
+
+                        <option value="services">
+                            Service Business
+                        </option>
+
+                        <option value="technology">
+                            Technology / Digital
+                        </option>
+
+                        <option value="transport">
+                            Transport
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- CONTINUE -->
+
+                <button
+                    type="submit"
+                    class="continue-button"
+                    id="continueButton"
+                >
+                    Continue →
+                </button>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                ></div>
+
+
+            </form>
+
+
+            <p class="profile-note">
+                Your information is used only to personalize
+                your Samarth experience and recommendations.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     SUPABASE
+========================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../supabase.js"></script>
+
+
+<!-- =========================================
+     PROFILE LOGIC
+========================================= -->
+
+<script>
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const profileForm =
+        document.getElementById("profileForm");
+
+    const continueButton =
+        document.getElementById("continueButton");
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+    const backButton =
+        document.getElementById("backButton");
+
+
+    /* =========================================
+       SHOW MESSAGE
+    ========================================= */
+
+    function showMessage(message, type) {
+
+        formMessage.textContent = message;
+
+        formMessage.className =
+            "form-message " + type;
+
+    }
+
+
+    /* =========================================
+       CHECK LOGIN
+    ========================================= */
+
+    async function checkUser() {
+    try {
+
+        // Wait for Supabase to restore the OAuth session
+        const {
+            data: { session },
+            error
+        } = await supabaseClient.auth.getSession();
+
+        if (error) {
+            console.error("Session error:", error);
+            return;
+        }
+
+        // No session = user is not logged in
+        if (!session) {
+            console.log("No active session. Redirecting to login.");
+
+            window.location.href = "login.html";
+            return;
+        }
+
+        // User is authenticated
+        const user = session.user;
+
+        console.log("Google authentication successful!");
+        console.log("Logged-in user:", user);
+
+        // Optional: automatically fill the name from Google
+        if (user.user_metadata?.full_name) {
+            document.getElementById("fullName").value =
+                user.user_metadata.full_name;
+        }
+
+    } catch (error) {
+        console.error("Unable to check user:", error);
+    }
+}
+
+
+    /* =========================================
+       SAVE PROFILE
+    ========================================= */
+
+    profileForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            continueButton.disabled = true;
+
+            continueButton.textContent =
+                "Saving...";
+
+
+            showMessage(
+                "",
+                ""
+            );
+
+
+            try {
+
+                /* ================================
+                   GET CURRENT USER
+                ================================= */
+
+                const {
+                    data: {
+                        user
+                    },
+                    error: userError
+                } = await supabaseClient.auth.getUser();
+
+
+                if (userError) {
+
+                    throw userError;
+
+                }
+
+
+                if (!user) {
+
+                    showMessage(
+                        "Your session has expired. Please login again.",
+                        "error"
+                    );
+
+                    setTimeout(
+                        function() {
+
+                            window.location.href =
+                                "login.html";
+
+                        },
+                        1500
+                    );
+
+                    return;
+
+                }
+
+
+                /* ================================
+                   GET FORM VALUES
+                ================================= */
+
+                const fullName =
+                    document
+                        .getElementById("fullName")
+                        .value
+                        .trim();
+
+
+                const village =
+                    document
+                        .getElementById("village")
+                        .value
+                        .trim();
+
+
+                const district =
+                    document
+                        .getElementById("district")
+                        .value
+                        .trim();
+
+
+                const state =
+                    document
+                        .getElementById("state")
+                        .value;
+
+
+                const occupation =
+                    document
+                        .getElementById("occupation")
+                        .value;
+
+
+                const businessStatusElement =
+                    document.querySelector(
+                        'input[name="businessStatus"]:checked'
+                    );
+
+
+                const businessStatus =
+                    businessStatusElement
+                        ? businessStatusElement.value
+                        : "";
+
+
+                const businessType =
+                    document
+                        .getElementById("businessType")
+                        .value;
+
+
+                /* ================================
+                   VALIDATION
+                ================================= */
+
+                if (!fullName) {
+
+                    showMessage(
+                        "Please enter your full name.",
+                        "error"
+                    );
+
+                    continueButton.disabled = false;
+
+                    continueButton.textContent =
+                        "Continue →";
+
+                    return;
+
+                }
+
+
+                /* ================================
+                   SAVE TO SUPABASE
+                ================================= */
+
+                const {
+                    error
+                } = await supabaseClient
+                    .from("profiles")
+                    .upsert({
+
+                        id: user.id,
+
+                        full_name: fullName,
+
+                        phone:
+                            user.phone || null,
+
+                        email:
+                            user.email || null,
+
+                        village:
+                            village || null,
+
+                        district:
+                            district || null,
+
+                        state:
+                            state || null,
+
+                        occupation:
+                            occupation || null,
+
+                        business_status:
+                            businessStatus || null,
+
+                        business_type:
+                            businessType || null,
+
+                        updated_at:
+                            new Date().toISOString()
+
+                    });
+
+
+                if (error) {
+
+                    throw error;
+
+                }
+
+
+                /* ================================
+                   SUCCESS
+                ================================= */
+
+                showMessage(
+                    "Profile saved successfully!",
+                    "success"
+                );
+
+
+                continueButton.textContent =
+                    "Saved ✓";
+
+
+                /*
+                    Dashboard will be connected
+                    here next.
+                */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "../samarthAI.html";
+
+                    },
+                    1200
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Profile save error:",
+                    error
+                );
+
+
+                showMessage(
+                    "Unable to save your profile. Please try again.",
+                    "error"
+                );
+
+
+                continueButton.disabled = false;
+
+                continueButton.textContent =
+                    "Continue →";
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       BACK BUTTON
+    ========================================= */
+
+    backButton.addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+    /* =========================================
+       START
+    ========================================= */
+
+    checkUser();
+
+</script>
+
+</body>
+</html>

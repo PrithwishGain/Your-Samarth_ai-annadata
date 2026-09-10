@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium | Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    /* =========================
+       PREMIUM PAGE
+    ========================= */
+
+    .premium-page{
+      min-height:100vh;
+      background:var(--cream);
+      color:var(--forest-deep);
+    }
+
+    .premium-header{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      border-bottom:1px solid rgba(31,75,63,0.10);
+      background:rgba(250,247,237,0.95);
+      backdrop-filter:blur(12px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .premium-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--forest-deep);
+    }
+
+    .premium-logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--forest-deep);
+      color:#f2c75c;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .premium-logo-text{
+      font-family:Georgia,serif;
+      font-size:21px;
+      font-weight:700;
+    }
+
+    .premium-logo-text span{
+      color:#d49b32;
+    }
+
+    .premium-back{
+      text-decoration:none;
+      color:var(--forest-deep);
+      font-size:14px;
+      font-weight:600;
+      padding:9px 16px;
+      border:1px solid rgba(31,75,63,0.15);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .premium-back:hover{
+      background:rgba(31,75,63,0.07);
+      transform:translateY(-1px);
+    }
+
+    .premium-hero{
+      text-align:center;
+      padding:70px 20px 45px;
+      max-width:850px;
+      margin:auto;
+    }
+
+    .premium-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:rgba(212,155,50,0.13);
+      border:1px solid rgba(212,155,50,0.25);
+      color:#93651b;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .premium-hero h1{
+      font-family:Georgia,serif;
+      font-size:clamp(38px,5vw,62px);
+      line-height:1.05;
+      margin:0 0 18px;
+      color:var(--forest-deep);
+    }
+
+    .premium-hero h1 em{
+      color:#528264;
+      font-style:italic;
+    }
+
+    .premium-hero p{
+      max-width:650px;
+      margin:auto;
+      font-size:17px;
+      line-height:1.7;
+      color:#596760;
+    }
+
+    .premium-coming{
+      display:inline-block;
+      margin-top:24px;
+      padding:9px 18px;
+      border-radius:999px;
+      background:var(--forest-deep);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .premium-plans{
+      max-width:1050px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .premium-card{
+      position:relative;
+      background:#fffdf6;
+      border:1px solid rgba(31,75,63,0.12);
+      border-radius:24px;
+      padding:32px;
+      box-shadow:0 12px 35px rgba(31,75,63,0.07);
+    }
+
+    .premium-card.premium{
+      border:2px solid rgba(212,155,50,0.55);
+      box-shadow:0 18px 45px rgba(31,75,63,0.11);
+    }
+
+    .plan-label{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      color:#65716b;
+      margin-bottom:9px;
+    }
+
+    .premium .plan-label{
+      color:#a17222;
+    }
+
+    .premium-card h2{
+      font-family:Georgia,serif;
+      font-size:31px;
+      margin:0 0 10px;
+    }
+
+    .premium-price{
+        display:flex;
+        align-items:baseline;
+        flex-wrap:wrap;
+        gap:5px;
+        margin:4px 0 18px;
+        }
+
+        .price-amount{
+        font-size:28px;
+        font-weight:800;
+        color:var(--forest-deep);
+        }
+
+        .price-period{
+        font-size:14px;
+        color:#68736e;
+        }
+
+        .price-label{
+        width:100%;
+        margin-top:2px;
+        font-size:11px;
+        color:#a17222;
+        font-weight:700;
+        }
+
+    .plan-description{
+      color:#68736e;
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:25px;
+    }
+
+    .plan-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .plan-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(31,75,63,0.07);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .plan-list li:last-child{
+      border-bottom:none;
+    }
+
+    .check{
+      flex:none;
+      width:21px;
+      height:21px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(31,75,63,0.09);
+      color:var(--forest-deep);
+      font-size:12px;
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .premium .check{
+      background:rgba(212,155,50,0.15);
+      color:#a17222;
+    }
+
+    .premium-ribbon{
+      position:absolute;
+      top:18px;
+      right:18px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:#f1d48a;
+      color:#765116;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .premium-note{
+      max-width:1050px;
+      margin:0 auto 70px;
+      padding:0 20px;
+    }
+
+    .premium-note-box{
+      background:rgba(31,75,63,0.055);
+      border:1px solid rgba(31,75,63,0.10);
+      border-radius:20px;
+      padding:25px 28px;
+      text-align:center;
+    }
+
+    .premium-note-box h3{
+      font-family:Georgia,serif;
+      font-size:22px;
+      margin:0 0 8px;
+    }
+
+    .premium-note-box p{
+      margin:0;
+      color:#66716c;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .premium-footer{
+      text-align:center;
+      padding:25px 20px 35px;
+      color:#7a837f;
+      font-size:12px;
+    }
+
+    .organization-section{
+    max-width:1050px;
+    margin:0 auto 70px;
+    padding:0 20px;
+    }
+
+    .organization-box{
+    background:#fffdf6;
+    border:1px solid rgba(31,75,63,0.12);
+    border-radius:24px;
+    padding:38px 42px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(31,75,63,0.06);
+    }
+
+    .organization-label{
+    display:inline-block;
+    margin-bottom:12px;
+    color:#a17222;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    }
+
+    .organization-box h2{
+    font-family:Georgia,serif;
+    font-size:30px;
+    margin:0 0 12px;
+    color:var(--forest-deep);
+    }
+
+    .organization-box > p{
+    max-width:760px;
+    margin:0 auto 28px;
+    color:#66716c;
+    font-size:14px;
+    line-height:1.7;
+    }
+
+    .organization-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    text-align:left;
+    }
+
+    .organization-option{
+    padding:18px;
+    background:rgba(31,75,63,0.045);
+    border:1px solid rgba(31,75,63,0.08);
+    border-radius:14px;
+    }
+
+    .organization-option strong{
+    display:block;
+    margin-bottom:7px;
+    color:var(--forest-deep);
+    font-size:14px;
+    }
+
+    .organization-option span{
+    display:block;
+    color:#68736e;
+    font-size:12px;
+    line-height:1.5;
+    }
+
+    .organization-note{
+    margin-top:22px;
+    color:#a17222;
+    font-size:12px;
+    font-weight:700;
+    }
+
+    @media(max-width:700px){
+      .premium-header{
+        padding:0 20px;
+      }
+
+      .premium-logo-text{
+        font-size:18px;
+      }
+
+      .premium-hero{
+        padding:50px 20px 35px;
+      }
+
+      .premium-hero p{
+        font-size:15px;
+      }
+
+      .premium-plans{
+        grid-template-columns:1fr;
+        padding-bottom:45px;
+      }
+
+      .premium-card{
+        padding:25px;
+      }
+
+      .premium-card h2{
+        font-size:27px;
+      }
+
+      .premium-note{
+        margin-bottom:45px;
+      }
+    }
+
+    .premium-cta{
+    margin-top:24px;
+    padding-top:18px;
+    border-top:1px solid rgba(31,75,63,0.12);
+    text-align:center;
+    }
+
+    .premium-button{
+    width:100%;
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    background:#d8b45a;
+    color:#1f4b3f;
+    font-size:14px;
+    font-weight:700;
+    cursor:not-allowed;
+    opacity:0.95;
+    }
+
+    .premium-cta-note{
+    margin:9px 0 0;
+    font-size:12px;
+    color:#6b756f;
+    line-height:1.5;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <div class="premium-page">
+
+    <!-- HEADER -->
+    <header class="premium-header">
+
+      <a href="../samarthAI.html" class="premium-logo">
+        <div class="premium-logo-mark">♧</div>
+
+        <div class="premium-logo-text">
+          Samarth <span>AI</span>
+        </div>
+      </a>
+
+      <a href="../samarthAI.html" class="premium-back">
+        ← Back to Samarth
+      </a>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="premium-hero">
+
+      <div class="premium-badge">
+        ⭐ Premium Experience
+      </div>
+
+      <h1>
+        More power.<br>
+        <em>More possibilities.</em>
+      </h1>
+
+      <p>
+        Samarth Premium is designed for users who need deeper
+        business insights, personalized recommendations and
+        advanced AI assistance.
+      </p>
+
+      <div class="premium-coming">
+        Coming Soon
+      </div>
+
+    </section>
+
+
+    <!-- PLANS -->
+    <section class="premium-plans">
+
+      <!-- FREE -->
+      <div class="premium-card">
+
+        <div class="plan-label">
+          Free Access
+        </div>
+
+        <h2>Samarth Free</h2>
+
+        <p class="plan-description">
+          Essential AI assistance for everyday questions,
+          information and guidance.
+        </p>
+
+        <ul class="plan-list">
+
+          <li>
+            <span class="check">✓</span>
+            <span>Voice AI assistance</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Basic business guidance</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Basic government scheme information</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Basic agricultural information</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Limited AI usage</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Basic weather information</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>General recommendations</span>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- PREMIUM -->
+      <div class="premium-card premium">
+
+        <div class="premium-ribbon">
+          COMING SOON
+        </div>
+
+        <div class="plan-label">
+          Advanced Access
+        </div>
+
+        <h2>Samarth Premium</h2>
+
+        <div class="premium-price">
+            <span class="price-amount">₹99</span>
+            <span class="price-period">/ month</span>
+            <span class="price-label">Indicative pricing</span>
+          </div>
+
+        <p class="plan-description">
+          Advanced intelligence for users who want
+          personalized planning and deeper insights.
+        </p>
+
+        <ul class="plan-list">
+
+          <li>
+            <span class="check">✓</span>
+            <span>Everything in Free</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Advanced business analysis</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Personalized scheme matching</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Advanced agricultural and business planning</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Higher AI usage</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Advanced weather planning services</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Personalized recommendations</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Financial planning assistance</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Business growth insights</span>
+          </li>
+
+          <li>
+            <span class="check">✓</span>
+            <span>Priority assistance</span>
+          </li>
+
+        </ul>
+
+        <div class="premium-cta">
+            <button class="premium-button" disabled>
+              Premium — Coming Soon
+            </button>
+  
+            <p class="premium-cta-note">
+              Premium services will be available in a future release.
+            </p>
+          </div>
+
+      </div>
+    </section>
+
+
+    <!-- BUSINESS MODEL NOTE -->
+    <section class="premium-note">
+
+      <div class="premium-note-box">
+
+        <h3>Built to grow with your needs</h3>
+
+        <p>
+          Samarth's premium ecosystem can support advanced
+          AI capabilities while keeping essential assistance
+          accessible to rural users.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="organization-section">
+
+        <div class="organization-box">
+      
+          <div class="organization-label">
+            FOR ORGANIZATIONS
+          </div>
+      
+          <h2>Empowering organizations to reach more users</h2>
+      
+          <p>
+            Samarth can support FPOs, NGOs, financial institutions,
+            government programs and other organizations through
+            customized AI assistance and institutional access.
+          </p>
+      
+          <div class="organization-options">
+      
+            <div class="organization-option">
+              <strong>Institutional Access</strong>
+              <span>Organization-wide access for users and teams.</span>
+            </div>
+      
+            <div class="organization-option">
+              <strong>Customized Knowledge</strong>
+              <span>Verified organization-specific information and guidance.</span>
+            </div>
+      
+            <div class="organization-option">
+              <strong>Implementation & Support</strong>
+              <span>Deployment, customization and ongoing support.</span>
+            </div>
+      
+          </div>
+      
+          <div class="organization-note">
+            Future B2B & B2B2C offering
+          </div>
+      
+        </div>
+      
+      </section>
+
+
+    <footer class="premium-footer">
+      © 2026 Samarth AI · आपका साथी, हर कदम पर
+    </footer>
+
+  </div>
+
+</body>
+</html>

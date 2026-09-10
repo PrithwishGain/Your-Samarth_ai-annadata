@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Get Loan Support — Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    /* Page-specific styles */
+    body {
+      background-color: #FBF6EE;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #113B2B;
+    }
+
+    .back-link {
+      color: #113B2B;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .start-inner {
+      max-width: 880px;
+      margin: 1.5rem auto;
+      padding: 1rem;
+    }
+
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 6px 18px rgba(16, 24, 32, 0.08);
+    }
+
+    .subtitle {
+      color: #374151;
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.9rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: #0f3b2a;
+    }
+
+    input[type="text"],
+    select {
+      padding: 0.6rem 0.75rem;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .primary-btn {
+      background: #0f3b2a;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary-btn:hover {
+      opacity: 0.9;
+    }
+
+    .primary-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 720px) {
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .form-row.full {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="page-header wrap">
+    <a class="back-link" href="../samarthAI.html">
+      ← Back to Samarth
+    </a>
+
+    <div class="brand">
+      Samarth AI
+    </div>
+  </header>
+
+
+  <main class="start-inner wrap">
+
+    <h1>Get Loan Support</h1>
+
+    <p class="subtitle">
+      Tell us about your business and funding needs. Samarth will help you
+      understand suitable loan and financing options.
+    </p>
+
+
+    <div class="form-card" role="region" aria-labelledby="loan-heading">
+
+      <form id="loanForm" novalidate>
+
+        <div class="form-grid">
+
+          <!-- Loan Purpose -->
+          <div class="form-row full">
+            <label for="loan-purpose">
+              What do you need the loan for?
+            </label>
+
+            <select id="loan-purpose" name="loan-purpose" required>
+              <option value="">Select a purpose</option>
+              <option>Starting a new business</option>
+              <option>Expanding an existing business</option>
+              <option>Buying equipment</option>
+              <option>Working capital</option>
+              <option>Agriculture / Farming</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+
+          <!-- Loan Amount -->
+          <div class="form-row">
+            <label for="loan-amount">
+              Approximate loan amount
+            </label>
+
+            <select id="loan-amount" name="loan-amount" required>
+              <option value="">Select an amount</option>
+              <option>Below ₹50,000</option>
+              <option>₹50,000 – ₹1 lakh</option>
+              <option>₹1 lakh – ₹5 lakh</option>
+              <option>₹5 lakh – ₹10 lakh</option>
+              <option>Above ₹10 lakh</option>
+            </select>
+          </div>
+
+
+          <!-- Business Status -->
+          <div class="form-row">
+            <label for="business-status">
+              Current business status
+            </label>
+
+            <select id="business-status" name="business-status" required>
+              <option value="">Select status</option>
+              <option>Planning to start</option>
+              <option>Already running a business</option>
+            </select>
+          </div>
+
+
+          <!-- Business Type -->
+          <div class="form-row">
+            <label for="business-type">
+              Business type
+            </label>
+
+            <select id="business-type" name="business-type" required>
+              <option value="">Select a type</option>
+              <option>Shop</option>
+              <option>Food business</option>
+              <option>Farming / Agriculture</option>
+              <option>Service business</option>
+              <option>Manufacturing</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+
+          <!-- Location -->
+          <div class="form-row">
+            <label for="location">
+              Location
+            </label>
+
+            <input
+              id="location"
+              name="location"
+              type="text"
+              required
+              placeholder="Town / village, district, state"
+            >
+          </div>
+
+
+          <!-- Existing Loan -->
+          <div class="form-row">
+            <label for="existing-loan">
+              Do you have any existing loans?
+            </label>
+
+            <select id="existing-loan" name="existing-loan" required>
+              <option value="">Select an option</option>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </div>
+
+
+          <!-- Monthly Income -->
+          <div class="form-row">
+            <label for="monthly-income">
+              Approximate monthly income
+            </label>
+
+            <select id="monthly-income" name="monthly-income" required>
+              <option value="">Select income range</option>
+              <option>No regular income yet</option>
+              <option>Below ₹10,000</option>
+              <option>₹10,000 – ₹25,000</option>
+              <option>₹25,000 – ₹50,000</option>
+              <option>Above ₹50,000</option>
+            </select>
+          </div>
+
+
+          <!-- Credit History -->
+          <div class="form-row">
+            <label for="credit-history">
+              Do you know your credit score?
+            </label>
+
+            <select id="credit-history" name="credit-history" required>
+              <option value="">Select an option</option>
+              <option>Yes, I know my score</option>
+              <option>No, I don't know</option>
+              <option>I don't have a credit history</option>
+            </select>
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Find Loan Options →
+          </button>
+        </div>
+
+
+        <p class="form-note">
+          Samarth will use the information you provide to identify potentially
+          relevant financing options. Final loan eligibility and approval are
+          decided by the lender.
+        </p>
+
+      </form>
+
+    </div>
+
+  </main>
+
+
+  <script>
+    (function () {
+  
+      var form = document.getElementById("loanForm");
+  
+      form.addEventListener("submit", function (e) {
+  
+        e.preventDefault();
+  
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+  
+        const loanContext = {
+  
+          intent: "loan_support",
+  
+          loanPurpose:
+            document.getElementById("loan-purpose").value,
+  
+          loanAmount:
+            document.getElementById("loan-amount").value,
+  
+          businessStatus:
+            document.getElementById("business-status").value,
+  
+          businessType:
+            document.getElementById("business-type").value,
+  
+          location:
+            document.getElementById("location").value,
+  
+          existingLoan:
+            document.getElementById("existing-loan").value,
+  
+          monthlyIncome:
+            document.getElementById("monthly-income").value,
+  
+          creditHistory:
+            document.getElementById("credit-history").value
+  
+        };
+  
+        sessionStorage.setItem(
+          "samarthBusinessContext",
+          JSON.stringify(loanContext)
+        );
+  
+        window.location.href =
+          "business-chat.html";
+  
+      });
+  
+    })();
+  </script>
+
+</body>
+
+</html>

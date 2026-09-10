@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmer Dashboard — Samarth AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Hind:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="farmer-dashboard.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="../samarthAI.html#home" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 5C13 10 9 17 9 24c0 6.6 5 10 11 10s11-3.4 11-10c0-7-4-14-11-19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 34V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 22c-3-3-5-3-8-2M20 26c3-3 5-3 8-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-text"><span class="brand-name">Samarth <em>AI</em></span><span class="brand-tagline">आपका साथी, हर कदम पर</span></span>
+    </a>
+    <nav class="main-nav dashboard-nav">
+      <a href="../samarthAI.html#home">My Farm</a>
+      <a href="#crop">Crop Support</a>
+      <a href="#tasks">My Journey</a>
+      <a href="#verification">Verification</a>
+      <a href="#procurement">Procurement</a>
+      <a href="../samarthAI.html#contact">Support</a>
+    </nav>
+    <div class="header-actions">
+
+      <button
+          class="pill-btn weather-toggle"
+          id="weatherToggle"
+          aria-expanded="false"
+          aria-controls="weatherCard"
+      >
+          <svg viewBox="0 0 24 24" fill="none">
+              <path
+                  d="M7 17.5A4.5 4.5 0 0 1 8 8.6a5.5 5.5 0 0 1 10.6 1.8A4 4 0 0 1 18 18H7.5"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+              />
+          </svg>
+  
+          <span class="weather-mini">
+              27°C · Unknown
+          </span>
+      </button>
+  
+  
+      <a href="../samarthAI.html" class="cta-btn">
+  
+          <svg viewBox="0 0 24 24" fill="none">
+              <path
+                  d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+              />
+  
+              <path
+                  d="M19 11a7 7 0 0 1-14 0M12 18v3"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+              />
+          </svg>
+  
+          Talk to Samarth
+  
+      </a>
+  
+  
+      <button
+          class="dashboard-menu-btn"
+          id="dashboardMenuBtn"
+          aria-label="Open dashboard menu"
+          aria-expanded="false"
+      >
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
+  
+  </div>
+  </div>
+</header>
+<a href="../samarthAI.html" class="back-to-portal">
+  ← Back to Farmer Portal
+</a>
+
+<main>
+<section class="dashboard-hero">
+  <div class="wrap">
+    <div class="dash-heading">
+      <div>
+        <p class="eyebrow">YOUR FARM · LIVE RECORD</p>
+        <h1>Good evening, <span>Farmer</span></h1>
+        <p class="dash-subtitle">Here is everything you need to know about your field, crop and next farm activities.</p>
+      </div>
+      <div class="season-badge"><span class="status-dot"></span> Kharif season · Paddy</div>
+    </div>
+
+    <div class="overview-grid">
+      <article class="overview-card"><div class="mini-icon">⌂</div><div><small>Total land</small><strong>5.0 acres</strong><span>2 fields · Verified</span></div></article>
+      <article class="overview-card"><div class="mini-icon">◒</div><div><small>Current crop</small><strong>Paddy</strong><span>Swarna · Kharif</span></div></article>
+      <article class="overview-card"><div class="mini-icon">◷</div><div><small>Crop age</small><strong>42 days</strong><span>After transplanting</span></div></article>
+      <article class="overview-card highlight"><div class="mini-icon">↗</div><div><small>Crop health</small><strong>86 / 100</strong><span>Good · last checked today</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section" id="crop">
+  <div class="wrap">
+    <div class="section-heading-row"><div><p class="eyebrow">FARM RECORD</p><h2 class="section-title">Your land & crop</h2></div><button class="outline-btn" onclick="showToast('Farm details editing will be connected to your farmer profile.')">Edit farm details</button></div>
+    <div class="two-col">
+      <article class="panel farm-panel">
+        <div class="panel-head"><h3>Land information</h3><span class="verified-tag">✓ Volunteer verified</span></div>
+        <div class="detail-grid">
+          <div><label>Village</label><strong>—</strong></div><div><label>District</label><strong>—</strong></div>
+          <div><label>Total area</label><strong>5.0 acres</strong></div><div><label>Cultivated area</label><strong>4.5 acres</strong></div>
+          <div><label>Soil type</label><strong>Alluvial</strong></div><div><label>Irrigation</label><strong>Canal + pump</strong></div>
+          <div><label>Field 01</label><strong>3.0 acres</strong></div><div><label>Field 02</label><strong>2.0 acres</strong></div>
+        </div>
+        <div class="data-note">Farmer-provided information is shown separately from field-verified information.</div>
+      </article>
+
+      <article class="panel crop-panel">
+        <div class="panel-head"><h3>Current crop</h3><span class="crop-season">Kharif 2026</span></div>
+        <div class="crop-main"><div class="crop-symbol">🌾</div><div><strong>Paddy · Swarna</strong><p>Transplanted 30 July 2026</p></div></div>
+        <div class="progress-label"><span>Growing progress</span><strong>58%</strong></div>
+        <div class="progress-track"><span style="width:58%"></span></div>
+        <div class="stage-row"><span class="done">Land prep</span><span class="done">Transplanting</span><span class="current">Tillering</span><span>Panicle</span><span>Harvest</span></div>
+        <div class="next-stage"><span>Next major stage</span><strong>Panicle initiation · approx. 12 days</strong></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section soft" id="tasks">
+  <div class="wrap">
+    <div class="section-heading-row"><div><p class="eyebrow">TODAY & UPCOMING</p><h2 class="section-title">What needs your attention</h2></div><span class="small-muted">Updated 10 Sep 2026</span></div>
+    <div class="tasks-layout">
+      <article class="panel tasks-panel">
+        <div class="task-item urgent"><div class="task-icon">💧</div><div class="task-copy"><div><strong>Check field moisture</strong><span class="priority">Today</span></div><p>Walk the field before irrigation. Samarth recommends watering only if the soil condition requires it.</p><button onclick="showToast('Irrigation task marked for review.')">Review task →</button></div></div>
+        <div class="task-item"><div class="task-icon">🪲</div><div class="task-copy"><div><strong>Pest scouting</strong><span>Tomorrow</span></div><p>Inspect 5–10 plants in different parts of the field for leaf damage, insects and disease symptoms.</p><button onclick="showToast('Pest scouting checklist opened.')">Open checklist →</button></div></div>
+        <div class="task-item"><div class="task-icon">🌱</div><div class="task-copy"><div><strong>Next nutrient application</strong><span>In 4 days</span></div><p>Follow the crop plan and local agronomist recommendation. Do not apply an input just because the reminder appears.</p><button onclick="showToast('Input plan opened.')">View crop plan →</button></div></div>
+        <div class="task-item"><div class="task-icon">📷</div><div class="task-copy"><div><strong>Field verification photo</strong><span>In 6 days</span></div><p>Upload a fresh field photo so your volunteer can verify crop progress and update your farm record.</p><button onclick="showToast('Photo upload will connect to the verification module.')">Add photo →</button></div></div>
+      </article>
+
+      <aside class="panel smart-panel">
+        <div class="smart-top"><span class="samarth-dot">✦</span><div><small>SAMARTH'S FARM NOTE</small><h3>Water by condition, not by calendar.</h3></div></div>
+        <p>Reminders are based on your crop stage, field history and available weather information. Before an input action, Samarth can explain <b>why</b>, <b>when</b> and <b>how much</b>.</p>
+        <a class="green-btn" href="../samarthAI.html#samarth">Ask Samarth about my field →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section" id="health">
+  <div class="wrap">
+    <div class="section-heading-row"><div><p class="eyebrow">CROP INTELLIGENCE</p><h2 class="section-title">Crop health & field condition</h2></div><button class="green-btn compact" onclick="showToast('Crop Doctor image upload will connect here.')">Check crop with AI →</button></div>
+    <div class="health-grid">
+      <article class="panel health-score"><div class="score-ring"><span>86</span><small>/100</small></div><div><span class="good-label">GOOD CONDITION</span><h3>Crop looks healthy</h3><p>Last assessment: today · based on field observations and recorded crop history.</p></div></article>
+      <article class="panel risk-card"><div class="panel-head"><h3>Things to watch</h3><span class="low-risk">Low risk</span></div><ul class="risk-list"><li><span>Leaf yellowing</span><b>Monitor</b></li><li><span>Stem borer</span><b>Scout field</b></li><li><span>Water stress</span><b>Check today</b></li><li><span>Weed pressure</span><b>Moderate</b></li></ul></article>
+      <article class="panel weather-card"><div class="panel-head"><h3>Weather for your farm</h3><span>Next 24h</span></div><div class="weather-main"><strong>27°C</strong><span>Partly cloudy</span></div><div class="weather-facts"><div><small>Rain chance</small><b>40%</b></div><div><small>Humidity</small><b>78%</b></div><div><small>Wind</small><b>11 km/h</b></div></div><p class="weather-note">Weather is used as one signal for irrigation and crop-risk guidance.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section soft" id="activity">
+  <div class="wrap">
+    <div class="section-heading-row"><div><p class="eyebrow">FARM MEMORY</p><h2 class="section-title">Farm activity log</h2></div><button class="outline-btn" onclick="showToast('Activity logging will connect to the farmer record.')">+ Log activity</button></div>
+    <div class="activity-layout">
+      <article class="panel activity-panel">
+        <div class="activity-row"><span class="activity-date">10 SEP</span><div><strong>Field health check</strong><p>Crop condition recorded as good. No major issue reported.</p></div><span class="verified-tag">Verified</span></div>
+        <div class="activity-row"><span class="activity-date">06 SEP</span><div><strong>Irrigation</strong><p>Field 01 watered · 3.0 acres.</p></div><span class="farmer-tag">Farmer log</span></div>
+        <div class="activity-row"><span class="activity-date">30 JUL</span><div><strong>Transplanting completed</strong><p>Paddy · Swarna · Field 01 + Field 02.</p></div><span class="farmer-tag">Farmer log</span></div>
+        <div class="activity-row"><span class="activity-date">25 JUL</span><div><strong>Land preparation</strong><p>Final puddling completed before transplanting.</p></div><span class="farmer-tag">Farmer log</span></div>
+      </article>
+      <article class="panel expense-panel"><div class="panel-head"><h3>Season economics</h3><span>Demo record</span></div><div class="money-row"><span>Recorded input cost</span><strong>₹18,450</strong></div><div class="money-row"><span>Expected yield</span><strong>22–25 qtl/acre</strong></div><div class="money-row"><span>Expected harvest</span><strong>~45 days</strong></div><a href="#procurement" class="text-link">View value & procurement plan →</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section" id="procurement">
+  <div class="wrap">
+    <div class="section-heading-row"><div><p class="eyebrow">ANNYADATA VALUE CHAIN</p><h2 class="section-title">From your field to the buyer</h2></div></div>
+    <div class="procurement-card panel">
+      <div class="chain-step active"><span>01</span><strong>Farm record</strong><small>Active</small></div><div class="chain-line"></div>
+      <div class="chain-step active"><span>02</span><strong>Quality tracking</strong><small>In progress</small></div><div class="chain-line"></div>
+      <div class="chain-step"><span>03</span><strong>Harvest readiness</strong><small>Pending</small></div><div class="chain-line"></div>
+      <div class="chain-step"><span>04</span><strong>Mill / buyer</strong><small>Pending</small></div>
+      <div class="procurement-bottom"><div><b>Grade-A pathway</b><p>Keep cultivation records, field verification and quality information together so the crop can be evaluated for Annyadata procurement.</p></div><button class="green-btn" onclick="showToast('Procurement readiness checklist opened.')">View readiness checklist →</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section soft" id="support-tools">
+  <div class="wrap">
+    <p class="eyebrow center">MORE FARM TOOLS</p><h2 class="section-title center">Useful things, one tap away</h2>
+    <div class="quick-grid">
+      <button class="quick-card" onclick="showToast('Crop Doctor opened.')"><span>🩺</span><strong>AI Crop Doctor</strong><small>Diagnose a crop problem</small></button>
+      <button class="quick-card" onclick="showToast('Scheme checker opened.')"><span>🛡</span><strong>Insurance & Schemes</strong><small>Check possible benefits</small></button>
+      <button class="quick-card" onclick="showToast('Market intelligence opened.')"><span>₹</span><strong>Market & Procurement</strong><small>Understand your selling pathway</small></button>
+      <button class="quick-card" onclick="showToast('Volunteer verification opened.')"><span>✓</span><strong>Field Verification</strong><small>See what has been verified</small></button>
+      <button class="quick-card" onclick="showToast('Farm documents opened.')"><span>▤</span><strong>Farm Documents</strong><small>Keep records in one place</small></button>
+      <button class="quick-card" onclick="showToast('Samarth voice assistant opened.')"><span>◉</span><strong>Talk to Samarth</strong><small>Ask in your own language</small></button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="dashboard-footer"><div class="wrap"><span>Samarth AI · Annyadata Farmer Portal</span><span>Farmer data should remain private, transparent and consent-based.</span></div></footer>
+
+<div id="toast" class="toast" role="status"></div>
+<script>
+let toastTimer;
+function showToast(message){
+  const toast=document.getElementById('toast');
+  toast.textContent=message; toast.classList.add('show');
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annyadata Farmer Portal — Samarth AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Hind:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M20 5C13 10 9 17 9 24c0 6.6 5 10 11 10s11-3.4 11-10c0-7-4-14-11-19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 34V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M20 22c-3-3-5-3-8-2M20 26c3-3 5-3 8-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Samarth <em>AI</em></span>
+        <span class="brand-tagline">आपका साथी, हर कदम पर</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#my-farm">My Farm</a>
+      <a href="#tools">Crop Support</a>
+      <a href="#journey">My Journey</a>
+      <a href="#verification">Verification</a>
+      <a href="#procurement">Procurement</a>
+      <a href="#support">Support</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="pill-btn weather-toggle" id="weatherToggle" aria-expanded="false" aria-controls="weatherCard">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M7 17.5A4.5 4.5 0 0 1 8 8.6a5.5 5.5 0 0 1 10.6 1.8A4 4 0 0 1 18 18H7.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="weather-mini">30°C · Kolkata</span>
+      </button>
+      <a href="#home" class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="1.7"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        Talk to Samarth
+      </a>
+      <button
+          class="dashboard-menu-btn"
+          id="dashboardMenuBtn"
+          aria-label="Open dashboard menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="dashboard-menu" id="dashboardMenu">
+          <a href="pages/profile.html" class="dashboard-menu-item">
+            <span class="menu-item-icon">👤</span>
+            <span>My Profile</span>
+          </a>
+        
+          <a href="pages/premium.html" class="dashboard-menu-item">
+            <span class="menu-item-icon">⭐</span>
+            <span>Premium</span>
+          </a>
+        
+          <a href="pages/partnerships.html" class="dashboard-menu-item">
+            <span class="menu-item-icon">🤝</span>
+            <span>Partnerships</span>
+          </a>
+
+          <a href="pages/revenue.html" class="dashboard-menu-item">
+            <span class="menu-item-icon">💼</span>
+            <span>Revenue Model</span>
+          </a>
+
+          <a href="#" class="dashboard-menu-item" id="logoutMenuItem">
+            <span class="menu-item-icon">↪</span>
+            <span>Logout</span>
+          </a>
+        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Weather dropdown card -->
+  <div class="weather-card" id="weatherCard" hidden>
+    <div class="weather-card-top">
+      <div>
+        <p class="weather-loc">Bhātpāra, West Bengal</p>
+        <p class="weather-temp">28°C <span>Partly Cloudy</span></p>
+      </div>
+      <svg class="weather-icon" viewBox="0 0 24 24" fill="none"><path d="M7 17.5A4.5 4.5 0 0 1 8 8.6a5.5 5.5 0 0 1 10.6 1.8A4 4 0 0 1 18 18H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="weather-grid">
+      <div><span>Humidity</span><strong>78%</strong></div>
+      <div><span>Rain chance</span><strong>40%</strong></div>
+      <div><span>Wind</span><strong>11 km/h</strong></div>
+      <div><span>Best for spraying</span><strong>Not ideal</strong></div>
+    </div>
+    <p class="weather-advice">Light rain expected by evening — a good day to hold off on urea application.</p>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="1180" cy="150" r="150" fill="var(--gold)" opacity="0.16"/>
+      <path d="M0 620 Q 220 540 440 610 T 900 600 T 1440 640 V 800 H 0 Z" fill="var(--leaf)" opacity="0.14"/>
+      <path d="M0 680 Q 260 610 520 670 T 1020 660 T 1440 700 V 800 H 0 Z" fill="var(--forest)" opacity="0.18"/>
+      <g opacity="0.12" stroke="var(--forest)" stroke-width="3" stroke-linecap="round">
+        <path d="M120 780 V690"/><path d="M120 690 q -18 -30 -6 -55"/><path d="M120 690 q 18 -30 6 -55"/>
+        <path d="M190 790 V700"/><path d="M190 700 q -18 -30 -6 -55"/><path d="M190 700 q 18 -30 6 -55"/>
+        <path d="M260 785 V695"/><path d="M260 695 q -18 -30 -6 -55"/><path d="M260 695 q 18 -30 6 -55"/>
+        <path d="M1280 780 V690"/><path d="M1280 690 q -18 -30 -6 -55"/><path d="M1280 690 q 18 -30 6 -55"/>
+        <path d="M1350 790 V700"/><path d="M1350 700 q -18 -30 -6 -55"/><path d="M1350 700 q 18 -30 6 -55"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Voice Agent for Rural India</p>
+      <h1>Just speak.<br>Samarth <em>listens, understands</em><br>and gets it done.</h1>
+      <p class="hero-sub">No typing. No forms. No waiting in line. Speak to Samarth AI in your own language about your farm, your business, or a government scheme — and it doesn't just answer, it takes the next step for you.</p>
+
+      <div class="voice-stage" id="voiceStage">
+
+        <div class="hero-voice-control">
+      
+          <div class="orb-wrapper">
+      
+            <button
+              class="orb-btn"
+              id="orbBtn"
+              aria-label="Talk to Samarth"
+              aria-pressed="false"
+            >
+      
+              <!-- Animated rings -->
+              <span class="orb-rings" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+      
+              <!-- Main voice orb -->
+              <span class="orb-core">
+      
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+      
+                  <path
+                    d="M19 11a7 7 0 0 1-14 0M12 18v3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                </svg>
+      
+                <span class="orb-title">
+                  Ask Samarth
+                </span>
+      
+                <span class="orb-subtitle">
+                  Your voice-first AI companion
+                </span>
+      
+              </span>
+      
+            </button>
+      
+            <div class="voice-orb-text">
+              <p id="orbLabel">Tap to Speak</p>
+              <span>बोलिए — Samarth is ready to listen</span>
+            </div>
+      
+          </div>
+      
+        </div>
+      
+      </div>
+
+      <ul class="hero-trust">
+        <li> Any Indian language</li>
+        <li>voice call support</li>
+        <li>Free for farmers and rural users</li>
+      </ul>
+    </div>
+
+    <div class="hero-side">
+
+      <div
+        class="voice-conversation"
+        id="voiceConversation"
+      >
+    
+        <div class="conversation-header">
+    
+          <div>
+            <span class="conversation-label">
+              LIVE CONVERSATION
+            </span>
+    
+            <h3>
+              Talk with Samarth
+            </h3>
+          </div>
+    
+          <span
+            class="conversation-status"
+            id="conversationStatus"
+          >
+            Ready
+          </span>
+    
+        </div>
+    
+    
+        <div
+          class="conversation-messages"
+          id="conversationMessages"
+        >
+    
+          <div
+            class="conversation-placeholder"
+            id="conversationPlaceholder"
+          >
+            <div class="conversation-icon">
+              ◌
+            </div>
+    
+            <p>
+              Your conversation with Samarth
+              will appear here.
+            </p>
+    
+            <span>
+              Start speaking to begin.
+            </span>
+          </div>
+    
+        </div>
+    
+    
+        <div class="conversation-footer">
+    
+          <span class="conversation-live-dot"></span>
+    
+          <span id="conversationFooterText">
+            Samarth is ready
+          </span>
+    
+          <div class="voice-wave">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+    
+        </div>
+    
+      </div>
+    
+    </div>
+</section>
+
+<!-- ============ 4 PRIMARY FARMER FEATURES ============ -->
+<section class="features" id="features">
+  <div class="wrap">
+    <p class="eyebrow center">Your Annyadata Farmer Tools</p>
+    <h2 class="section-title center">Everything you need for your farm</h2>
+
+    <div class="feature-grid">
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3c-4.8 0-8 3.2-8 8 0 4.1 2.5 7.1 6.3 7.8L12 21l1.7-2.2C17.5 18.1 20 15.1 20 11c0-4.8-3.2-8-8-8Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M8.5 11.5c1.2-1.8 2.4-2.7 3.5-2.7 1.1 0 2.3.9 3.5 2.7M9.5 14.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>AI Crop Doctor</h3>
+        <p>Tell Samarth what is happening in your field — yellow leaves, pests, disease, water stress or fertilizer concerns — and get practical next steps.</p>
+        <a href="#home" class="feature-link">Ask Crop Doctor →</a>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M5 20c.5-4 3-6 7-6s6.5 2 7 6M4 5h2M18 5h2M12 2v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Farmer Dashboard</h3>
+        <p>See your farm, land, crop, season, cultivation progress, field verification and Annyadata procurement status in one simple dashboard.</p>
+        <a href="pages/farmer-dashboard.html" class="feature-link">
+          Open My Farm →
+        </a>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l8 3.5v5c0 5-3.4 8.7-8 9.5-4.6-.8-8-4.5-8-9.5v-5L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="m8.5 12 2.3 2.3 4.7-4.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <h3>Insurance &amp; Schemes</h3>
+        <p>Find crop insurance, government schemes and farmer benefits that may apply to your farm, with Samarth guiding you through the process.</p>
+        <a href="#support" class="feature-link">Check my support →</a>
+      </article>
+
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 17.5 9.5 12l3.5 3 7-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 7h4v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 20h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Export Quality &amp; Procurement</h3>
+        <p>Work towards Grade-A, export-quality paddy, track verification and understand how your crop moves from your field to the Annyadata value chain.</p>
+        <a href="#procurement" class="feature-link">View my pathway →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FARMER DASHBOARD ============ -->
+<section class="farmer-dashboard" id="my-farm">
+  <div class="wrap">
+    <div class="farmer-dashboard-head">
+      <div>
+        <p class="eyebrow">My Farm</p>
+        <h2 class="section-title">Your farm, your crop, your journey.</h2>
+        <p class="section-sub">A simple view of everything connected to your Annyadata farmer journey — from cultivation to direct procurement.</p>
+      </div>
+      <div class="farmer-status-badge"><span></span> Annyadata Farmer</div>
+    </div>
+
+    <div class="farm-summary-grid">
+      <article class="farm-profile-card farm-card-large">
+        <div class="farm-card-top">
+          <span class="farm-card-label">FARM PROFILE</span>
+          <span class="farm-verified">● Registered</span>
+        </div>
+        <div class="farm-profile-main">
+          <div class="farm-avatar">F</div>
+          <div>
+            <h3>Your Farm</h3>
+            <p>West Bengal · Paddy cultivation</p>
+          </div>
+        </div>
+        <div class="farm-metrics">
+          <div><span>LAND</span><strong>2.5 <small>acres</small></strong></div>
+          <div><span>CROP</span><strong>Paddy</strong></div>
+          <div><span>SEASON</span><strong>Kharif</strong></div>
+        </div>
+      </article>
+
+      <article class="farm-mini-card">
+        <span class="farm-card-label">CROP STAGE</span>
+        <div class="farm-stage-value">Growing</div>
+        <div class="farm-progress"><span style="width:68%"></span></div>
+        <p>68% of the current cultivation cycle</p>
+      </article>
+
+      <article class="farm-mini-card">
+        <span class="farm-card-label">FIELD VERIFICATION</span>
+        <div class="farm-check-row"><span class="check-icon">✓</span><strong>Verified</strong></div>
+        <p>Last field visit: recently recorded</p>
+        <a href="#verification" class="inline-action">View verification →</a>
+      </article>
+
+      <article class="farm-mini-card farm-procurement-mini">
+        <span class="farm-card-label">PROCUREMENT</span>
+        <div class="farm-stage-value">Eligible</div>
+        <p>Your paddy can enter the Annyadata procurement pathway after quality verification.</p>
+        <a href="#procurement" class="inline-action">See your pathway →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FARMER TOOLS ============ -->
+<section class="farmer-tools" id="tools">
+  <div class="wrap">
+    <div class="section-heading-row">
+      <div>
+        <p class="eyebrow">Farmer Support</p>
+        <h2 class="section-title">Everything you need, connected to Samarth.</h2>
+      </div>
+      <a href="#home" class="outline-action">Ask Samarth anytime ↗</a>
+    </div>
+
+    <div class="farmer-tools-grid">
+      <article class="farmer-tool-card featured">
+        <div class="tool-icon">◌</div>
+        <span class="tool-kicker">AI CROP DOCTOR</span>
+        <h3>Understand what your crop needs.</h3>
+        <p>Describe a problem by voice — yellow leaves, pests, water stress, fertilizer questions or harvest timing — and let Samarth guide the next step.</p>
+        <a href="#home" class="tool-action">Ask Samarth about my crop <span>→</span></a>
+      </article>
+
+      <article class="farmer-tool-card">
+        <div class="tool-icon">◎</div>
+        <span class="tool-kicker">CROP HEALTH</span>
+        <h3>Crop health at a glance.</h3>
+        <div class="health-list">
+          <div><span>Crop condition</span><strong class="health-good">Good</strong></div>
+          <div><span>Water status</span><strong>Monitor</strong></div>
+          <div><span>Disease risk</span><strong class="health-good">Low</strong></div>
+        </div>
+        <a href="#home" class="tool-action">Discuss with Samarth <span>→</span></a>
+      </article>
+
+      <article class="farmer-tool-card">
+        <div class="tool-icon">₹</div>
+        <span class="tool-kicker">MARKET &amp; PRICE</span>
+        <h3>Know your value before harvest.</h3>
+        <p>Use Samarth to ask about paddy prices, quality expectations and the difference between a normal sale and the Annyadata procurement pathway.</p>
+        <a href="#procurement" class="tool-action">View procurement pathway <span>→</span></a>
+      </article>
+
+      <article class="farmer-tool-card">
+        <div class="tool-icon">✓</div>
+        <span class="tool-kicker">QUALITY</span>
+        <h3>Work towards export-quality paddy.</h3>
+        <p>Track the practical steps that matter for grain quality — cultivation, harvesting, drying, storage and verification.</p>
+        <a href="#procurement" class="tool-action">See quality goals <span>→</span></a>
+      </article>
+
+      <article class="farmer-tool-card">
+        <div class="tool-icon">＋</div>
+        <span class="tool-kicker">SCHEMES</span>
+        <h3>Find support you may qualify for.</h3>
+        <p>Ask Samarth about government schemes, crop insurance and agriculture support relevant to your situation.</p>
+        <a href="#support" class="tool-action">Explore support <span>→</span></a>
+      </article>
+
+      <article class="farmer-tool-card">
+        <div class="tool-icon">↗</div>
+        <span class="tool-kicker">HUMAN SUPPORT</span>
+        <h3>Need a person in the field?</h3>
+        <p>Annyadata's field volunteers can verify farm conditions and cultivation progress on the ground.</p>
+        <a href="#verification" class="tool-action">View field support <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FARMER JOURNEY ============ -->
+<section class="farmer-journey" id="journey">
+  <div class="wrap">
+    <div class="journey-head">
+      <div>
+        <p class="eyebrow">Your Annyadata Journey</p>
+        <h2 class="section-title">From your field to the global market.</h2>
+      </div>
+      <p>Samarth helps with the decisions. Volunteers verify the field. Annyadata connects the crop to the value chain.</p>
+    </div>
+
+    <div class="journey-track">
+      <article class="journey-step active">
+        <span class="journey-number">01</span>
+        <div class="journey-node">F</div>
+        <h3>Farmer</h3>
+        <p>Your farm &amp; your crop</p>
+      </article>
+      <span class="journey-arrow">→</span>
+      <article class="journey-step">
+        <span class="journey-number">02</span>
+        <div class="journey-node">P</div>
+        <h3>Paddy</h3>
+        <p>Cultivated for quality</p>
+      </article>
+      <span class="journey-arrow">→</span>
+      <article class="journey-step">
+        <span class="journey-number">03</span>
+        <div class="journey-node">V</div>
+        <h3>Verification</h3>
+        <p>Field progress checked</p>
+      </article>
+      <span class="journey-arrow">→</span>
+      <article class="journey-step">
+        <span class="journey-number">04</span>
+        <div class="journey-node">M</div>
+        <h3>Mill</h3>
+        <p>Direct processing partner</p>
+      </article>
+      <span class="journey-arrow">→</span>
+      <article class="journey-step">
+        <span class="journey-number">05</span>
+        <div class="journey-node">W</div>
+        <h3>World</h3>
+        <p>Global market</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIELD VERIFICATION ============ -->
+<section class="verification-section" id="verification">
+  <div class="wrap verification-grid">
+    <div>
+      <p class="eyebrow">Field Verification</p>
+      <h2 class="section-title">AI can guide you. A real person can verify the field.</h2>
+      <p class="section-sub">Annyadata combines Samarth's voice guidance with on-ground volunteer visits so that cultivation progress is not based only on what a screen says.</p>
+      <div class="verification-legend">
+        <span><i class="legend-dot farmer"></i> Farmer provided</span>
+        <span><i class="legend-dot ai"></i> Samarth / system</span>
+        <span><i class="legend-dot verified"></i> Volunteer verified</span>
+      </div>
+    </div>
+
+    <article class="verification-card">
+      <div class="verification-card-head">
+        <div>
+          <span class="tool-kicker">LATEST FIELD CHECK</span>
+          <h3>Crop progress review</h3>
+        </div>
+        <span class="verified-pill">✓ VERIFIED</span>
+      </div>
+      <div class="verification-details">
+        <div><span>Crop</span><strong>Paddy</strong></div>
+        <div><span>Crop stage</span><strong>Growing</strong></div>
+        <div><span>Field condition</span><strong>Recorded</strong></div>
+        <div><span>Next action</span><strong>Continue monitoring</strong></div>
+      </div>
+      <div class="verification-note">
+        <span>Field volunteer</span>
+        <p>Verification records can be used later when your crop enters the procurement and quality process.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCUREMENT ============ -->
+<section class="procurement-section" id="procurement">
+  <div class="wrap">
+    <div class="procurement-head">
+      <div>
+        <p class="eyebrow">Annyadata Procurement</p>
+        <h2 class="section-title">A clearer path from your paddy to its market.</h2>
+      </div>
+      <p>Our goal is to reduce unnecessary layers in the traditional chain and build direct relationships between farmers, mills and global buyers.</p>
+    </div>
+
+    <div class="procurement-board">
+      <div class="procurement-main">
+        <span class="tool-kicker">YOUR PROCUREMENT STATUS</span>
+        <div class="procurement-status"><span></span> Eligible for quality pathway</div>
+        <h3>Prepare your crop for direct procurement.</h3>
+        <p>Quality verification, harvest readiness and processing requirements will determine the next step. Ask Samarth whenever you need guidance.</p>
+        <a href="#home" class="primary-action">Ask Samarth about my harvest <span>→</span></a>
+      </div>
+
+      <div class="procurement-chain">
+        <div><span>01</span><strong>Farmer</strong><small>Grow</small></div>
+        <i>→</i>
+        <div><span>02</span><strong>Annyadata</strong><small>Procure</small></div>
+        <i>→</i>
+        <div><span>03</span><strong>Rice Mill</strong><small>Process</small></div>
+        <i>→</i>
+        <div><span>04</span><strong>Global Market</strong><small>Value</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORT ============ -->
+<section class="support-section" id="support">
+  <div class="wrap">
+    <div class="section-heading-row">
+      <div>
+        <p class="eyebrow">Support</p>
+        <h2 class="section-title">Useful services around your farm.</h2>
+      </div>
+    </div>
+
+    <div class="support-grid">
+      <article class="support-card">
+        <span class="support-index">01</span>
+        <h3>Government Schemes</h3>
+        <p>Ask Samarth which agriculture, income-support or subsidy programmes may apply to you and what documents are needed.</p>
+        <a href="#home">Ask Samarth →</a>
+      </article>
+      <article class="support-card">
+        <span class="support-index">02</span>
+        <h3>Crop Insurance</h3>
+        <p>Keep insurance information close to your farm journey and use Samarth to understand eligibility and next steps.</p>
+        <a href="#home">Ask Samarth →</a>
+      </article>
+      <article class="support-card">
+        <span class="support-index">03</span>
+        <h3>Weather &amp; Timing</h3>
+        <p>Check the local weather panel above and ask Samarth whether today's conditions are suitable for spraying, irrigation or other work.</p>
+        <a href="#home">Check with Samarth →</a>
+      </article>
+      <article class="support-card">
+        <span class="support-index">04</span>
+        <h3>Human Assistance</h3>
+        <p>If voice guidance is not enough, Annyadata can connect the digital journey with real field support.</p>
+        <a href="#verification">View verification →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FARMER FAQ ============ -->
+<section class="farmer-faq" id="help">
+  <div class="wrap help-inner">
+    <div>
+      <p class="eyebrow">Farmer Help</p>
+      <h2 class="section-title">Questions about your Annyadata journey?</h2>
+      <p class="section-sub">You can always ask Samarth by voice instead of navigating through the portal.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What does Samarth do for my farm?</summary>
+        <p>Samarth is your voice-first AI companion. You can ask about cultivation, crop health, weather, schemes, insurance, quality and the next step in your Annyadata journey.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does Samarth replace a field expert?</summary>
+        <p>No. Samarth provides guidance, while Annyadata's field volunteers can verify crop and farm conditions on the ground.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does direct procurement work?</summary>
+        <p>Annyadata aims to connect participating farmers more directly with procurement and rice-mill relationships, while using quality and field verification to support the process.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What should I do if I see a crop problem?</summary>
+        <p>Tap the Samarth voice orb and describe what you see in your own language. Start with the crop, the symptom and when you first noticed it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer farmer-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Annyadata <em>Farmer</em></span>
+      <p>Your farm. Your voice. A more connected path from field to market.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h5>My Farm</h5>
+        <a href="#my-farm">Farm overview</a>
+        <a href="#tools">Crop support</a>
+        <a href="#verification">Field verification</a>
+      </div>
+      <div>
+        <h5>Annyadata</h5>
+        <a href="#journey">Your journey</a>
+        <a href="#procurement">Procurement</a>
+        <a href="#support">Support</a>
+      </div>
+      <div>
+        <h5>Samarth</h5>
+        <a href="#home">Talk to Samarth</a>
+        <a href="#help">Farmer help</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Annyadata. Farmer Portal.</span>
+    <span>आपकी आवाज़, आपकी फसल, आपका मूल्य।</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+<script src="weather.js"></script>
+<script src="app.js"></script>
+
+<script>
+    /* =================================
+       DASHBOARD AUTHENTICATION
+    ================================= */
+
+    async function protectDashboard() {
+
+        try {
+
+            const {
+                data: { session },
+                error
+            } = await supabaseClient.auth.getSession();
+
+            if (error) {
+
+                console.error(
+                    "Session check error:",
+                    error
+                );
+
+                window.location.href =
+                    "pages/login.html";
+
+                return;
+            }
+
+            // No logged-in user
+            if (!session) {
+
+                console.log(
+                    "No active session. Redirecting to login."
+                );
+
+                window.location.href =
+                    "pages/login.html";
+
+                return;
+            }
+
+            // User is authenticated
+            console.log(
+                "Dashboard access granted."
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Dashboard authentication error:",
+                error
+            );
+
+            window.location.href =
+                "pages/login.html";
+        }
+    }
+
+    protectDashboard();
+</script>
+
+</body>
+</html>

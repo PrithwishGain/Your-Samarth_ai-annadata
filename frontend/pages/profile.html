@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Profile | Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .profile-page{
+      min-height:100vh;
+      background:var(--cream);
+      color:var(--forest-deep);
+    }
+
+    .profile-header{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      border-bottom:1px solid rgba(31,75,63,0.10);
+      background:rgba(250,247,237,0.95);
+      backdrop-filter:blur(12px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .profile-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--forest-deep);
+    }
+
+    .profile-logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--forest-deep);
+      color:#f2c75c;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .profile-logo-text{
+      font-family:Georgia,serif;
+      font-size:21px;
+      font-weight:700;
+    }
+
+    .profile-logo-text span{
+      color:#d49b32;
+    }
+
+    .profile-back{
+      text-decoration:none;
+      color:var(--forest-deep);
+      font-size:14px;
+      font-weight:600;
+      padding:9px 16px;
+      border:1px solid rgba(31,75,63,0.15);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .profile-back:hover{
+      background:rgba(31,75,63,0.07);
+      transform:translateY(-1px);
+    }
+
+    .profile-main{
+      max-width:900px;
+      margin:0 auto;
+      padding:65px 20px 70px;
+    }
+
+    .profile-title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .profile-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:rgba(31,75,63,0.07);
+      border:1px solid rgba(31,75,63,0.12);
+      color:var(--forest-deep);
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      margin-bottom:18px;
+    }
+
+    .profile-title h1{
+      font-family:Georgia,serif;
+      font-size:clamp(38px,5vw,56px);
+      line-height:1.05;
+      margin:0 0 14px;
+    }
+
+    .profile-title h1 em{
+      color:#528264;
+      font-style:italic;
+    }
+
+    .profile-title p{
+      margin:0 auto;
+      max-width:600px;
+      color:#66716c;
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    .profile-card{
+      background:#fffdf6;
+      border:1px solid rgba(31,75,63,0.12);
+      border-radius:24px;
+      padding:32px;
+      box-shadow:0 15px 40px rgba(31,75,63,0.08);
+    }
+
+    .profile-card-header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding-bottom:25px;
+      margin-bottom:25px;
+      border-bottom:1px solid rgba(31,75,63,0.09);
+    }
+
+    .profile-avatar{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:var(--forest-deep);
+      color:#f2c75c;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Georgia,serif;
+      font-size:27px;
+      font-weight:700;
+      flex:none;
+    }
+
+    .profile-card-header h2{
+      font-family:Georgia,serif;
+      font-size:25px;
+      margin:0 0 4px;
+    }
+
+    .profile-card-header p{
+      margin:0;
+      color:#78827d;
+      font-size:13px;
+    }
+
+    .profile-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .profile-field{
+      padding:17px;
+      border-radius:14px;
+      background:rgba(31,75,63,0.035);
+      border:1px solid rgba(31,75,63,0.07);
+    }
+
+    .profile-field.full{
+      grid-column:1 / -1;
+    }
+
+    .profile-field-label{
+      display:block;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      color:#7b857f;
+      margin-bottom:7px;
+    }
+
+    .profile-field-value{
+      display:block;
+      font-size:15px;
+      font-weight:600;
+      color:var(--forest-deep);
+      min-height:20px;
+      word-break:break-word;
+    }
+
+    .profile-status{
+      margin-top:22px;
+      padding:16px 18px;
+      border-radius:14px;
+      background:rgba(212,155,50,0.08);
+      border:1px solid rgba(212,155,50,0.20);
+      color:#765116;
+      font-size:13px;
+      line-height:1.5;
+      text-align:center;
+    }
+
+    .profile-loading{
+      text-align:center;
+      padding:45px 20px;
+      color:#69746e;
+      font-size:14px;
+    }
+
+    .profile-error{
+      display:none;
+      text-align:center;
+      padding:35px 20px;
+      color:#8a3f3f;
+      font-size:14px;
+    }
+
+    .profile-footer{
+      text-align:center;
+      padding:25px 20px 35px;
+      color:#7a837f;
+      font-size:12px;
+    }
+
+    @media(max-width:700px){
+
+      .profile-header{
+        padding:0 20px;
+      }
+
+      .profile-logo-text{
+        font-size:18px;
+      }
+
+      .profile-main{
+        padding:45px 16px 50px;
+      }
+
+      .profile-title{
+        margin-bottom:30px;
+      }
+
+      .profile-title p{
+        font-size:14px;
+      }
+
+      .profile-card{
+        padding:22px;
+        border-radius:20px;
+      }
+
+      .profile-grid{
+        grid-template-columns:1fr;
+      }
+
+      .profile-field.full{
+        grid-column:auto;
+      }
+
+      .profile-card-header h2{
+        font-size:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="profile-page">
+
+    <!-- HEADER -->
+    <header class="profile-header">
+
+      <a href="../samarthAI.html" class="profile-logo">
+
+        <div class="profile-logo-mark">
+          ♧
+        </div>
+
+        <div class="profile-logo-text">
+          Samarth <span>AI</span>
+        </div>
+
+      </a>
+
+      <a href="../samarthAI.html" class="profile-back">
+        ← Back to Samarth
+      </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="profile-main">
+
+      <section class="profile-title">
+
+        <div class="profile-badge">
+          👤 My Profile
+        </div>
+
+        <h1>
+          Your <em>Samarth</em> profile.
+        </h1>
+
+        <p>
+          Your information helps Samarth provide more relevant
+          guidance and recommendations for your needs.
+        </p>
+
+      </section>
+
+
+      <!-- PROFILE CARD -->
+      <section class="profile-card">
+
+        <div class="profile-card-header">
+
+          <div class="profile-avatar" id="profileAvatar">
+            ?
+          </div>
+
+          <div>
+            <h2 id="profileName">
+              Loading...
+            </h2>
+
+            <p id="profileEmail">
+              Loading profile information...
+            </p>
+          </div>
+
+        </div>
+
+
+        <div id="profileLoading" class="profile-loading">
+          Loading your profile...
+        </div>
+
+        <div id="profileError" class="profile-error">
+          Unable to load your profile. Please try again.
+        </div>
+
+
+        <div id="profileContent" style="display:none;">
+
+          <div class="profile-grid">
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Full Name
+              </span>
+
+              <span class="profile-field-value" id="fullName">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Phone
+              </span>
+
+              <span class="profile-field-value" id="phone">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field full">
+
+              <span class="profile-field-label">
+                Email
+              </span>
+
+              <span class="profile-field-value" id="email">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Village / Town
+              </span>
+
+              <span class="profile-field-value" id="village">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                District
+              </span>
+
+              <span class="profile-field-value" id="district">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                State
+              </span>
+
+              <span class="profile-field-value" id="state">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Occupation
+              </span>
+
+              <span class="profile-field-value" id="occupation">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Business Status
+              </span>
+
+              <span class="profile-field-value" id="businessStatus">
+                —
+              </span>
+
+            </div>
+
+
+            <div class="profile-field">
+
+              <span class="profile-field-label">
+                Business Type
+              </span>
+
+              <span class="profile-field-value" id="businessType">
+                —
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-status">
+            🌱 Your profile information is used to make Samarth's
+            guidance more relevant to you.
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="profile-footer">
+      © 2026 Samarth AI · आपका साथी, हर कदम पर
+    </footer>
+
+  </div>
+
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase.js"></script>
+
+
+  <script>
+
+    async function loadProfile(){
+
+      const loading =
+        document.getElementById("profileLoading");
+
+      const errorBox =
+        document.getElementById("profileError");
+
+      const content =
+        document.getElementById("profileContent");
+
+      try{
+
+        /* ================================
+           CHECK AUTHENTICATION
+        ================================= */
+
+        const {
+          data: { session },
+          error: sessionError
+        } = await supabaseClient.auth.getSession();
+
+
+        if(sessionError){
+          throw sessionError;
+        }
+
+
+        if(!session){
+
+          window.location.href =
+            "login.html";
+
+          return;
+        }
+
+
+        const user = session.user;
+
+
+        /* ================================
+           LOAD PROFILE
+        ================================= */
+
+        const {
+          data: profile,
+          error: profileError
+        } = await supabaseClient
+          .from("profiles")
+          .select(`
+            full_name,
+            phone,
+            email,
+            village,
+            district,
+            state,
+            occupation,
+            business_status,
+            business_type
+          `)
+          .eq("id", user.id)
+          .maybeSingle();
+
+
+        if(profileError){
+          throw profileError;
+        }
+
+
+        if(!profile){
+
+          loading.style.display = "none";
+          errorBox.style.display = "block";
+
+          errorBox.textContent =
+            "No profile information was found. Please complete your profile setup.";
+
+          return;
+        }
+
+
+        /* ================================
+           DISPLAY PROFILE
+        ================================= */
+
+        const name =
+          profile.full_name ||
+          user.user_metadata?.full_name ||
+          "Samarth User";
+
+        const email =
+          profile.email ||
+          user.email ||
+          "Email not available";
+
+
+        document.getElementById("profileName")
+          .textContent = name;
+
+        document.getElementById("profileEmail")
+          .textContent = email;
+
+
+        document.getElementById("profileAvatar")
+          .textContent =
+          name.charAt(0).toUpperCase();
+
+
+        document.getElementById("fullName")
+          .textContent =
+          profile.full_name || "Not provided";
+
+        document.getElementById("phone")
+          .textContent =
+          profile.phone || user.phone || "Not provided";
+
+        document.getElementById("email")
+          .textContent =
+          profile.email || user.email || "Not provided";
+
+        document.getElementById("village")
+          .textContent =
+          profile.village || "Not provided";
+
+        document.getElementById("district")
+          .textContent =
+          profile.district || "Not provided";
+
+        document.getElementById("state")
+          .textContent =
+          profile.state || "Not provided";
+
+        document.getElementById("occupation")
+          .textContent =
+          profile.occupation || "Not provided";
+
+        document.getElementById("businessStatus")
+          .textContent =
+          profile.business_status || "Not provided";
+
+        document.getElementById("businessType")
+          .textContent =
+          profile.business_type || "Not provided";
+
+
+        loading.style.display = "none";
+        content.style.display = "block";
+
+
+      }catch(err){
+
+        console.error(
+          "Profile loading error:",
+          err
+        );
+
+        loading.style.display = "none";
+        errorBox.style.display = "block";
+
+        errorBox.textContent =
+          "Unable to load your profile. Please try again.";
+
+      }
+
+    }
+
+
+    /* START */
+
+    loadProfile();
+
+  </script>
+
+</body>
+</html>

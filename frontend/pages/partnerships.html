@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Partnerships | Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .partnership-page{
+      min-height:100vh;
+      background:var(--cream);
+      color:var(--forest-deep);
+    }
+
+    .partnership-header{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      border-bottom:1px solid rgba(31,75,63,0.10);
+      background:rgba(250,247,237,0.95);
+      backdrop-filter:blur(12px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .partnership-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--forest-deep);
+    }
+
+    .partnership-logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--forest-deep);
+      color:#f2c75c;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .partnership-logo-text{
+      font-family:Georgia,serif;
+      font-size:21px;
+      font-weight:700;
+    }
+
+    .partnership-logo-text span{
+      color:#d49b32;
+    }
+
+    .partnership-back{
+      text-decoration:none;
+      color:var(--forest-deep);
+      font-size:14px;
+      font-weight:600;
+      padding:9px 16px;
+      border:1px solid rgba(31,75,63,0.15);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .partnership-back:hover{
+      background:rgba(31,75,63,0.07);
+      transform:translateY(-1px);
+    }
+
+    .partnership-main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:65px 20px 70px;
+    }
+
+    .partnership-title{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 45px;
+    }
+
+    .partnership-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:rgba(31,75,63,0.07);
+      border:1px solid rgba(31,75,63,0.12);
+      color:var(--forest-deep);
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      margin-bottom:18px;
+    }
+
+    .partnership-title h1{
+      font-family:Georgia,serif;
+      font-size:clamp(38px,5vw,58px);
+      line-height:1.05;
+      margin:0 0 16px;
+    }
+
+    .partnership-title h1 em{
+      color:#528264;
+      font-style:italic;
+    }
+
+    .partnership-title p{
+      margin:0 auto;
+      max-width:680px;
+      color:#66716c;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .ecosystem-note{
+      max-width:850px;
+      margin:0 auto 38px;
+      padding:15px 20px;
+      border-radius:14px;
+      background:rgba(212,155,50,0.09);
+      border:1px solid rgba(212,155,50,0.20);
+      color:#765116;
+      font-size:13px;
+      line-height:1.55;
+      text-align:center;
+    }
+
+    .partnership-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .partnership-card{
+      background:#fffdf6;
+      border:1px solid rgba(31,75,63,0.11);
+      border-radius:22px;
+      padding:27px;
+      box-shadow:0 12px 32px rgba(31,75,63,0.065);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .partnership-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 17px 38px rgba(31,75,63,0.10);
+    }
+
+    .partnership-card-top{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .partnership-icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:rgba(31,75,63,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:23px;
+      flex:none;
+    }
+
+    .partnership-card h2{
+      font-family:Georgia,serif;
+      font-size:24px;
+      margin:0 0 4px;
+    }
+
+    .partnership-card-subtitle{
+      margin:0;
+      color:#7a837f;
+      font-size:12px;
+    }
+
+    .partner-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .partner-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      padding:12px 0;
+      border-top:1px solid rgba(31,75,63,0.07);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .partner-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#d49b32;
+      margin-top:6px;
+      flex:none;
+    }
+
+    .partner-logo{
+      width:120px;
+      height:45px;
+      object-fit:contain;
+      object-position:left center;
+      display:block;
+    }
+
+    .partnership-value{
+      margin-top:auto;
+      padding:14px 15px;
+      border-radius:12px;
+      background:rgba(31,75,63,0.045);
+      color:#596760;
+      font-size:12px;
+      line-height:1.55;
+    }
+
+    .partnership-value strong{
+      display:block;
+      color:var(--forest-deep);
+      margin-bottom:4px;
+      font-size:12px;
+    }
+
+    .revenue-section{
+      margin-top:45px;
+      padding:30px;
+      background:var(--forest-deep);
+      border-radius:24px;
+      color:#fff;
+      text-align:center;
+      box-shadow:0 18px 42px rgba(31,75,63,0.15);
+    }
+
+    .revenue-section h2{
+      font-family:Georgia,serif;
+      font-size:28px;
+      margin:0 0 10px;
+    }
+
+    .revenue-section p{
+      max-width:680px;
+      margin:0 auto 25px;
+      color:rgba(255,255,255,0.76);
+      font-size:14px;
+      line-height:1.65;
+    }
+
+    .revenue-pills{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:9px;
+    }
+
+    .revenue-pill{
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:rgba(255,255,255,0.07);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .partnership-footer{
+      text-align:center;
+      padding:25px 20px 35px;
+      color:#7a837f;
+      font-size:12px;
+    }
+
+    @media(max-width:700px){
+
+      .partnership-header{
+        padding:0 20px;
+      }
+
+      .partnership-logo-text{
+        font-size:18px;
+      }
+
+      .partnership-main{
+        padding:45px 16px 50px;
+      }
+
+      .partnership-title{
+        margin-bottom:32px;
+      }
+
+      .partnership-title p{
+        font-size:14px;
+      }
+
+      .partnership-grid{
+        grid-template-columns:1fr;
+      }
+
+      .partnership-card{
+        padding:23px;
+      }
+
+      .revenue-section{
+        padding:25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="partnership-page">
+
+    <!-- HEADER -->
+    <header class="partnership-header">
+
+      <a href="../samarthAI.html" class="partnership-logo">
+
+        <div class="partnership-logo-mark">
+          ♧
+        </div>
+
+        <div class="partnership-logo-text">
+          Samarth <span>AI</span>
+        </div>
+
+      </a>
+
+      <a href="../samarthAI.html" class="partnership-back">
+        ← Back to Samarth
+      </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="partnership-main">
+
+      <section class="partnership-title">
+
+        <div class="partnership-badge">
+          🤝 Partnership Ecosystem
+        </div>
+
+        <h1>
+          Building an <em>ecosystem</em>
+          around rural India.
+        </h1>
+
+        <p>
+          Samarth can connect rural entrepreneurs with organizations
+          across agriculture, finance, government and digital
+          awareness to create a sustainable support ecosystem.
+        </p>
+
+      </section>
+
+
+      <div class="ecosystem-note">
+        <strong>Potential Partnership Opportunities:</strong>
+        The organizations and categories shown below represent
+        potential future collaborations, not confirmed partnerships.
+      </div>
+
+
+      <!-- PARTNERSHIP CARDS -->
+      <section class="partnership-grid">
+
+
+        <!-- AGRICULTURE -->
+        <article class="partnership-card">
+
+          <div class="partnership-card-top">
+
+            <div class="partnership-icon">
+              🌾
+            </div>
+
+            <div>
+              <h2>Agricultural</h2>
+              <p class="partnership-card-subtitle">
+                Farm services & market access
+              </p>
+            </div>
+
+          </div>
+
+          <ul class="partner-list">
+
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/itc.png" alt="ITC Agri Business" class="partner-logo">
+            </li>
+            
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/dehaat.png" alt="DeHaat" class="partner-logo">
+            </li>
+
+          </ul>
+
+          <div class="partnership-value">
+            <strong>Potential value</strong>
+            Agricultural services, market access, procurement,
+            inputs and farmer-service referrals.
+          </div>
+
+        </article>
+
+
+        <!-- FINANCE -->
+        <article class="partnership-card">
+
+          <div class="partnership-card-top">
+
+            <div class="partnership-icon">
+              🏦
+            </div>
+
+            <div>
+              <h2>Financial</h2>
+              <p class="partnership-card-subtitle">
+                Finance & financial services
+              </p>
+            </div>
+
+          </div>
+
+          <ul class="partner-list">
+
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/nabard.png" alt="NABARD" class="partner-logo">
+            </li>
+            
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/hdfc.png" alt="HDFC Bank" class="partner-logo">
+            </li>
+            
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/icici.png" alt="ICICI Bank" class="partner-logo">
+            </li>
+            
+            <li>
+              <span class="partner-dot"></span>
+              <img src="../assets/partners/pnb.png" alt="Punjab National Bank" class="partner-logo">
+            </li>
+
+          </ul>
+
+          <div class="partnership-value">
+            <strong>Potential value</strong>
+            Financial literacy, suitable financial products,
+            loan discovery and eligible-user referrals.
+          </div>
+
+        </article>
+
+
+        <!-- GOVERNMENT -->
+        <article class="partnership-card">
+
+          <div class="partnership-card-top">
+
+            <div class="partnership-icon">
+              🏛️
+            </div>
+
+            <div>
+              <h2>Government</h2>
+              <p class="partnership-card-subtitle">
+                Public programs & digital governance
+              </p>
+            </div>
+
+          </div>
+
+          <ul class="partner-list">
+
+            <li>
+              <span class="partner-dot"></span>
+              <span>State Agriculture Departments</span>
+            </li>
+
+            <li>
+              <span class="partner-dot"></span>
+              <span>Digital Governance Programs</span>
+            </li>
+
+          </ul>
+
+          <div class="partnership-value">
+            <strong>Potential value</strong>
+            Institutional deployment, implementation,
+            support contracts and access to verified public information.
+          </div>
+
+        </article>
+
+
+        <!-- MICRO INFLUENCERS -->
+        <article class="partnership-card">
+
+          <div class="partnership-card-top">
+
+            <div class="partnership-icon">
+              📱
+            </div>
+
+            <div>
+              <h2>Micro-Influencers</h2>
+              <p class="partnership-card-subtitle">
+                Awareness & rural outreach
+              </p>
+            </div>
+
+          </div>
+
+          <ul class="partner-list">
+
+            <li>
+              <span class="partner-dot"></span>
+              <span>Short educational videos</span>
+            </li>
+
+            <li>
+              <span class="partner-dot"></span>
+              <span>Local-language tutorials</span>
+            </li>
+
+            <li>
+              <span class="partner-dot"></span>
+              <span>Future awareness campaigns</span>
+            </li>
+
+          </ul>
+
+          <div class="partnership-value">
+            <strong>Potential value</strong>
+            User acquisition, awareness and future sponsored
+            educational campaigns.
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- REVENUE MODEL -->
+      <section class="revenue-section">
+
+        <h2>
+          How partnerships can support Samarth
+        </h2>
+
+        <p>
+          A partnership ecosystem can create sustainable revenue
+          while keeping essential assistance accessible to rural users.
+        </p>
+
+        <div class="revenue-pills">
+
+          <span class="revenue-pill">
+            Referral & Lead Generation
+          </span>
+
+          <span class="revenue-pill">
+            Institutional Licensing
+          </span>
+
+          <span class="revenue-pill">
+            Implementation & Support
+          </span>
+
+          <span class="revenue-pill">
+            Enterprise Partnerships
+          </span>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="partnership-footer">
+      © 2026 Samarth AI · आपका साथी, हर कदम पर
+    </footer>
+
+  </div>
+
+</body>
+</html>

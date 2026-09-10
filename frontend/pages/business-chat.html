@@ -1,0 +1,1916 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Samarth AI — Business Advisor</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #FBF6EE;
+            color: #113B2B;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ================================
+           PAGE
+        ================================= */
+
+        .chat-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .chat-header {
+            height: 72px;
+            background: #FBF6EE;
+            border-bottom: 1px solid #e8e1d5;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 28px;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #113B2B;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .chat-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-title-main {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .chat-title-sub {
+            font-size: 12px;
+            color: #718078;
+            margin-top: 3px;
+        }
+
+        .brand {
+            font-size: 19px;
+            font-weight: 800;
+            color: #113B2B;
+        }
+
+
+        /* ================================
+           MAIN CHAT AREA
+        ================================= */
+
+        .chat-main {
+            flex: 1;
+            min-height: 0;
+
+            display: flex;
+            justify-content: center;
+
+            padding: 24px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 1050px;
+
+            display: flex;
+            flex-direction: column;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 30px rgba(16, 24, 32, 0.08);
+
+            overflow: hidden;
+
+            min-height: 0;
+        }
+
+
+        /* ================================
+           CONTEXT BAR
+        ================================= */
+
+        .context-bar {
+            background: #f5f1e8;
+
+            padding: 14px 20px;
+
+            border-bottom: 1px solid #e9e3d8;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            flex-shrink: 0;
+        }
+
+        .context-icon {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+
+            background: #1f6049;
+
+            color: #f2c94c;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+        }
+
+        .context-text {
+            min-width: 0;
+        }
+
+        .context-heading {
+            font-size: 13px;
+            font-weight: 700;
+            color: #113B2B;
+        }
+
+        .context-description {
+            font-size: 12px;
+            color: #69756f;
+
+            margin-top: 3px;
+
+            white-space: normal;
+            overflow: visible;
+            line-height: 1.6;
+        }
+
+
+        /* ================================
+           MESSAGES
+        ================================= */
+
+        .messages {
+            flex: 1;
+            min-height: 0;
+
+            overflow-y: auto;
+
+            padding: 28px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+
+            scroll-behavior: smooth;
+        }
+
+        .welcome-message {
+            max-width: 720px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        .welcome-icon {
+            width: 64px;
+            height: 64px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #1f6049;
+
+            color: #f2c94c;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+        }
+
+        .welcome-message h2 {
+            font-family: Georgia, serif;
+
+            font-size: 28px;
+
+            color: #113B2B;
+
+            margin-bottom: 10px;
+        }
+
+        .welcome-message p {
+            color: #66736d;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+        }
+
+
+        /* ================================
+           MESSAGE BUBBLES
+        ================================= */
+
+        .message {
+            display: flex;
+            flex-direction: column;
+
+            max-width: 75%;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            align-items: flex-end;
+        }
+
+        .message.samarth {
+            align-self: flex-start;
+            align-items: flex-start;
+        }
+
+        .message-label {
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+            color: #718078;
+
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .bubble {
+            padding: 12px 16px;
+
+            border-radius: 16px;
+
+            line-height: 1.55;
+
+            font-size: 15px;
+
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .user .bubble {
+            background: #0f3b2a;
+            color: white;
+
+            border-bottom-right-radius: 5px;
+        }
+
+        .samarth .bubble {
+            background: #f2efe7;
+            color: #263d34;
+
+            border-bottom-left-radius: 5px;
+        }
+
+
+        /* ================================
+           QUICK QUESTIONS
+        ================================= */
+
+        .quick-questions {
+            padding: 0 28px 18px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            flex-shrink: 0;
+        }
+
+        .quick-question {
+            border: 1px solid #d8ddd8;
+
+            background: white;
+
+            color: #164936;
+
+            border-radius: 20px;
+
+            padding: 8px 13px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        .quick-question:hover {
+            background: #eef4ef;
+            border-color: #1f6049;
+        }
+
+
+        /* ================================
+           INPUT AREA
+        ================================= */
+
+        .input-area {
+            border-top: 1px solid #e9e3d8;
+
+            padding: 14px 18px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            background: #ffffff;
+
+            flex-shrink: 0;
+        }
+
+        .voice-button {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #1f6049;
+
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            transition: transform 0.2s ease;
+        }
+
+        .voice-button:hover {
+            transform: scale(1.05);
+        }
+
+        .voice-button.listening {
+            background: #b45309;
+
+            animation: pulse 1.3s infinite;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                box-shadow: 0 0 0 0 rgba(180, 83, 9, 0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(180, 83, 9, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(180, 83, 9, 0);
+            }
+
+        }
+
+
+        .message-input {
+            flex: 1;
+
+            min-width: 0;
+
+            border: 1px solid #dfe3df;
+
+            border-radius: 24px;
+
+            padding: 12px 17px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            color: #1f2937;
+
+            background: #fafafa;
+        }
+
+        .message-input:focus {
+            border-color: #1f6049;
+
+            background: #ffffff;
+        }
+
+
+        .send-button {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #0f3b2a;
+
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            flex-shrink: 0;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            .chat-header {
+                padding: 0 15px;
+                height: 64px;
+            }
+
+            .brand {
+                display: none;
+            }
+
+            .chat-main {
+                padding: 0;
+            }
+
+            .chat-container {
+                border-radius: 0;
+            }
+
+            .messages {
+                padding: 20px 15px;
+            }
+
+            .message {
+                max-width: 88%;
+            }
+
+            .quick-questions {
+                padding: 0 15px 12px;
+
+                overflow-x: auto;
+
+                flex-wrap: nowrap;
+            }
+
+            .quick-question {
+                white-space: nowrap;
+            }
+
+            .input-area {
+                padding: 10px;
+            }
+
+            .context-bar {
+                padding: 11px 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="chat-page">
+
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="chat-header">
+
+        <div class="header-left">
+
+            <a
+                href="#"
+                class="back-button"
+                id="backButton"
+            >
+                ← Back
+            </a>
+
+            <div class="chat-title">
+
+                <div class="chat-title-main" id="chatTitle">
+                    Start a New Business
+                </div>
+                
+                <div class="chat-title-sub" id="chatSubtitle">
+                    Your conversation with Samarth
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="brand">
+            Samarth AI
+        </div>
+
+    </header>
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="chat-main">
+
+        <section class="chat-container">
+
+
+            <!-- CONTEXT -->
+
+            <div class="context-bar">
+
+                <div class="context-icon" id="contextIcon">
+                    🏪
+                </div>
+                
+                <div class="context-text">
+                
+                    <div
+                        class="context-heading"
+                        id="contextHeading"
+                    >
+                        Business planning session
+                    </div>
+                
+                    <div
+                        class="context-description"
+                        id="contextDescription"
+                    >
+                        Your business information will appear here.
+                    </div>
+                
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+
+            <div
+                class="messages"
+                id="messages"
+            >
+
+                <div
+                    class="welcome-message"
+                    id="welcomeMessage"
+                >
+
+                    <div class="welcome-icon">
+                        ✦
+                    </div>
+
+                    <h2>
+                        Let's plan your business
+                    </h2>
+
+                    <p>
+                        Tell Samarth what you would like to know.
+                        You can type your question or use the voice
+                        button whenever you prefer.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div
+                class="quick-questions"
+                id="quickQuestions"
+            >
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="input-area">
+
+                <button
+                    class="voice-button"
+                    id="voiceButton"
+                    title="Speak to Samarth"
+                    aria-label="Speak to Samarth"
+                >
+                    🎤
+                </button>
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    class="message-input"
+                    placeholder="Type a message..."
+                    autocomplete="off"
+                >
+
+                <button
+                    class="send-button"
+                    id="sendButton"
+                    title="Send message"
+                    aria-label="Send message"
+                >
+                    ➤
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* =================================
+       LOAD BUSINESS CONTEXT
+    ================================= */
+    
+    const storedContext =
+        sessionStorage.getItem(
+            "samarthBusinessContext"
+        );
+    
+    let businessContext = null;
+    
+    if (storedContext) {
+    
+        try {
+    
+            businessContext =
+                JSON.parse(storedContext);
+    
+            console.log(
+                "Loaded business context:",
+                businessContext
+            );
+    
+        } catch (error) {
+    
+            console.error(
+                "Could not read business context:",
+                error
+            );
+    
+        }
+    
+    }
+    
+    
+    /* =================================
+       DISPLAY CONVERSATION TYPE
+    ================================= */
+    const backButton =
+    document.getElementById("backButton");
+
+    if (businessContext?.intent === "government_schemes") {
+
+        backButton.href =
+            "government-schemes.html";
+
+    } else if (businessContext?.intent === "loan_support") {
+
+        backButton.href =
+            "loan-support.html";
+
+    } else {
+
+        backButton.href =
+            "start-business.html";
+
+    }
+
+    const chatTitle =
+        document.getElementById("chatTitle");
+    
+    const chatSubtitle =
+        document.getElementById("chatSubtitle");
+    
+    const contextIcon =
+        document.getElementById("contextIcon");
+    
+    const contextHeading =
+        document.getElementById("contextHeading");
+    
+    const contextDescription =
+        document.getElementById("contextDescription");
+    
+    const quickQuestions =
+        document.getElementById("quickQuestions");
+    
+    
+    const conversationConfigs = {
+    
+        start_business: {
+    
+            title: "Start a New Business",
+    
+            subtitle:
+                "Your conversation with Samarth",
+    
+            icon: "🏪",
+    
+            heading:
+                "Business planning session",
+    
+            description: businessContext
+                ? `${businessContext.businessIdea} • ${businessContext.location} • ${businessContext.investment}`
+                : "Let's plan your business.",
+    
+            questions: [
+                ["What should I do first?", "What should I do first?"],
+                ["Estimate my initial costs", "What will my initial costs be?"],
+                ["Government schemes", "What government schemes can help me?"],
+                ["Financing options", "What financing options can I consider?"]
+            ]
+    
+        },
+    
+        loan_support: {
+    
+            title: "Get Loan Support",
+    
+            subtitle:
+                "Your conversation with Samarth",
+    
+            icon: "💰",
+    
+            heading:
+                "Loan planning session",
+    
+                description: businessContext
+                        ? `Purpose: ${businessContext.loanPurpose}
+                • Loan amount: ${businessContext.loanAmount}
+                • Business status: ${businessContext.businessStatus}
+                • Business type: ${businessContext.businessType}
+                • Location: ${businessContext.location}
+                • Existing loans: ${businessContext.existingLoan}
+                • Monthly income: ${businessContext.monthlyIncome}
+                • Credit history: ${businessContext.creditHistory}`
+                        : "Let's understand your financing needs.",
+    
+            questions: [
+                ["Which loan options suit me?", "Which loan options may be suitable for me?"],
+                ["Check eligibility", "What factors affect my loan eligibility?"],
+                ["Required documents", "What documents will I need?"],
+                ["Government schemes", "Are there government schemes that can help me?"]
+            ]
+    
+        },
+    
+        government_schemes: {
+    
+            title: "Government Schemes",
+    
+            subtitle:
+                "Find relevant support with Samarth",
+    
+            icon: "🏛️",
+    
+            heading:
+                "Scheme discovery session",
+    
+                description: businessContext
+                    ? `Occupation: ${businessContext.occupation}
+                • Age group: ${businessContext.ageGroup}
+                • Annual income: ${businessContext.annualIncome}
+                • Gender: ${businessContext.gender}
+                • Business status: ${businessContext.business === "yes" ? "Yes" : "No"}
+                • Location: ${businessContext.location}`
+                    : "Let's find support relevant to you.",
+    
+            questions: [
+                ["Find schemes for me", "Which government schemes may be relevant to me?"],
+                ["Eligibility", "What eligibility requirements should I know about?"],
+                ["Benefits", "What benefits can these schemes provide?"],
+                ["How to apply", "How do I apply for a suitable scheme?"]
+            ]
+    
+        }
+    
+    };
+    
+    
+    const currentConfig =
+        conversationConfigs[
+            businessContext?.intent
+        ] || conversationConfigs.start_business;
+    
+    
+    chatTitle.textContent =
+        currentConfig.title;
+    
+    chatSubtitle.textContent =
+        currentConfig.subtitle;
+    
+    contextIcon.textContent =
+        currentConfig.icon;
+    
+    contextHeading.textContent =
+        currentConfig.heading;
+    
+    contextDescription.textContent =
+        currentConfig.description;
+    
+    
+    /* =================================
+       QUICK QUESTIONS
+    ================================= */
+    
+    quickQuestions.innerHTML = "";
+    
+    currentConfig.questions.forEach(
+        ([label, question]) => {
+    
+            const button =
+                document.createElement("button");
+    
+            button.className =
+                "quick-question";
+    
+            button.textContent =
+                label;
+    
+            button.dataset.question =
+                question;
+    
+            quickQuestions.appendChild(button);
+    
+        }
+    );
+    
+    
+    /* =================================
+       CHAT ELEMENTS
+    ================================= */
+    
+    const messages =
+        document.getElementById("messages");
+    
+    const messageInput =
+        document.getElementById("messageInput");
+    
+    const sendButton =
+        document.getElementById("sendButton");
+    
+    const voiceButton =
+        document.getElementById("voiceButton");
+    
+    
+    /* =================================
+       REMOVE WELCOME MESSAGE
+    ================================= */
+    
+    function removeWelcomeMessage() {
+    
+        const welcomeMessage =
+            document.getElementById(
+                "welcomeMessage"
+            );
+    
+        if (welcomeMessage) {
+            welcomeMessage.remove();
+        }
+    
+    }
+    
+    
+    /* =================================
+       ADD CHAT MESSAGE
+    ================================= */
+    
+    function addMessage(role, text) {
+    
+        if (!text || !text.trim()) {
+            return;
+        }
+    
+        removeWelcomeMessage();
+    
+        const message =
+            document.createElement("div");
+    
+        message.className =
+            `message ${role}`;
+    
+        const label =
+            document.createElement("div");
+    
+        label.className =
+            "message-label";
+    
+        label.textContent =
+            role === "user"
+                ? "You"
+                : "Samarth";
+    
+        const bubble =
+            document.createElement("div");
+    
+        bubble.className =
+            "bubble";
+    
+        bubble.textContent =
+            text;
+    
+        message.appendChild(label);
+        message.appendChild(bubble);
+    
+        messages.appendChild(message);
+    
+        messages.scrollTop =
+            messages.scrollHeight;
+    }
+    
+    
+    /* =================================
+       GEMINI STATE
+    ================================= */
+    
+    let ws = null;
+    
+    let microphoneStream = null;
+    
+    let micAudioContext = null;
+    
+    let micProcessor = null;
+    
+    let micSource = null;
+    
+    let playbackContext = null;
+    
+    let nextPlayTime = 0;
+    
+    let userTranscript = "";
+    
+    let assistantTranscript = "";
+    
+    let isListening = false;
+    
+    
+    /* =================================
+       CONNECT TO SAMARTH
+    ================================= */
+    
+    function connectToSamarth() {
+    
+        if (
+            ws &&
+            ws.readyState === WebSocket.OPEN
+        ) {
+    
+            console.log(
+                "Existing Samarth WebSocket reused."
+            );
+    
+            return;
+    
+        }
+    
+    
+        console.log(
+            "Connecting to Samarth..."
+        );
+    
+    
+        const contextParam = encodeURIComponent(
+            JSON.stringify(businessContext || {})
+        );
+
+        ws = new WebSocket(
+            `ws://127.0.0.1:8000/ws/voice?business_context=${contextParam}`
+        );
+    
+        ws.binaryType =
+            "arraybuffer";
+    
+    
+        ws.onopen = async () => {
+    
+            console.log(
+                "WebSocket connected to Samarth!"
+            );
+    
+            if (!playbackContext) {
+    
+                playbackContext =
+                    new AudioContext({
+                        sampleRate: 24000
+                    });
+    
+            }
+    
+            await playbackContext.resume();
+    
+        };
+    
+    
+        ws.onmessage = async (event) => {
+    
+            /* =============================
+               JSON MESSAGE
+            ============================= */
+    
+            if (
+                typeof event.data === "string"
+            ) {
+    
+                try {
+    
+                    const message =
+                        JSON.parse(event.data);
+    
+                    console.log(
+                        "Message from Samarth:",
+                        message
+                    );
+    
+    
+                    /* CONNECTED */
+    
+                    if (
+                        message.type === "connected"
+                    ) {
+    
+                        console.log(
+                            "Gemini Live is ready!"
+                        );
+    
+                    }
+    
+    
+                    /* USER TRANSCRIPT */
+    
+                    if (
+                        message.type === "transcript"
+                    ) {
+    
+                        userTranscript +=
+                            message.text;
+    
+                        console.log(
+                            "User:",
+                            userTranscript
+                        );
+    
+                        updateCurrentUserMessage();
+    
+                    }
+    
+    
+                    /* SAMARTH TRANSCRIPT */
+    
+                    if (
+                        message.type ===
+                        "assistant_transcript"
+                    ) {
+    
+                        assistantTranscript +=
+                            message.text;
+    
+                        console.log(
+                            "Samarth:",
+                            assistantTranscript
+                        );
+    
+                        updateCurrentAssistantMessage();
+    
+                    }
+    
+    
+                    /* KNOWLEDGE BASE */
+    
+                    if (
+                        message.type ===
+                        "tool_call"
+                    ) {
+    
+                        console.log(
+                            "Samarth is checking knowledge base:",
+                            message.query
+                        );
+    
+                    }
+    
+    
+                    /* ERROR */
+    
+                    if (
+                        message.type === "error"
+                    ) {
+    
+                        console.error(
+                            "Samarth error:",
+                            message.message
+                        );
+    
+                        addMessage(
+                            "samarth",
+                            "Sorry, I couldn't process that request."
+                        );
+    
+                    }
+    
+                } catch (error) {
+    
+                    console.error(
+                        "Could not parse Samarth message:",
+                        error
+                    );
+    
+                }
+    
+                return;
+    
+            }
+    
+    
+            /* =============================
+               GEMINI AUDIO
+            ============================= */
+    
+            if (
+                event.data instanceof ArrayBuffer
+            ) {
+    
+                console.log(
+                    "Received Gemini audio:",
+                    event.data.byteLength,
+                    "bytes"
+                );
+    
+                await playGeminiAudio(
+                    event.data
+                );
+    
+            }
+    
+        };
+    
+    
+        ws.onerror = (error) => {
+    
+            console.error(
+                "Samarth WebSocket error:",
+                error
+            );
+    
+        };
+    
+    
+        ws.onclose = () => {
+    
+            console.log(
+                "Samarth WebSocket closed."
+            );
+    
+            ws = null;
+    
+        };
+    
+    }
+    
+    
+    /* =================================
+       CURRENT USER MESSAGE
+    ================================= */
+    
+    let currentUserMessageElement =
+        null;
+    
+    let currentAssistantMessageElement =
+        null;
+    
+    
+    function updateCurrentUserMessage() {
+    
+        if (
+            !userTranscript.trim()
+        ) {
+            return;
+        }
+    
+        removeWelcomeMessage();
+    
+        if (
+            !currentUserMessageElement
+        ) {
+    
+            currentUserMessageElement =
+                document.createElement("div");
+    
+            currentUserMessageElement.className =
+                "message user";
+    
+            currentUserMessageElement.innerHTML = `
+                <div class="message-label">
+                    You
+                </div>
+    
+                <div class="bubble"></div>
+            `;
+    
+            messages.appendChild(
+                currentUserMessageElement
+            );
+    
+        }
+    
+        currentUserMessageElement
+            .querySelector(".bubble")
+            .textContent =
+            userTranscript;
+    
+        messages.scrollTop =
+            messages.scrollHeight;
+    
+    }
+    
+    
+    function updateCurrentAssistantMessage() {
+    
+        if (
+            !assistantTranscript.trim()
+        ) {
+            return;
+        }
+    
+        removeWelcomeMessage();
+    
+        if (
+            !currentAssistantMessageElement
+        ) {
+    
+            currentAssistantMessageElement =
+                document.createElement("div");
+    
+            currentAssistantMessageElement.className =
+                "message samarth";
+    
+            currentAssistantMessageElement.innerHTML = `
+                <div class="message-label">
+                    Samarth
+                </div>
+    
+                <div class="bubble"></div>
+            `;
+    
+            messages.appendChild(
+                currentAssistantMessageElement
+            );
+    
+        }
+    
+        currentAssistantMessageElement
+            .querySelector(".bubble")
+            .textContent =
+            assistantTranscript;
+    
+        messages.scrollTop =
+            messages.scrollHeight;
+    
+    }
+    
+    
+    /* =================================
+       START NEW TURN
+    ================================= */
+    
+    function startNewTurn() {
+    
+        userTranscript = "";
+    
+        assistantTranscript = "";
+    
+        currentUserMessageElement =
+            null;
+    
+        currentAssistantMessageElement =
+            null;
+    
+    }
+    
+    
+    /* =================================
+       SEND TEXT MESSAGE
+    ================================= */
+    
+    function sendTextMessage() {
+    
+        const text =
+            messageInput.value.trim();
+    
+        if (!text) {
+            return;
+        }
+    
+    
+        if (
+            !ws ||
+            ws.readyState !== WebSocket.OPEN
+        ) {
+    
+            console.log(
+                "WebSocket not ready. Connecting..."
+            );
+    
+            connectToSamarth();
+    
+            setTimeout(() => {
+    
+                if (
+                    ws &&
+                    ws.readyState ===
+                    WebSocket.OPEN
+                ) {
+    
+                    sendTextToGemini(text);
+    
+                }
+    
+            }, 500);
+    
+            return;
+    
+        }
+    
+    
+        sendTextToGemini(text);
+    
+    }
+    
+    
+    function sendTextToGemini(text) {
+    
+        startNewTurn();
+    
+        removeWelcomeMessage();
+    
+        addMessage(
+            "user",
+            text
+        );
+    
+        messageInput.value = "";
+    
+    
+        ws.send(
+            JSON.stringify({
+                text: text
+            })
+        );
+    
+    
+        console.log(
+            "Text sent to Samarth:",
+            text
+        );
+    
+    }
+    
+    
+    /* =================================
+       SEND BUTTON
+    ================================= */
+    
+    sendButton.addEventListener(
+        "click",
+        sendTextMessage
+    );
+    
+    
+    /* =================================
+       ENTER KEY
+    ================================= */
+    
+    messageInput.addEventListener(
+        "keydown",
+        function(event) {
+    
+            if (
+                event.key === "Enter"
+            ) {
+    
+                event.preventDefault();
+    
+                sendTextMessage();
+    
+            }
+    
+        }
+    );
+    
+    
+    /* =================================
+       QUICK QUESTIONS
+    ================================= */
+    
+    document
+        .querySelectorAll(".quick-question")
+        .forEach(button => {
+    
+            button.addEventListener(
+                "click",
+                function() {
+    
+                    messageInput.value =
+                        this.dataset.question;
+    
+                    messageInput.focus();
+    
+                }
+            );
+    
+        });
+    
+    
+    /* =================================
+       START MICROPHONE
+    ================================= */
+    
+    async function startVoiceInput() {
+    
+        if (
+            isListening
+        ) {
+            return;
+        }
+    
+    
+        try {
+    
+            if (
+                !ws ||
+                ws.readyState !== WebSocket.OPEN
+            ) {
+    
+                connectToSamarth();
+    
+                await new Promise(
+                    resolve => {
+    
+                        const check =
+                            setInterval(() => {
+    
+                                if (
+                                    ws &&
+                                    ws.readyState ===
+                                    WebSocket.OPEN
+                                ) {
+    
+                                    clearInterval(
+                                        check
+                                    );
+    
+                                    resolve();
+    
+                                }
+    
+                            }, 50);
+    
+                    }
+                );
+    
+            }
+    
+    
+            startNewTurn();
+    
+            microphoneStream =
+                await navigator.mediaDevices
+                    .getUserMedia({
+                        audio: true
+                    });
+    
+    
+            micAudioContext =
+                new AudioContext({
+                    sampleRate: 16000
+                });
+    
+    
+            await micAudioContext.resume();
+    
+    
+            if (!playbackContext) {
+    
+                playbackContext =
+                    new AudioContext({
+                        sampleRate: 24000
+                    });
+    
+                await playbackContext.resume();
+    
+            }
+    
+    
+            micSource =
+                micAudioContext
+                    .createMediaStreamSource(
+                        microphoneStream
+                    );
+    
+    
+            micProcessor =
+                micAudioContext
+                    .createScriptProcessor(
+                        4096,
+                        1,
+                        1
+                    );
+    
+    
+            micProcessor.onaudioprocess =
+                (event) => {
+    
+                    if (
+                        !ws ||
+                        ws.readyState !==
+                        WebSocket.OPEN
+                    ) {
+                        return;
+                    }
+    
+    
+                    const inputData =
+                        event.inputBuffer
+                            .getChannelData(0);
+    
+    
+                    const pcmData =
+                        new Int16Array(
+                            inputData.length
+                        );
+    
+    
+                    for (
+                        let i = 0;
+                        i < inputData.length;
+                        i++
+                    ) {
+    
+                        let sample =
+                            inputData[i];
+    
+                        sample =
+                            Math.max(
+                                -1,
+                                Math.min(
+                                    1,
+                                    sample
+                                )
+                            );
+    
+                        pcmData[i] =
+                            sample < 0
+                                ? sample * 0x8000
+                                : sample * 0x7FFF;
+    
+                    }
+    
+    
+                    ws.send(
+                        pcmData.buffer
+                    );
+    
+                };
+    
+    
+            micSource.connect(
+                micProcessor
+            );
+    
+    
+            micProcessor.connect(
+                micAudioContext.destination
+            );
+    
+    
+            /* Tell backend that speech has started */
+    
+            ws.send(
+                JSON.stringify({
+                    activity_start: true
+                })
+            );
+    
+    
+            isListening = true;
+    
+            voiceButton.classList.add(
+                "listening"
+            );
+    
+            voiceButton.textContent =
+                "⏹";
+    
+            messageInput.placeholder =
+                "Listening...";
+    
+    
+            console.log(
+                "Voice input started."
+            );
+    
+        } catch (error) {
+    
+            console.error(
+                "Microphone error:",
+                error
+            );
+    
+            stopVoiceInput();
+    
+            alert(
+                "Microphone access is required for voice input."
+            );
+    
+        }
+    
+    }
+    
+    
+    /* =================================
+       STOP MICROPHONE
+    ================================= */
+    
+    function stopVoiceInput() {
+    
+        if (!isListening) {
+            return;
+        }
+    
+    
+        if (
+            ws &&
+            ws.readyState === WebSocket.OPEN
+        ) {
+    
+            ws.send(
+                JSON.stringify({
+                    audio_end: true
+                })
+            );
+    
+            console.log(
+                "Sent audio_end to Samarth."
+            );
+    
+        }
+    
+    
+        if (microphoneStream) {
+    
+            microphoneStream
+                .getTracks()
+                .forEach(
+                    track => track.stop()
+                );
+    
+            microphoneStream = null;
+    
+        }
+    
+    
+        if (micProcessor) {
+    
+            micProcessor.disconnect();
+    
+            micProcessor.onaudioprocess =
+                null;
+    
+            micProcessor = null;
+    
+        }
+    
+    
+        if (micSource) {
+    
+            micSource.disconnect();
+    
+            micSource = null;
+    
+        }
+    
+    
+        if (
+            micAudioContext &&
+            micAudioContext.state !==
+            "closed"
+        ) {
+    
+            micAudioContext.close();
+    
+            micAudioContext = null;
+    
+        }
+    
+    
+        isListening = false;
+    
+        voiceButton.classList.remove(
+            "listening"
+        );
+    
+        voiceButton.textContent =
+            "🎤";
+    
+        messageInput.placeholder =
+            "Type a message...";
+    
+    
+        console.log(
+            "Voice input stopped."
+        );
+    
+    }
+    
+    
+    /* =================================
+       VOICE BUTTON
+    ================================= */
+    
+    voiceButton.addEventListener(
+        "click",
+        function() {
+    
+            if (isListening) {
+    
+                stopVoiceInput();
+    
+            } else {
+    
+                startVoiceInput();
+    
+            }
+    
+        }
+    );
+    
+    
+    /* =================================
+       PLAY GEMINI AUDIO
+    ================================= */
+    
+    async function playGeminiAudio(
+        arrayBuffer
+    ) {
+    
+        if (!playbackContext) {
+    
+            playbackContext =
+                new AudioContext({
+                    sampleRate: 24000
+                });
+    
+        }
+    
+    
+        await playbackContext.resume();
+    
+    
+        const pcmData =
+            new Int16Array(
+                arrayBuffer
+            );
+    
+    
+        const audioBuffer =
+            playbackContext.createBuffer(
+                1,
+                pcmData.length,
+                24000
+            );
+    
+    
+        const channelData =
+            audioBuffer.getChannelData(0);
+    
+    
+        for (
+            let i = 0;
+            i < pcmData.length;
+            i++
+        ) {
+    
+            channelData[i] =
+                pcmData[i] / 32768;
+    
+        }
+    
+    
+        const source =
+            playbackContext
+                .createBufferSource();
+    
+    
+        source.buffer =
+            audioBuffer;
+    
+    
+        source.connect(
+            playbackContext.destination
+        );
+    
+    
+        const currentTime =
+            playbackContext.currentTime;
+    
+    
+        if (
+            nextPlayTime < currentTime
+        ) {
+    
+            nextPlayTime =
+                currentTime;
+    
+        }
+    
+    
+        source.start(
+            nextPlayTime
+        );
+    
+    
+        nextPlayTime +=
+            audioBuffer.duration;
+    
+    
+        console.log(
+            "Playing Samarth audio."
+        );
+    
+    }
+    
+    
+    /* =================================
+       CONNECT ON PAGE LOAD
+    ================================= */
+    
+    connectToSamarth();
+    
+    </script>
+
+</body>
+</html>

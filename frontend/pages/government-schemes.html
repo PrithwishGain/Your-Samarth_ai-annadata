@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Government Schemes — Samarth AI</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    body {
+      background-color: #FBF6EE;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #113B2B;
+    }
+
+    .back-link {
+      color: #113B2B;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .schemes-inner {
+      max-width: 1050px;
+      margin: 1.5rem auto;
+      padding: 1rem;
+    }
+
+    .subtitle {
+      color: #374151;
+      margin-top: 0.25rem;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .scheme-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 6px 18px rgba(16, 24, 32, 0.08);
+      margin-bottom: 1rem;
+    }
+
+    .scheme-card h2 {
+      color: #113B2B;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .scheme-card p {
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .scheme-tag {
+      display: inline-block;
+      background: #E7F1EB;
+      color: #0F3B2A;
+      padding: 0.35rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .scheme-link {
+      color: #0F3B2A;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .scheme-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .find-section {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 6px 18px rgba(16, 24, 32, 0.08);
+    }
+
+    .find-section h2 {
+      color: #113B2B;
+      margin-top: 0;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: #0F3B2A;
+    }
+
+    select,
+    input[type="text"] {
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #E6E6E6;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #ffffff;
+    }
+
+    .primary-btn {
+      background: #0F3B2A;
+      color: #ffffff;
+      padding: 0.7rem 1.1rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary-btn:hover {
+      opacity: 0.9;
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: #E7F1EB;
+      border-radius: 10px;
+      color: #113B2B;
+      line-height: 1.6;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #6B7280;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 720px) {
+      .scheme-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .find-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .form-row.full {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <header class="page-header wrap">
+
+    <a class="back-link" href="../samarthAI.html">
+      ← Back to Samarth
+    </a>
+
+    <div class="brand">
+      Samarth AI
+    </div>
+
+  </header>
+
+
+  <main class="schemes-inner wrap">
+
+    <h1>Government Schemes</h1>
+
+    <p class="subtitle">
+      Government support can be difficult to find and understand.
+      Tell Samarth a little about yourself and your work, and we can
+      help you discover schemes that may be relevant to you.
+    </p>
+
+
+    <!-- Scheme cards -->
+
+    <div class="scheme-grid">
+
+
+      <!-- PM-KISAN -->
+
+      <article class="scheme-card">
+
+        <span class="scheme-tag">
+          FARMERS
+        </span>
+
+        <h2>PM-KISAN</h2>
+
+        <p>
+          Income support scheme for eligible landholding farmer families.
+          Benefits are transferred directly to eligible beneficiaries'
+          bank accounts.
+        </p>
+
+        <a
+          class="scheme-link"
+          href="https://pmkisan.gov.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit official website →
+        </a>
+
+      </article>
+
+
+      <!-- PM MUDRA -->
+
+      <article class="scheme-card">
+
+        <span class="scheme-tag">
+          SMALL BUSINESS
+        </span>
+
+        <h2>Pradhan Mantri MUDRA Yojana</h2>
+
+        <p>
+          Supports eligible micro-business activities including
+          vendors, traders, shopkeepers, service businesses and
+          other income-generating activities.
+        </p>
+
+        <a
+          class="scheme-link"
+          href="https://www.myscheme.gov.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore on myScheme →
+        </a>
+
+      </article>
+
+
+      <!-- PM SVANidhi -->
+
+      <article class="scheme-card">
+
+        <span class="scheme-tag">
+          STREET VENDORS
+        </span>
+
+        <h2>PM SVANidhi</h2>
+
+        <p>
+          A micro-credit facility designed to support street vendors
+          and help them strengthen their livelihoods.
+        </p>
+
+        <a
+          class="scheme-link"
+          href="https://www.mohua.gov.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit official portal →
+        </a>
+
+      </article>
+
+
+      <!-- PMFBY -->
+
+      <article class="scheme-card">
+
+        <span class="scheme-tag">
+          AGRICULTURE
+        </span>
+
+        <h2>PM Fasal Bima Yojana</h2>
+
+        <p>
+          Crop insurance support intended to protect farmers against
+          eligible crop losses caused by specified natural risks
+          and other covered events.
+        </p>
+
+        <a
+          class="scheme-link"
+          href="https://pmfby.gov.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit official website →
+        </a>
+
+      </article>
+
+    </div>
+
+
+    <!-- Find suitable schemes -->
+
+    <section class="find-section">
+
+      <h2>Find Schemes for Me</h2>
+
+      <p class="subtitle">
+        Answer a few simple questions and Samarth will identify
+        potentially relevant government schemes.
+      </p>
+
+
+      <form id="schemeForm">
+
+        <div class="find-grid">
+
+
+          <!-- Occupation -->
+
+          <div class="form-row">
+
+            <label for="occupation">
+              What do you do?
+            </label>
+
+            <select id="occupation" required>
+
+              <option value="">
+                Select your occupation
+              </option>
+
+              <option value="farmer">
+                Farmer / Agriculture
+              </option>
+
+              <option value="vendor">
+                Street Vendor
+              </option>
+
+              <option value="business">
+                Small Business Owner
+              </option>
+
+              <option value="worker">
+                Self-employed / Worker
+              </option>
+
+              <option value="other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Age Group -->
+
+          <div class="form-row">
+
+            <label for="age-group">
+              What is your age group?
+            </label>
+
+            <select id="age-group" required>
+
+              <option value="">
+                Select your age group
+              </option>
+
+              <option value="18-25">
+                18–25 years
+              </option>
+
+              <option value="26-40">
+                26–40 years
+              </option>
+
+              <option value="41-60">
+                41–60 years
+              </option>
+
+              <option value="60+">
+                Above 60 years
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Annual Income -->
+
+          <div class="form-row">
+
+            <label for="annual-income">
+              Approximate annual household income
+            </label>
+
+            <select id="annual-income" required>
+
+              <option value="">
+                Select income range
+              </option>
+
+              <option value="below-1-lakh">
+                Below ₹1 lakh
+              </option>
+
+              <option value="1-3-lakh">
+                ₹1 lakh – ₹3 lakh
+              </option>
+
+              <option value="3-5-lakh">
+                ₹3 lakh – ₹5 lakh
+              </option>
+
+              <option value="5-10-lakh">
+                ₹5 lakh – ₹10 lakh
+              </option>
+
+              <option value="above-10-lakh">
+                Above ₹10 lakh
+              </option>
+
+              <option value="not-sure">
+                I am not sure
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Gender -->
+
+          <div class="form-row">
+
+            <label for="gender">
+              What is your gender?
+            </label>
+
+            <select id="gender" required>
+
+              <option value="">
+                Select gender
+              </option>
+
+              <option value="male">
+                Male
+              </option>
+
+              <option value="female">
+                Female
+              </option>
+
+              <option value="other">
+                Other
+              </option>
+
+              <option value="prefer-not-to-say">
+                Prefer not to say
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Business -->
+
+          <div class="form-row">
+
+            <label for="business">
+              Do you currently have a business?
+            </label>
+
+            <select id="business" required>
+
+              <option value="">
+                Select an option
+              </option>
+
+              <option value="yes">
+                Yes
+              </option>
+
+              <option value="no">
+                No
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Location -->
+
+          <div class="form-row full">
+
+            <label for="location">
+              Location
+            </label>
+
+            <input
+              type="text"
+              id="location"
+              placeholder="Town / village, district, state"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          Find Suitable Schemes →
+        </button>
+
+
+      </form>
+
+
+      <div
+        id="resultBox"
+        class="result-box"
+      ></div>
+
+
+      <p class="note">
+        This prototype provides guidance only. Actual eligibility,
+        benefits and application decisions are determined by the
+        relevant government department and scheme rules.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const schemeForm = document.getElementById("schemeForm");
+
+    const resultBox = document.getElementById("resultBox");
+
+
+    schemeForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    if (!schemeForm.checkValidity()) {
+      schemeForm.reportValidity();
+      return;
+    } 
+
+    const schemeContext = {
+
+      intent: "government_schemes", 
+
+      occupation:
+        document.getElementById("occupation").value,
+
+      business:
+        document.getElementById("business").value,
+
+      ageGroup:
+        document.getElementById("age-group").value,
+
+      annualIncome:
+        document.getElementById("annual-income").value,
+
+      gender:
+        document.getElementById("gender").value,
+
+      location:
+        document.getElementById("location").value
+
+    };
+
+    sessionStorage.setItem(
+      "samarthBusinessContext",
+      JSON.stringify(schemeContext)
+    );
+
+    window.location.href =
+      "business-chat.html";
+
+    });
+
+  </script>
+
+</body>
+
+</html>
