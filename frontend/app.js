@@ -1,3 +1,6 @@
+const BACKEND_URL = "https://oriented-telephone-juice-taylor.trycloudflare.com";
+const WS_URL = "wss://oriented-telephone-juice-taylor.trycloudflare.com/ws/voice";
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const dashboardMenuBtn = document.getElementById("dashboardMenuBtn");
@@ -392,7 +395,7 @@ orbBtn.addEventListener('click', async () => {
 // Temporary backend connection test
 async function testBackendConnection() {
 	try {
-		const response = await fetch('http://127.0.0.1:8000/health');
+		const response = await fetch(`${BACKEND_URL}/health`);
 		if (!response.ok) {
 			throw new Error(`Backend returned HTTP ${response.status}`);
 		}
@@ -556,9 +559,7 @@ function connectToSamarth() {
         "Creating new WebSocket connection to Samarth..."
     );
 
-    ws = new WebSocket(
-        "ws://127.0.0.1:8000/ws/voice"
-    );
+    ws = new WebSocket(WS_URL);
 
     ws.binaryType = "arraybuffer";
 
