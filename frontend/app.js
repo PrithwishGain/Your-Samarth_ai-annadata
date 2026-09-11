@@ -1,5 +1,5 @@
-const BACKEND_URL = "https://oriented-telephone-juice-taylor.trycloudflare.com";
-const WS_URL = "wss://oriented-telephone-juice-taylor.trycloudflare.com/ws/voice";
+const BACKEND_URL = "https://api.samarth.business";
+const WS_URL = "wss://api.samarth.business/ws/voice";
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
