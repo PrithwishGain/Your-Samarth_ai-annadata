@@ -2013,3 +2013,810 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .features .feature-card{min-height:260px;}
 .features .feature-card p{min-height:84px;}
 @media (max-width:980px){.features .feature-card{min-height:0;}.features .feature-card p{min-height:0;}}
+
+
+/* =========================================================
+   FINAL SAMARTH HERO LAYOUT
+   Matches the intended original composition:
+   LEFT = headline / copy
+   CENTER = voice orb
+   RIGHT = live conversation panel (active state)
+   ========================================================= */
+
+/* Global safety */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Desktop hero canvas */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 740px;
+}
+
+.hero-inner {
+  position: relative !important;
+  z-index: 2;
+  display: block !important;
+  width: 100%;
+  min-height: 610px;
+}
+
+/* Keep the copy firmly on the left.
+   The orb is intentionally independent of the copy width. */
+.hero-copy {
+  position: static !important;
+  width: min(620px, 43vw);
+  max-width: 620px;
+  padding-top: 76px;
+  z-index: 5;
+}
+
+.hero-copy h1 {
+  max-width: 620px;
+  font-size: clamp(48px, 4.25vw, 66px);
+  line-height: 1.08;
+  margin: 14px 0 22px;
+}
+
+.hero-sub {
+  max-width: 570px;
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+
+/* CENTER ORB
+   Absolute relative to .hero-inner, not the text column.
+   This is the key fix for the original broken positioning. */
+.voice-stage {
+  position: absolute !important;
+  left: 54.5% !important;
+  right: auto !important;
+  top: 48% !important;
+  transform: translate(-50%, -50%) !important;
+
+  width: 460px !important;
+  min-width: 460px !important;
+  height: 460px !important;
+  min-height: 460px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero-voice-control {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  pointer-events: auto;
+}
+
+.orb-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.orb-btn {
+  width: 390px !important;
+  height: 390px !important;
+  flex: 0 0 390px;
+}
+
+.orb-core {
+  width: 310px !important;
+  height: 310px !important;
+}
+
+.orb-core svg {
+  width: 52px;
+  height: 52px;
+}
+
+.orb-title {
+  font-size: 20px;
+}
+
+.orb-subtitle {
+  font-size: 13px;
+}
+
+.voice-orb-text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.voice-orb-text p {
+  font-size: 20px;
+}
+
+/* RIGHT SIDE / CONVERSATION
+   The side itself is anchored to the right edge of the hero. */
+.hero-side {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 500px !important;
+  height: 100% !important;
+  min-height: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Hidden until JS adds .active */
+.hero-side .voice-conversation {
+  pointer-events: none;
+}
+
+/* Active panel */
+.hero-side .voice-conversation.active {
+  display: block !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+
+  width: 500px !important;
+  max-width: 500px !important;
+  height: 430px !important;
+
+  margin: 0 !important;
+
+  transform: none !important;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  z-index: 20;
+}
+
+/* Active state: keep orb in the same center position,
+   but reduce it to the compact size seen in the original. */
+.hero-inner.voice-active .voice-stage {
+  left: 54.5% !important;
+  right: auto !important;
+  top: 48% !important;
+  transform: translate(-50%, -50%) !important;
+
+  width: 360px !important;
+  min-width: 360px !important;
+  height: 360px !important;
+  min-height: 360px !important;
+}
+
+.hero-inner.voice-active .orb-wrapper {
+  transform: scale(.72) !important;
+  transform-origin: center center;
+}
+
+.hero-inner.voice-active .orb-btn {
+  transform: none !important;
+}
+
+/* Make the active panel sit comfortably inside 1366px laptops too. */
+@media (max-width: 1450px) and (min-width: 1001px) {
+  .hero-copy {
+    width: min(570px, 43vw);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(46px, 4.1vw, 60px);
+  }
+
+  .voice-stage {
+    left: 52% !important;
+    width: 400px !important;
+    min-width: 400px !important;
+    height: 400px !important;
+    min-height: 400px !important;
+  }
+
+  .orb-btn {
+    width: 350px !important;
+    height: 350px !important;
+    flex-basis: 350px;
+  }
+
+  .orb-core {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .hero-inner.voice-active .voice-stage {
+    left: 52% !important;
+    width: 330px !important;
+    min-width: 330px !important;
+    height: 330px !important;
+    min-height: 330px !important;
+  }
+
+  .hero-inner.voice-active .orb-wrapper {
+    transform: scale(.68) !important;
+  }
+
+  .hero-side,
+  .hero-side .voice-conversation.active {
+    width: 450px !important;
+    max-width: 450px !important;
+  }
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 1000px) {
+  .hero {
+    min-height: auto;
+    padding: 54px 0 70px;
+  }
+
+  .hero-inner {
+    min-height: 0;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 680px;
+    padding-top: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(42px, 6vw, 58px);
+  }
+
+  .voice-stage,
+  .hero-inner.voice-active .voice-stage {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 390px !important;
+    min-height: 390px !important;
+
+    order: 2;
+  }
+
+  .orb-wrapper {
+    transform: none !important;
+  }
+
+  .hero-inner.voice-active .orb-wrapper {
+    transform: scale(.72) !important;
+  }
+
+  .hero-side {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    order: 3;
+    justify-content: center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    position: relative !important;
+    width: min(500px, 100%) !important;
+    max-width: 500px !important;
+    height: 430px !important;
+  }
+}
+
+/* ---------- PHONE ---------- */
+@media (max-width: 640px) {
+  .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero {
+    padding: 38px 0 58px;
+  }
+
+  .hero-inner {
+    gap: 18px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(35px, 10vw, 46px);
+    line-height: 1.08;
+    margin: 12px 0 18px;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .voice-stage,
+  .hero-inner.voice-active .voice-stage {
+    height: 320px !important;
+    min-height: 320px !important;
+    width: 100% !important;
+  }
+
+  .orb-btn {
+    width: 285px !important;
+    height: 285px !important;
+    flex-basis: 285px;
+  }
+
+  .orb-core {
+    width: 225px !important;
+    height: 225px !important;
+  }
+
+  .orb-core svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .orb-title {
+    font-size: 17px;
+  }
+
+  .orb-subtitle {
+    font-size: 11px;
+  }
+
+  .voice-orb-text {
+    margin-top: 8px;
+  }
+
+  .voice-orb-text p {
+    font-size: 17px;
+  }
+
+  .voice-orb-text span {
+    font-size: 11px;
+  }
+
+  .hero-inner.voice-active .orb-wrapper {
+    transform: scale(.62) !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: min(430px, 72vh) !important;
+    border-radius: 20px;
+  }
+
+  .conversation-header {
+    padding: 16px 17px;
+  }
+
+  .conversation-header h3 {
+    font-size: 20px;
+  }
+
+  .conversation-messages {
+    height: 260px;
+    padding: 14px;
+  }
+
+  .conversation-message {
+    max-width: 92%;
+  }
+
+  .hero-trust {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hero-trust li {
+    font-size: 12px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px) {
+  .wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-copy h1 {
+    font-size: 34px;
+  }
+
+  .orb-btn {
+    width: 260px !important;
+    height: 260px !important;
+    flex-basis: 260px;
+  }
+
+  .orb-core {
+    width: 205px !important;
+    height: 205px !important;
+  }
+
+  .voice-stage,
+  .hero-inner.voice-active .voice-stage {
+    height: 295px !important;
+    min-height: 295px !important;
+  }
+}
+
+
+/* =========================================================
+   SCREENSHOT PROPORTION CORRECTION — DESKTOP
+   Reference: original Samarth hero screenshot at 1920px wide.
+
+   Target:
+   - copy starts around y=305
+   - headline uses the wider original line breaks
+   - orb center around x=1390 / y=545
+   - orb size remains unchanged
+   ========================================================= */
+
+@media (min-width: 1451px) {
+  .hero-copy {
+    width: 900px !important;
+    max-width: 900px !important;
+    padding-top: 24px !important;
+  }
+
+  .hero-copy h1 {
+    width: 900px !important;
+    max-width: 900px !important;
+    font-size: clamp(48px, 4.25vw, 66px) !important;
+  }
+
+  .hero-sub {
+    width: 750px !important;
+    max-width: 750px !important;
+    font-size: 17px !important;
+  }
+
+  .voice-stage,
+  .hero-inner.voice-active .voice-stage {
+    left: 72.8% !important;
+    top: 38% !important;
+
+    /* DO NOT shrink the orb on desktop */
+    width: 460px !important;
+    min-width: 460px !important;
+    height: 460px !important;
+    min-height: 460px !important;
+  }
+
+  .hero-inner.voice-active .orb-wrapper {
+    transform: scale(1) !important;
+  }
+}
+
+/* Keep the intended composition on normal laptop widths,
+   without allowing the 1920px desktop coordinates to leak down. */
+@media (min-width: 1001px) and (max-width: 1450px) {
+  .hero-copy {
+    width: min(760px, 58vw) !important;
+    max-width: 760px !important;
+    padding-top: 34px !important;
+  }
+
+  .hero-copy h1 {
+    max-width: 760px !important;
+  }
+
+  .hero-sub {
+    max-width: 650px !important;
+  }
+
+  .voice-stage,
+  .hero-inner.voice-active .voice-stage {
+    left: 68% !important;
+    top: 40% !important;
+  }
+
+  .hero-inner.voice-active .orb-wrapper {
+    transform: scale(.88) !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL ACTIVE HERO ALIGNMENT
+   Desktop only — restore the compact microphone + right panel
+   while keeping the corrected headline wrapping.
+   ========================================================= */
+@media (min-width: 1001px) {
+  .hero-inner.voice-active .voice-stage {
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.55) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-btn {
+    transform: none !important;
+  }
+
+  .hero-side {
+    right: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    position: absolute !important;
+    right: 56px !important;
+    left: auto !important;
+    top: 50% !important;
+    width: 500px !important;
+    max-width: 500px !important;
+    height: 430px !important;
+    margin: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+
+/* =========================================================
+   ACTIVE HERO — SYNCHRONIZED COMPOSITION
+   The text column, compact orb, and conversation panel must
+   change together when .voice-active is added by app.js.
+   ========================================================= */
+@media (min-width: 1451px) {
+  .hero-inner.voice-active .hero-copy {
+    width: 700px !important;
+    max-width: 700px !important;
+    transition: width .35s ease;
+  }
+
+  .hero-inner.voice-active .hero-copy h1 {
+    width: 700px !important;
+    max-width: 700px !important;
+  }
+
+  .hero-inner.voice-active .hero-sub {
+    width: 650px !important;
+    max-width: 650px !important;
+  }
+
+  .hero-inner.voice-active .voice-stage {
+    left: 50% !important;
+    top: 50% !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.55) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    right: 0 !important;
+    top: 50% !important;
+    width: 500px !important;
+    max-width: 500px !important;
+    height: 430px !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1450px) {
+  .hero-inner.voice-active .hero-copy {
+    width: min(620px, 50vw) !important;
+    max-width: 620px !important;
+  }
+
+  .hero-inner.voice-active .hero-copy h1 {
+    width: min(620px, 50vw) !important;
+    max-width: 620px !important;
+  }
+
+  .hero-inner.voice-active .hero-sub {
+    width: min(570px, 46vw) !important;
+    max-width: 570px !important;
+  }
+
+  .hero-inner.voice-active .voice-stage {
+    left: 50% !important;
+    top: 50% !important;
+    width: 170px !important;
+    min-width: 170px !important;
+    height: 170px !important;
+    min-height: 170px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.50) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    right: 0 !important;
+    top: 50% !important;
+    width: min(450px, 38vw) !important;
+    max-width: 450px !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* =========================================================
+   FINAL SYNC PATCH — text + orb + conversation change together
+   ========================================================= */
+@media (min-width: 1451px) {
+  .hero-inner .hero-copy,
+  .hero-inner .hero-copy h1,
+  .hero-inner .hero-sub {
+    transition: width .35s ease, max-width .35s ease;
+  }
+
+  .hero-inner.voice-active .hero-copy {
+    width: 700px !important;
+    max-width: 700px !important;
+  }
+
+  .hero-inner.voice-active .hero-copy h1 {
+    width: 700px !important;
+    max-width: 700px !important;
+  }
+
+  .hero-inner.voice-active .hero-sub {
+    width: 650px !important;
+    max-width: 650px !important;
+  }
+
+  .hero-inner.voice-active .voice-stage {
+    left: 50% !important;
+    top: 50% !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.55) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    right: 0 !important;
+    top: 50% !important;
+    width: 500px !important;
+    max-width: 500px !important;
+    height: 430px !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1450px) {
+  .hero-inner .hero-copy,
+  .hero-inner .hero-copy h1,
+  .hero-inner .hero-sub {
+    transition: width .35s ease, max-width .35s ease;
+  }
+
+  .hero-inner.voice-active .hero-copy {
+    width: min(620px, 50vw) !important;
+    max-width: 620px !important;
+  }
+
+  .hero-inner.voice-active .hero-copy h1 {
+    width: min(620px, 50vw) !important;
+    max-width: 620px !important;
+  }
+
+  .hero-inner.voice-active .hero-sub {
+    width: min(570px, 46vw) !important;
+    max-width: 570px !important;
+  }
+
+  .hero-inner.voice-active .voice-stage {
+    left: 50% !important;
+    top: 50% !important;
+    width: 170px !important;
+    min-width: 170px !important;
+    height: 170px !important;
+    min-height: 170px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.50) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    right: 0 !important;
+    top: 50% !important;
+    width: min(450px, 38vw) !important;
+    max-width: 450px !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* =========================================================
+   FINAL MICRO-ADJUSTMENT — active hero size + vertical position
+   Keeps the synchronized layout intact. Only makes the compact
+   orb slightly larger and lifts both orb + conversation together.
+   ========================================================= */
+@media (min-width: 1451px) {
+  .hero-inner.voice-active .voice-stage {
+    top: 38% !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.62) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    top: 38% !important;
+    right: 56px !important;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1450px) {
+  .hero-inner.voice-active .voice-stage {
+    top: 38% !important;
+  }
+
+  .hero-inner.voice-active .voice-stage .orb-wrapper {
+    transform: scale(.56) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-side .voice-conversation.active {
+    top: 38% !important;
+    right: 56px !important;
+  }
+}

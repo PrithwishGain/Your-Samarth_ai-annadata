@@ -332,6 +332,8 @@ function openVoiceInterface() {
     userTranscript = "";
     assistantTranscript = "";
 
+    // Keep this class addition idempotent; the click handler already activates
+    // the hero synchronously so all three visual changes happen together.
     heroInner.classList.add('voice-active');
 
     voiceConversation.classList.add('active');
@@ -353,10 +355,13 @@ function openVoiceInterface() {
 
 orbBtn.addEventListener('click', async () => {
 
-    // Move orb to center and open conversation UI
+    // Activate the entire hero state in one synchronous update.
+    // The CSS uses .hero-inner.voice-active as the single source of truth
+    // for text reflow, orb size/position, and the conversation panel.
     if (voiceStage) {
         voiceStage.classList.add('voice-active');
     }
+    heroInner.classList.add('voice-active');
 
     if (orbBtn.classList.contains('listening')) {
         microphoneRequestId += 1;
