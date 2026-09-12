@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Crop Doctor — Annyadata</title>
+
+    <!-- Main Samarth / Annyadata styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Crop Doctor page styles -->
+    <link rel="stylesheet" href="crop-doctor.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="../samarthAI.html" class="brand">
+                <span class="brand-mark">A</span>
+                <span class="brand-text">
+                    <strong>Annyadata</strong>
+                    <small>Samarth AI</small>
+                </span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="../samarthAI.html">Farmer Portal</a>
+                <a href="farmer-dashboard.html">My Farm</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="../samarthAI.html" class="cta-btn">
+                    Talk to Samarth
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ================= PAGE ================= -->
+    <main class="crop-doctor-page">
+
+        <!-- Page heading -->
+        <section class="crop-doctor-heading">
+            <div class="container">
+
+                <span class="section-eyebrow">
+                    ANNYADATA CROP INTELLIGENCE
+                </span>
+
+                <h1>
+                    AI Crop Doctor
+                </h1>
+
+                <p>
+                    Take a photo of your crop or upload an image from your device.
+                    Samarth will screen the crop for possible disease or health issues.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- ================= CROP DOCTOR WORKSPACE ================= -->
+        <section class="crop-doctor-workspace">
+            <div class="container">
+
+                <div class="crop-doctor-card">
+
+                    <!-- Step indicator -->
+                    <div class="doctor-step">
+                        <span class="step-number">1</span>
+
+                        <div>
+                            <strong>Select your crop</strong>
+                            <p>
+                                Choose the crop shown in the photograph.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <!-- Crop selector -->
+                    <div class="crop-selector-area">
+
+                        <label for="cropSelect">
+                            Crop
+                        </label>
+
+                        <select id="cropSelect">
+                            <option value="">Select crop</option>
+                            <option value="rice">Rice / Paddy</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="maize">Maize</option>
+                            <option value="potato">Potato</option>
+                            <option value="tomato">Tomato</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Photo step -->
+                    <div class="doctor-step photo-step">
+                        <span class="step-number">2</span>
+
+                        <div>
+                            <strong>Provide a crop photo</strong>
+                            <p>
+                                Take a new photograph or upload one from your device.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <!-- Photo workspace -->
+                    <div class="photo-workspace">
+
+                        <!-- Image preview -->
+                        <div class="image-preview" id="imagePreview">
+
+                            <div class="preview-placeholder" id="previewPlaceholder">
+                                <div class="preview-icon">🌿</div>
+
+                                <strong>
+                                    No crop photo selected
+                                </strong>
+
+                                <span>
+                                    Your crop photograph will appear here.
+                                </span>
+                            </div>
+
+                            <img
+                                id="previewImage"
+                                alt="Selected crop"
+                                style="display: none;"
+                            >
+
+                        </div>
+
+
+                        <!-- Photo controls -->
+                        <div class="photo-controls">
+
+                            <!-- Camera -->
+                            <label class="doctor-action primary-action">
+
+                                <span class="action-icon">📷</span>
+
+                                <span>
+                                    <strong>Take Photo</strong>
+                                    <small>
+                                        Use your camera
+                                    </small>
+                                </span>
+
+                                <input
+                                    type="file"
+                                    id="cameraInput"
+                                    accept="image/*"
+                                    capture="environment"
+                                    hidden
+                                >
+
+                            </label>
+
+
+                            <!-- Upload -->
+                            <label class="doctor-action secondary-action">
+
+                                <span class="action-icon">↑</span>
+
+                                <span>
+                                    <strong>Upload from Device</strong>
+                                    <small>
+                                        Choose an image
+                                    </small>
+                                </span>
+
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    accept="image/*"
+                                    hidden
+                                >
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Photo guidance -->
+                    <div class="photo-guidance">
+
+                        <strong>
+                            📌 For a better result
+                        </strong>
+
+                        <ul>
+                            <li>Use good natural light.</li>
+                            <li>Keep the affected leaf clearly visible.</li>
+                            <li>Avoid blurry or very dark photographs.</li>
+                            <li>When possible, photograph one affected leaf at a time.</li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- Analyze -->
+                    <div class="analyze-area">
+
+                        <button
+                            id="analyzeButton"
+                            class="analyze-btn"
+                            disabled
+                        >
+                            Analyze Crop
+                        </button>
+
+                        <p class="analysis-note">
+                            AI screening is preliminary. High-risk or uncertain
+                            cases can be reviewed by an Annyadata volunteer.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================= RESULT ================= -->
+                    <div
+                        class="crop-result"
+                        id="cropResult"
+                        style="display: none;"
+                    >
+
+                        <div class="result-header">
+                            <span class="result-eyebrow">
+                                CROP DOCTOR RESULT
+                            </span>
+
+                            <h2 id="resultTitle">
+                                Analysis complete
+                            </h2>
+                        </div>
+
+
+                        <div class="result-main">
+
+                            <div class="result-diagnosis">
+
+                                <span>
+                                    Preliminary finding
+                                </span>
+
+                                <strong id="prediction">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="result-confidence">
+
+                                <span>
+                                    Confidence
+                                </span>
+
+                                <strong id="confidence">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Top predictions -->
+                        <div class="top-predictions">
+
+                            <h3>
+                                Other possible findings
+                            </h3>
+
+                            <div id="predictionList">
+                                <!-- Filled by JavaScript -->
+                            </div>
+
+                        </div>
+
+
+                        <!-- Verification -->
+                        <div
+                            class="verification-notice"
+                            id="verificationNotice"
+                            style="display: none;"
+                        >
+                            <strong>
+                                👨‍🌾 Volunteer verification recommended
+                            </strong>
+
+                            <p>
+                                This result may require additional verification.
+                                An Annyadata volunteer can inspect the crop and
+                                confirm the condition.
+                            </p>
+                        </div>
+
+
+                        <!-- Result actions -->
+                        <div class="result-actions">
+
+                            <button
+                                id="askSamarthButton"
+                                class="doctor-result-btn primary"
+                            >
+                                Ask Samarth about this result →
+                            </button>
+
+                            <button
+                                id="anotherPhotoButton"
+                                class="doctor-result-btn secondary"
+                            >
+                                Analyze another photo
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-bottom">
+                <span>
+                    © 2026 Annyadata
+                </span>
+
+                <span>
+                    Powered by Samarth AI
+                </span>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- Existing Samarth scripts -->
+    <script src="../supabase.js"></script>
+    <script src="../weather.js"></script>
+    <script src="../app.js"></script>
+
+    <!-- Crop Doctor functionality -->
+    <script src="crop-doctor.js"></script>
+
+</body>
+</html>

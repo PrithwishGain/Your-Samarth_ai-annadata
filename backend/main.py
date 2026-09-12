@@ -3,12 +3,15 @@ import asyncio
 import httpx
 import json
 
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from supabase import create_client, Client
+
+from crop_doctor import analyze_crop
+
 
 # Load variables from .env
 load_dotenv()
@@ -30,6 +33,8 @@ app.add_middleware(
         "http://localhost:5500",
         "http://127.0.0.1:5501",
         "http://localhost:5501",
+        "http://127.0.0.1:5502",
+        "http://localhost:5502",
         "https://prithwishgain.github.io",
     ],
     allow_credentials=True,
@@ -43,6 +48,10 @@ app.add_middleware(
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
+        "http://127.0.0.1:5501",
+        "http://localhost:5501",
+        "http://127.0.0.1:5502",
+        "http://localhost:5502",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -72,7 +81,54 @@ def health_check():
         "message": "Samarth AI backend is running"
     }
 
-    # -------------------------
+# ============================================================
+# ANNYADATA CROP DOCTOR API
+# ============================================================
+
+@app.post("/crop-doctor/analyze")
+async def crop_doctor_analyze(
+    image: UploadFile = File(...),
+    crop: str = Form(...)
+):
+    """
+    Analyze a crop image using the Annyadata Crop Doctor engine.
+
+    The vision model performs the diagnosis.
+    Samarth can later use the result to explain the diagnosis
+    and provide farmer-friendly guidance.
+    """
+
+    try:
+        # Read uploaded image
+        image_bytes = await image.read()
+
+        if not image_bytes:
+            return {
+                "success": False,
+                "error": "No image was uploaded."
+            }
+
+        # Run Crop Doctor
+        result = analyze_crop(
+            image_bytes,
+            crop.strip().lower()
+        )
+
+        return result
+
+    except Exception as e:
+
+        print(
+            "Crop Doctor API error:",
+            str(e)
+        )
+
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+# -------------------------
 # Knowledge Base Search
 # -------------------------
 

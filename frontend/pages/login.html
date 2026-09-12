@@ -1341,8 +1341,15 @@ async function checkGoogleSession() {
         const { error } = await supabaseClient.auth.signInWithOAuth({
             provider: "google",
             options: {
-              redirectTo: "https://prithwishgain.github.io/Your-Samarth_ai-annadata/pages/profile-setup.html"
-            }
+                  redirectTo:
+                      window.location.origin +
+                      (
+                          window.location.hostname === "prithwishgain.github.io"
+                              ? "/Your-Samarth_ai-annadata"
+                              : ""
+                      ) +
+                      "/pages/login.html"
+              }
         });
 
         if (error) {
