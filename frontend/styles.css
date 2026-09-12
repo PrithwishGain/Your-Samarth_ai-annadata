@@ -2820,3 +2820,39 @@ body {
     right: 56px !important;
   }
 }
+
+
+/* =========================================================
+   MOBILE HERO ORDER FIX
+   Trust pills should appear directly below the main text
+   and ABOVE the Samarth voice orb.
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-copy {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .hero-copy > .eyebrow {
+    order: 1 !important;
+  }
+
+  .hero-copy > h1 {
+    order: 2 !important;
+  }
+
+  .hero-copy > .hero-sub {
+    order: 3 !important;
+  }
+
+  .hero-copy > .hero-trust {
+    order: 4 !important;
+  }
+
+  .hero-copy > .voice-stage {
+    order: 5 !important;
+  }
+
+}
