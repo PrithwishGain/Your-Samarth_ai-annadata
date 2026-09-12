@@ -1332,34 +1332,39 @@ async function checkGoogleSession() {
     }
 }
 
-  /* =================================
-     GOOGLE LOGIN
-  ================================= */
+/* =================================
+GOOGLE LOGIN
+================================= */
 
-  googleButton.addEventListener("click", async function () {
-    try {
-        const { error } = await supabaseClient.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                  redirectTo:
-                      window.location.origin +
-                      (
-                          window.location.hostname === "prithwishgain.github.io"
-                              ? "/Your-Samarth_ai-annadata"
-                              : ""
-                      ) +
-                      "/pages/login.html"
-              }
-        });
+googleButton.addEventListener("click", async function () {
+ try {
+     const { error } = await supabaseClient.auth.signInWithOAuth({
+         provider: "google",
+         options: {
+             redirectTo:
+                 window.location.origin +
+                 (
+                     window.location.hostname === "prithwishgain.github.io"
+                         ? "/Your-Samarth_ai-annadata"
+                         : ""
+                 ) +
+                 "/pages/login.html"
+         }
+     });
 
-        if (error) {
-            console.error("Google login error:", error);
-            alert("Unable to sign in with Google.\n\n" + error.message);
-        }
-    } catch (error) {
-        console.error("Unexpected Google login error:", error);
-        alert("Something went wrong while signing in with Google.");
-    }
+     if (error) {
+         console.error("Google login error:", error);
+         alert(
+             "Unable to sign in with Google.\n\n" +
+             error.message
+         );
+     }
+ } catch (error) {
+     console.error("Unexpected Google login error:", error);
+     alert(
+         "Something went wrong while signing in with Google."
+     );
+ }
 });
 
 /* =================================
