@@ -2659,3 +2659,112 @@ body {
         transform: none !important;
     }
 }
+
+/* =========================================================
+   FINAL MOBILE SAMARTH ACTIVE LAYOUT
+   After clicking orb:
+   HEADLINE → DESCRIPTION → TRUST PILLS → ORB
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    /* Keep the entire hero in one vertical flow */
+    .hero-inner.voice-active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+    }
+
+    .hero-inner.voice-active .hero-copy {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* HEADLINE */
+    .hero-inner.voice-active .hero-copy h1 {
+        order: 2 !important;
+    }
+
+    /* DESCRIPTION */
+    .hero-inner.voice-active .hero-copy .hero-sub {
+        order: 3 !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* TRUST PILLS */
+    .hero-inner.voice-active .hero-copy .hero-trust {
+        order: 4 !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* ORB — FORCE IT BELOW EVERYTHING */
+    .hero-inner.voice-active .hero-copy .voice-stage {
+        order: 5 !important;
+
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+
+        width: 100% !important;
+        min-width: 100% !important;
+
+        height: 320px !important;
+        min-height: 320px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* Keep the actual orb centered */
+    .hero-inner.voice-active .hero-copy .voice-stage .hero-voice-control {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .hero-inner.voice-active .hero-copy .voice-stage .orb-wrapper {
+        transform: scale(.62) !important;
+        transform-origin: center center !important;
+        margin: 0 !important;
+    }
+
+    /* Don't let the conversation panel interfere with the layout */
+    .hero-inner.voice-active .hero-side {
+        order: 6 !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        inset: auto !important;
+    }
+
+    .hero-inner.voice-active .hero-side .voice-conversation.active {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 8px !important;
+    }
+}
