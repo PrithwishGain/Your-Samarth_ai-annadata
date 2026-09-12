@@ -2552,307 +2552,38 @@ body {
 
 
 /* =========================================================
-   FINAL ACTIVE HERO ALIGNMENT
-   Desktop only — restore the compact microphone + right panel
-   while keeping the corrected headline wrapping.
-   ========================================================= */
-@media (min-width: 1001px) {
-  .hero-inner.voice-active .voice-stage {
-    left: 50% !important;
-    right: auto !important;
-    top: 50% !important;
-    width: 180px !important;
-    min-width: 180px !important;
-    height: 180px !important;
-    min-height: 180px !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.55) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-btn {
-    transform: none !important;
-  }
-
-  .hero-side {
-    right: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    position: absolute !important;
-    right: 56px !important;
-    left: auto !important;
-    top: 50% !important;
-    width: 500px !important;
-    max-width: 500px !important;
-    height: 430px !important;
-    margin: 0 !important;
-    transform: translateY(-50%) !important;
-  }
-}
-
-
-/* =========================================================
-   ACTIVE HERO — SYNCHRONIZED COMPOSITION
-   The text column, compact orb, and conversation panel must
-   change together when .voice-active is added by app.js.
-   ========================================================= */
-@media (min-width: 1451px) {
-  .hero-inner.voice-active .hero-copy {
-    width: 700px !important;
-    max-width: 700px !important;
-    transition: width .35s ease;
-  }
-
-  .hero-inner.voice-active .hero-copy h1 {
-    width: 700px !important;
-    max-width: 700px !important;
-  }
-
-  .hero-inner.voice-active .hero-sub {
-    width: 650px !important;
-    max-width: 650px !important;
-  }
-
-  .hero-inner.voice-active .voice-stage {
-    left: 50% !important;
-    top: 50% !important;
-    width: 180px !important;
-    min-width: 180px !important;
-    height: 180px !important;
-    min-height: 180px !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.55) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    right: 0 !important;
-    top: 50% !important;
-    width: 500px !important;
-    max-width: 500px !important;
-    height: 430px !important;
-    transform: translateY(-50%) !important;
-  }
-}
-
-@media (min-width: 1001px) and (max-width: 1450px) {
-  .hero-inner.voice-active .hero-copy {
-    width: min(620px, 50vw) !important;
-    max-width: 620px !important;
-  }
-
-  .hero-inner.voice-active .hero-copy h1 {
-    width: min(620px, 50vw) !important;
-    max-width: 620px !important;
-  }
-
-  .hero-inner.voice-active .hero-sub {
-    width: min(570px, 46vw) !important;
-    max-width: 570px !important;
-  }
-
-  .hero-inner.voice-active .voice-stage {
-    left: 50% !important;
-    top: 50% !important;
-    width: 170px !important;
-    min-width: 170px !important;
-    height: 170px !important;
-    min-height: 170px !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.50) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    right: 0 !important;
-    top: 50% !important;
-    width: min(450px, 38vw) !important;
-    max-width: 450px !important;
-    transform: translateY(-50%) !important;
-  }
-}
-
-/* =========================================================
-   FINAL SYNC PATCH — text + orb + conversation change together
-   ========================================================= */
-@media (min-width: 1451px) {
-  .hero-inner .hero-copy,
-  .hero-inner .hero-copy h1,
-  .hero-inner .hero-sub {
-    transition: width .35s ease, max-width .35s ease;
-  }
-
-  .hero-inner.voice-active .hero-copy {
-    width: 700px !important;
-    max-width: 700px !important;
-  }
-
-  .hero-inner.voice-active .hero-copy h1 {
-    width: 700px !important;
-    max-width: 700px !important;
-  }
-
-  .hero-inner.voice-active .hero-sub {
-    width: 650px !important;
-    max-width: 650px !important;
-  }
-
-  .hero-inner.voice-active .voice-stage {
-    left: 50% !important;
-    top: 50% !important;
-    width: 180px !important;
-    min-width: 180px !important;
-    height: 180px !important;
-    min-height: 180px !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.55) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    right: 0 !important;
-    top: 50% !important;
-    width: 500px !important;
-    max-width: 500px !important;
-    height: 430px !important;
-    transform: translateY(-50%) !important;
-  }
-}
-
-@media (min-width: 1001px) and (max-width: 1450px) {
-  .hero-inner .hero-copy,
-  .hero-inner .hero-copy h1,
-  .hero-inner .hero-sub {
-    transition: width .35s ease, max-width .35s ease;
-  }
-
-  .hero-inner.voice-active .hero-copy {
-    width: min(620px, 50vw) !important;
-    max-width: 620px !important;
-  }
-
-  .hero-inner.voice-active .hero-copy h1 {
-    width: min(620px, 50vw) !important;
-    max-width: 620px !important;
-  }
-
-  .hero-inner.voice-active .hero-sub {
-    width: min(570px, 46vw) !important;
-    max-width: 570px !important;
-  }
-
-  .hero-inner.voice-active .voice-stage {
-    left: 50% !important;
-    top: 50% !important;
-    width: 170px !important;
-    min-width: 170px !important;
-    height: 170px !important;
-    min-height: 170px !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.50) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    right: 0 !important;
-    top: 50% !important;
-    width: min(450px, 38vw) !important;
-    max-width: 450px !important;
-    transform: translateY(-50%) !important;
-  }
-}
-
-/* =========================================================
-   FINAL MICRO-ADJUSTMENT — active hero size + vertical position
-   Keeps the synchronized layout intact. Only makes the compact
-   orb slightly larger and lifts both orb + conversation together.
-   ========================================================= */
-@media (min-width: 1451px) {
-  .hero-inner.voice-active .voice-stage {
-    top: 38% !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.62) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    top: 38% !important;
-    right: 56px !important;
-  }
-}
-
-@media (min-width: 1001px) and (max-width: 1450px) {
-  .hero-inner.voice-active .voice-stage {
-    top: 38% !important;
-  }
-
-  .hero-inner.voice-active .voice-stage .orb-wrapper {
-    transform: scale(.56) !important;
-    transform-origin: center center !important;
-  }
-
-  .hero-side .voice-conversation.active {
-    top: 38% !important;
-    right: 56px !important;
-  }
-}
-
-
-/* =========================================================
    MOBILE HERO ORDER FIX
-   Trust pills should appear directly below the main text
-   and ABOVE the Samarth voice orb.
+   On phones the trust pills must sit between the main copy
+   and the voice orb. The HTML keeps the desktop structure,
+   so flex ordering is used only on mobile.
    ========================================================= */
-
 @media (max-width: 640px) {
-
   .hero-copy {
     display: flex !important;
     flex-direction: column !important;
+    align-items: stretch !important;
   }
 
   .hero-copy > .eyebrow {
-    order: 1 !important;
+    order: 1;
   }
 
   .hero-copy > h1 {
-    order: 2 !important;
+    order: 2;
   }
 
   .hero-copy > .hero-sub {
-    order: 3 !important;
+    order: 3;
   }
 
   .hero-copy > .hero-trust {
-    order: 4 !important;
+    order: 4;
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
   }
 
   .hero-copy > .voice-stage {
-    order: 5 !important;
+    order: 5;
+    margin-top: 0 !important;
   }
-
 }
